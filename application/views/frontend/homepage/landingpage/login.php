@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login | e-Notaris</title>
-        <link rel="stylesheet" href="login.css" />
+        <link rel="stylesheet" href="<?= base_url('/assets/css/login.css') ?>" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     </head>
@@ -12,12 +12,12 @@
     <body>
         <section>
             <div class="imgBx">
-                <img draggable="false" src="notarisloginbg.jpg" alt="" />
+                <img draggable="false" src="<?= base_url('/assets/img/notarisloginbg.jpg') ?>" alt="" />
             </div>
             
             <div class="contentBx">
                 <div class="formBx">
-                    <img draggable="false" src="../assets/img/enotarislogo.png" alt="" />
+                    <img draggable="false" src="<?= base_url('/assets/img/enotarislogo.png') ?>" alt="" />
                     <h2>Login Administrator</h2>
                     <h3>Notaris dan PPAT  Sherli Hardhyarti, S.H. M.KN.,
                     </h3>
@@ -50,7 +50,7 @@
                                Login
                                 <img
                                     class="imgIcon"
-                                    src="loginIcon.png"
+                                    src="<?= base_url('assets/img/loginIcon.png') ?>"
                                     alt=""
                                 />
                             </a>

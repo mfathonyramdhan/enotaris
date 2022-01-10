@@ -14,21 +14,21 @@
     <link rel="apple-touch-icon" sizes="114x114" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon.png">
-    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="<?= base_url('/assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon" />
 
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
 
 
-    <link href="../assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/aos/aos.css')?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/glightbox/css/glightbox.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/swiper/swiper-bundle.min.css') ?>" rel="stylesheet" />
 
 
-    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="<?= base_url('/assets/css/style.css') ?>" rel="stylesheet" />
 
 
 </head>
@@ -39,7 +39,7 @@
         <div class="container d-flex align-items-center justify-content-between">
             <div class="logo">
                 <h1 class="text-light">
-                    <a href="index.html"><img src="../assets/img/enotarislogo.png" alt=""></a>
+                    <a href="<?= base_url('welcome') ?>"><img src="<?= base_url('/assets/img/enotarislogo.png') ?>" alt=""></a>
                 </h1>
 
             </div>
@@ -56,10 +56,10 @@
                         <a class="nav-link scrollto" href="#contact">Kontak Kami</a>
                     </li>
 
-                    <button class="submit" onclick="location.href='login.html'">
+                    <a class="submit" href="<?= base_url('auth') ?>">
                         Login
-                        <img class="imgIcon" src="../assets/img/loginIcon.png" alt="" />
-                    </button>
+                        <img class="imgIcon" src="<?= base_url('/assets/img/loginIcon.png') ?>" alt="" />
+                    </a>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -91,7 +91,7 @@
 
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
-                    <img draggable="false" src="notaris.png" class="imgBupati" alt="" />
+                    <img draggable="false" src="<?= base_url('/assets/img/notaris.png') ?>" class="imgBupati" alt="" />
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
 								justify-content-center
 								about-img
 							">
-                        <img draggable="false" src="pbb.png" class="img-fluid" alt="" data-aos="zoom-in" />
+                        <img draggable="false" src="<?= base_url('/assets/img/pbb.png') ?>" class="img-fluid" alt="" data-aos="zoom-in" />
                     </div>
                     <div class=" col-lg-6
 						d-flex
@@ -134,11 +134,7 @@
         </section>
 
 
-        <section id="layanan" style="background: url('notarisbg.png');
-		background-position: left bottom;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-attachment: fixed; color: #fff;" class="">
+        <section id="layanan" style="background: linear-gradient(-90deg, #65b7ff, #005bea)" class="">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown; padding-bottom: 10px; color: #fff; box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);">Layanan Kami</h2>
@@ -190,22 +186,22 @@
                 <div class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper align-items-center">
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/bankJatim.jpg" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/bankJatim.jpg') ?>" class="img-fluid" alt="" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/indomaret.png" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/indomaret.png') ?>" class="img-fluid" alt="" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/alfamart.png" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/alfamart.png') ?>" class="img-fluid" alt="" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/tokopedia.jpg" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/tokopedia.jpg') ?>" class="img-fluid" alt="" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/gopay.png" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/gopay.png') ?>" class="img-fluid" alt="" />
                         </div>
                         <div class="swiper-slide">
-                            <img src="../assets/img/pembayaran/ovo.png" class="img-fluid" alt="" />
+                            <img src="<?= base_url('/assets/img/pembayaran/ovo.png') ?>" class="img-fluid" alt="" />
                         </div>
 
                     </div>
@@ -300,15 +296,15 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 
-    <script src="../assets/vendor/aos/aos.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="<?= base_url('/assets/vendor/aos/aos.js') ?>"></script>
+    <script src="<?= base_url('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('/assets/vendor/glightbox/js/glightbox.min.js') ?>"></script>
+    <script src="<?= base_url('/assets/vendor/isotope-layout/isotope.pkgd.min.js') ?>"></script>
+    <script src="<?= base_url('/assets/vendor/php-email-form/validate.js') ?>"></script>
+    <script src="<?= base_url('/assets/vendor/swiper/swiper-bundle.min.js') ?>"></script>
 
 
-    <script src="../assets/js/main.js"></script>
+    <script src="<?= base_url('/assets/js/main.js') ?>"></script>
 </body>
 
 </html>
