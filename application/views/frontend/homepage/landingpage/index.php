@@ -14,13 +14,13 @@
     <link rel="apple-touch-icon" sizes="114x114" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-114x114.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon.png">
-    <link href="<?= base_url('/assets/img/apple-touch-icon.png') ?>" rel="apple-touch-icon" />
+    <link href="<?= base_url('/assets/img/favicon.png') ?>" rel="apple-touch-icon" />
 
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
 
 
-    <link href="<?= base_url('/assets/vendor/aos/aos.css')?>" rel="stylesheet" />
+    <link href="<?= base_url('/assets/vendor/aos/aos.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('/assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('/assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('/assets/vendor/boxicons/css/boxicons.min.css') ?>" rel="stylesheet" />
@@ -81,8 +81,8 @@
 						">
                     <!-- <h3>Selamat datang di</h3> -->
                     <h1>
-                        Layanan Notaris & PPAT <br/>dengan menggunakan <br/>teknologi Modern
-                       
+                        Layanan Notaris & PPAT <br />dengan menggunakan <br />teknologi Modern
+
                     </h1>
 
                     <button class="submit2" onclick="location.href='login.html'">
@@ -91,7 +91,7 @@
 
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img">
-                    <img draggable="false" src="<?= base_url('/assets/img/notaris.png') ?>" class="imgBupati" alt="" />
+                    <img draggable="false" src="<?= base_url('/assets/img/notaris.png') ?>" class="imgNotaris" alt="" />
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
         </section>
 
 
-        <section id="layanan" style="background: linear-gradient(-90deg, #65b7ff, #005bea)" class="">
+        <section id="layanan" style="background: linear-gradient(-90deg, #65b7ff, #005bea) " class="">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown; padding-bottom: 10px; color: #fff; box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);">Layanan Kami</h2>
@@ -146,7 +146,7 @@
                             <img src="https://pajakonline.jakarta.go.id/../assets/setoran.png">
                             <h3>Akta Tanah</h3>
                             <button type="button" class="btn-lg btn-warning">Pilih</button>
-                           
+
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -154,7 +154,7 @@
                             <img src="https://pajakonline.jakarta.go.id/../assets/skpd.png">
                             <h3>Pendirian CV/PT</h3>
                             <button type="button" class="btn-lg btn-warning">Pilih</button>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -162,7 +162,7 @@
                             <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
                             <h3>Waris</h3>
                             <button type="button" class="btn-lg btn-warning">Pilih</button>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -170,7 +170,7 @@
                             <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
                             <h3>Lainnya</h3>
                             <button type="button" class="btn-lg btn-warning">Pilih</button>
-                          
+
                         </div>
                     </div>
                 </div>

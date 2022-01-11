@@ -1,10 +1,6 @@
 <?php $this->load->view('backend/template/meta') ?>
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo base_url('assets/template/backend/dist')?>/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
 
   <!-- Navbar -->
   <?php $this->load->view('backend/template/navbar') ?>
@@ -125,10 +121,9 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                   </div>
+                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                  </div>
                   <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                   </div>
@@ -138,18 +133,18 @@
             <!-- /.card -->
 
             <!-- DIRECT CHAT -->
-            
+
             <!--/.direct-chat -->
 
             <!-- TO DO List -->
-           
+
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
-          <div class="card">
+            <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Reminder / Pengingat </h3>
               </div>
@@ -177,11 +172,11 @@
                       <td>2.</td>
                       <td>Wati</td>
                       <td>
-                      28-8-2021
+                        28-8-2021
                       </td>
                       <td><span class="badge bg-warning">12 Hari lagi</span></td>
                     </tr>
-                   
+
                   </tbody>
                 </table>
               </div>
@@ -242,11 +237,11 @@
             <!-- /.card -->
 
             <!-- solid sales graph -->
-          
+
             <!-- /.card -->
 
             <!-- Calendar -->
-            
+
             <!-- /.card -->
           </section>
           <!-- right col -->
@@ -266,4 +261,5 @@
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>
 </body>
+
 </html>
