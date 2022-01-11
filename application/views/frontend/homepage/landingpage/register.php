@@ -18,33 +18,44 @@
 
         <div class="contentBx">
             <div class="formBx">
-
+                <br>
+                <br>
                 <h2>Register e-Notaris</h2>
                 <h3>Notaris dan PPAT Sherli Hardhyarti, S.H. M.KN.,
                 </h3>
-                <form action="">
+
+                <?php
+                    $pesan = $this->session->flashdata('pesan');
+                    if (!empty($pesan) && $pesan['status_pesan'] == true) {
+                        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
+                    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
+                        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+                    }
+                ?>
+
+                <form action="<?= base_url('auth/proses_register') ?>" method="POST">
                     <div class="nop">
                         <span>Nama</span>
-                        <input placeholder="Masukkan username" type="text" name="" />
+                        <input placeholder="Masukkan nama" type="text" name="nama" required />
                     </div>
                     <div class="nop">
                         <span>Email</span>
-                        <input placeholder="Masukkan username" type="text" name="" />
+                        <input placeholder="Masukkan email" type="text" name="email" required />
                     </div>
                     <div class="nop">
                         <span>Password</span>
-                        <input placeholder="Masukkan password" type="password" name="" />
+                        <input placeholder="Masukkan password" type="password" name="password1" required/>
                     </div>
                     <div class="nop">
                         <span>Konfirmasi Password</span>
-                        <input placeholder="Masukkan ulang password" type="password" name="" />
+                        <input placeholder="Masukkan ulang password" type="password" name="password2" required />
                     </div>
                     <div class="inputBx2">
 
-                        <a class="submit" href="<?php echo site_url('admin/dashboard') ?>" style="text-decoration: none;">
+                        <button class="submit" type="submit" style="text-decoration: none;">
                             Daftar
                             <img class="imgIcon" src="<?= base_url('assets/img/loginIcon.png') ?>" alt="" />
-                        </a>
+                        </button>
                     </div>
 
 

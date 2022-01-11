@@ -1,13 +1,4 @@
-<?php $this->load->view('backend/template/meta') ?>
-<div class="wrapper">
 
-
-    <!-- Navbar -->
-    <?php $this->load->view('backend/template/navbar') ?>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <?php $this->load->view('backend/template/sidebar') ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -65,22 +56,67 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Sintia Dwi Ayu</td>
-                                            <td>Perempuan</td>
-                                            <td>351210088000999</td>
-                                            <td>sintiaadmin@gmail.com</td>
-                                            <td>+6281 358 835 721</td>
-                                            <td>Admin</td>
+                                        <?php $no = $start + 1; ?>
+                                        <?php if (count($page_akun) > 0) : ?>
+                                        <?php foreach ($page_akun as $b) { ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td> <?= $b['nama'] ?> </td>
 
-                                            <td><a href="<?php echo site_url('admin/ManajemenAkun/editakun') ?>"><span class="badge bg-primary" style="margin-right: 10px;"> Edit Data</span></a><a href="" onClick="return confirm('Yakin ingin menghapus data ?')"><span class="badge bg-danger">Hapus</span></a></td>
+                                                <td class="align-middle">
+                                                    <?php
+                                                        if(!empty($b['jenis_kelamin'])){
+                                                            echo $b['jenis_kelamin'];
+                                                        }else{
+                                                            echo "-";
+                                                        }
+                                                    ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php
+                                                        if(!empty($b['nik'])){
+                                                            echo $b['nik'];
+                                                        }else{
+                                                            echo "-";
+                                                        }
+                                                    ?>
+                                                </td>
+
+                                                <td><?= $b['email'] ?> </td>
+
+                                                <td>
+                                                    <?php
+                                                        if(!empty($b['no_hp'])){
+                                                            echo $b['no_hp'];
+                                                        }else{
+                                                            echo "-";
+                                                        }
+                                                    ?>
+                                                </td>
+
+                                                <td><?= $b['nama_level'] ?> </td>
+
+                                            <td><a href="<?php echo base_url('admin/ManajemenAkun/editakun/').$b['id_user'] ?>"><span class="badge bg-primary" style="margin-right: 10px;"> Edit Data</span></a><a href="#" data-toggle="modal" data-target="#removeModal"><span class="badge bg-danger">Hapus</span></a></td>
 
 
                                         </tr>
+                                        <?php } ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="9" align="center">
+                                                Data tidak ditemukan
+                                            </td>
+                                        </tr>
+                                    <?php endif ?>
 
                                     </tbody>
                                 </table>
+                                <div class="text-center">
+                                    <?php
+                                        echo $Pagination;
+                                    ?>
+                                </div>
                                 <hr>
                             </div>
                             <!-- /.card-body -->
@@ -107,6 +143,24 @@
 
 </div>
 <!-- ./wrapper -->
+
+<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Anda yakin akan menghapus akun ini?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Data ini akan dihapus secara permanen.</div>
+            <div class="modal-footer">
+                <a class="btn btn-danger" href="<?= base_url('admin/ManajemenAkun/hapus_akun/') . $b['id_user'] ?>">Remove</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>

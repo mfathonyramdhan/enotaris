@@ -1,5 +1,3 @@
-<?php $this->load->view('backend/template/meta') ?>
-<div class="wrapper">
 
 
     <!-- Navbar -->

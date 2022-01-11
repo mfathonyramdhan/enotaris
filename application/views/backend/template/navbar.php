@@ -43,7 +43,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="" data-toggle="" data-target="">
+      <a class="nav-link" href="<?= base_url('admin/dashboard/logout') ?>" data-toggle="" data-target="">
         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
         Logout
       </a>

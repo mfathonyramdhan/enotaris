@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo $page_title ?> </title>
-
+  
+  <link rel="stylesheet" href="<?= base_url('assets/vendor/sweetalert/dist/sweetalert2.min.css') ?>">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -27,6 +28,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins') ?>/summernote/summernote-bs4.min.css">
 
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">

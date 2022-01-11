@@ -22,25 +22,33 @@
                 <h2>Login e-Notaris</h2>
                 <h3>Notaris dan PPAT Sherli Hardhyarti, S.H. M.KN.,
                 </h3>
-                <form action="">
+                <?php
+                    $pesan = $this->session->flashdata('pesan');
+                    if (!empty($pesan) && $pesan['status_pesan'] == true) {
+                        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
+                    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
+                        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+                    }
+                ?>
+                <form action="<?= base_url('auth/proses_login') ?>" method="POST">
                     <div class="nop">
-                        <span>Username :</span>
-                        <input placeholder="Masukkan username" type="text" name="" />
+                        <span>Email :</span>
+                        <input placeholder="Masukkan email" type="text" name="email" required />
 
 
                     </div>
                     <div class="nop">
                         <span>Password :</span>
-                        <input placeholder="Masukkan password" type="password" name="" />
+                        <input placeholder="Masukkan password" type="password" name="password" required/>
 
 
                     </div>
                     <div class="inputBx2">
 
-                        <a class="submit" href="<?php echo site_url('admin/dashboard') ?>" style="text-decoration: none;">
+                        <button class="submit" type="submit" style="text-decoration: none;">
                             Login
                             <img class="imgIcon" src="<?= base_url('assets/img/loginIcon.png') ?>" alt="" />
-                        </a>
+                        </button>
                     </div>
 
 

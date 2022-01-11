@@ -1,15 +1,4 @@
-<?php $this->load->view('backend/template/meta') ?>
-<div class="wrapper">
-
-
-  <!-- Navbar -->
-  <?php $this->load->view('backend/template/navbar') ?>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <?php $this->load->view('backend/template/sidebar') ?>
-
-  <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -32,6 +21,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+      <?php if ($user['email'] == '' || $user['no_hp'] == '' || $user['jenis_kelamin'] == '' || $user['alamat'] == '' || $user['tempat_lahir'] == '' || $user['tgl_lahir'] == '' || $user['foto_profil'] == '') { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Hello <?= $user['nama'] ?>!</strong> Segera lengkapi data diri anda di menu Profil Saya.
+        </div>
+      <?php } ?>
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">

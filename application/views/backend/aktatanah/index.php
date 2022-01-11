@@ -1,13 +1,4 @@
-<?php $this->load->view('backend/template/meta') ?>
-<div class="wrapper">
 
-
-    <!-- Navbar -->
-    <?php $this->load->view('backend/template/navbar') ?>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <?php $this->load->view('backend/template/sidebar') ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
