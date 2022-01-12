@@ -69,7 +69,7 @@
                     <td>
                       <?php if($b['status_permohonan'] == 1){ ?>
                         <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>
-                      <?php }else if($b['status_permohonan'] == 2 || $b['status_permohonan'] == 3 || $b['status_permohonan'] == 4){?>
+                      <?php }else if($b['status_permohonan'] == 2 || $b['status_permohonan'] == 3 || $b['status_permohonan'] == 4 || $b['status_permohonan'] == 5){?>
                         <span class="badge bg-primary"><?= $b['nama_status_permohonan'] ?></span>
                       <?php } ?>
                     </td>
