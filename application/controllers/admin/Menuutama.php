@@ -193,7 +193,7 @@ class Menuutama extends CI_Controller
 		$pesan = array();
 		$data = [
 			'biaya' => htmlspecialchars($this->input->post('biaya',true)),
-			'catatan' => htmlspecialchars($this->input->post('catatan', true)),
+			'catatan' => 'Permohonan telah disetujui, segera lakukan pembayaran.',
 			'status_permohonan' => 2,
 		];
 
@@ -213,13 +213,13 @@ class Menuutama extends CI_Controller
         if ($result == true) {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => true,
-                'isi_pesan' => 'Update Profile Berhasil'
+                'isi_pesan' => 'Permohonan Berhasil Disetujui'
             ));
             redirect('admin/Menuutama/datapermohonan_aktaT');
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
-                'isi_pesan' => 'Update Profile Gagal'
+                'isi_pesan' => 'Permohonan Gagal Disetujui'
             ));
             redirect('admin/Menuutama/cek_dokumen/'.$this->input->post('kode_permohonan'));
         }
@@ -313,5 +313,77 @@ class Menuutama extends CI_Controller
             redirect('admin/Menuutama/cek_dokumen_aktaT/'.$this->input->post('kode_permohonan'));
         }
 	}
-	
+    
+    public function tolak_dokumen()
+    {
+        $pesan = array();
+		$data = [
+			'catatan' => htmlspecialchars($this->input->post('catatan',true)),
+			'status_permohonan' => 6,
+		];
+
+		$where = array(
+			'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+		);
+
+		if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode('', $pesan)
+            ));
+            redirect('admin/Menuutama/cek_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Ditolak'
+            ));
+            redirect('admin/Menuutama/datapermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Ditolak'
+            ));
+            redirect('admin/Menuutama/cek_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+    }
+
+    public function tolak_pembayaran($kode_permohonan)
+    {
+        $pesan = array();
+		$data = [
+			'catatan' => 'Bukti pembayaran tidak valid, mohon melakukan upload ulang.',
+			'status_permohonan' => 7,
+		];
+
+		$where = array(
+			'kode_permohonan' => $kode_permohonan
+		);
+
+		if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode('', $pesan)
+            ));
+            redirect('admin/Menuutama/cek_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Ditolak'
+            ));
+            redirect('admin/Menuutama/datapermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Ditolak'
+            ));
+            redirect('admin/Menuutama/cek_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+    }
+
 }

@@ -69,8 +69,14 @@
                     <td>
                       <?php if($b['status_permohonan'] == 1){ ?>
                         <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>
-                      <?php }else if($b['status_permohonan'] == 2 || $b['status_permohonan'] == 3 || $b['status_permohonan'] == 4 || $b['status_permohonan'] == 5){?>
+                      <?php }else if($b['status_permohonan'] == 2){?>
                         <span class="badge bg-primary"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 3 || $b['status_permohonan'] == 4){ ?>
+                        <span class="badge bg-info"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 5){ ?>
+                        <span class="badge bg-success"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 6 || $b['status_permohonan'] == 7){ ?>
+                        <span class="badge bg-danger"><?= $b['nama_status_permohonan'] ?></span>
                       <?php } ?>
                     </td>
                     <td> 
@@ -81,8 +87,15 @@
                         echo $b['catatan'];
                       }
                        ?>
+                       <br>
                       <?php if($b['status_permohonan'] == 2){?>
                         <a href="<?= base_url('user/Menuutama/bayar/').$b['kode_permohonan'] ?>"><span class="badge bg-warning">Lakukan Pembayaran</span></a>
+                      <?php } ?>
+                      <?php if($b['status_permohonan'] == 6){?>
+                        <a href="<?= base_url('user/Menuutama/edit_dokumen/').$b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Data</span></a>
+                      <?php } ?>
+                      <?php if($b['status_permohonan'] == 7){?>
+                        <a href="<?= base_url('user/Menuutama/edit_pembayaran/').$b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Pembayaran</span></a>
                       <?php } ?>
                     </td>
                   </tr>

@@ -196,6 +196,37 @@
           </ul>
         </li>
 
+        <!-- lain-lain dropdown -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>
+              Lain - lain
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Menu 1
+
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Menu 2
+
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         <?php if ($user['level_user'] == 1) { ?>
           <li class="nav-header">MENU LAPORAN
           </li>

@@ -208,6 +208,7 @@ class Menuutama extends CI_Controller
         $bukti = $file['file_name'];
 
         $data = [
+            'catatan' => 'Pembayaran berhasil, Sistem sedang mengecek bukti pembayaran.',
             'bukti_pembayaran' => $bukti,
             'status_permohonan' => 3
         ];
@@ -238,6 +239,176 @@ class Menuutama extends CI_Controller
                 'isi_pesan' => 'Gagal Melakukan Pembayaran'
             ));
             redirect('user/Menuutama/bayar/'.$this->input->post('kode_permohonan'));
+        }
+    }
+
+    public function edit_dokumen($kode_permohonan)
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Akta Tanah';
+        $data['dokumen'] = $this->M_admin->cek_dokumen($kode_permohonan);
+
+        $this->load->view('backend/template/meta',$data);
+        $this->load->view('backend/template/navbar',$data);
+        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/aktatanah/edit_dokumen', $data);
+    }
+
+    public function update_dokumen_aktaT()
+    {
+        $acak = random_string('alnum',3);
+
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan').'_'.$acak;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $ktp = $file['file_name'];
+
+        // upload kk
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan').'_'.$acak;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $kk = $file['file_name'];
+
+        // upload pbb
+        $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan').'_'.$acak;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_pbb')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $pbb = $file['file_name'];
+        
+        $data = [
+            'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            'lokasi_tanah' => htmlspecialchars($this->input->post('lokasi', true)),
+            'luas_tanah' => htmlspecialchars($this->input->post('luas_tanah', true)),
+            'status_kepemilikan' => htmlspecialchars($this->input->post('status_kepemilikan', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
+            'scan_pbb' => $pbb,
+            'catatan' => 'Sistem sedang melakukan pengecekan dokumen.',
+            'status_permohonan' => 1
+        ];
+
+        $where = array(
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+        );
+
+        if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode('', $pesan)
+            ));
+            redirect('user/Menuutama/edit_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diperbarui'
+            ));
+            redirect('user/Menuutama/statuspermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diperbarui'
+            ));
+            redirect('user/Menuutama/edit_dokumen/'.$this->input->post('kode_permohonan'));
+        }
+    }
+
+    public function edit_pembayaran($kode_permohonan)
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Akta Tanah';
+        $data['pembayaran'] = $this->M_admin->cek_dokumen($kode_permohonan);
+
+        $this->load->view('backend/template/meta',$data);
+        $this->load->view('backend/template/navbar',$data);
+        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/aktatanah/edit_pembayaran', $data);
+    }
+
+    public function update_pembayaran_aktaT()
+    {
+        $acak = random_string('alnum',3);
+
+        $pesan = array();
+
+        // upload bukti pembayaran
+        $config['upload_path']          = 'assets/berkas/bukti_pembayaran/';  // folder upload 
+        $config['allowed_types']        = 'jpg|jpeg|png|pdf'; // jenis file
+        $config['max_size']             = 8000;
+        $config['file_name']            = 'BUKTI_' . $this->input->post('kode_permohonan').'_'.$acak;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('bukti_pembayaran')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $bukti_pembayaran = $file['file_name'];
+        
+        $data = [
+            'bukti_pembayaran' => $bukti_pembayaran,
+            'catatan' => 'Sistem sedang melakukan pengecekan bukti pembayaran.',
+            'status_permohonan' => 3
+        ];
+
+        $where = array(
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+        );
+
+        if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode('', $pesan)
+            ));
+            redirect('user/Menuutama/edit_pembayaran/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Bukti Pembayaran Berhasil Diperbarui'
+            ));
+            redirect('user/Menuutama/statuspermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Bukti Pembayaran Gagal Diperbarui'
+            ));
+            redirect('user/Menuutama/edit_pembayaran/'.$this->input->post('kode_permohonan'));
         }
     }
 }

@@ -60,6 +60,7 @@ class ManajemenAkun extends CI_Controller
             'no_hp' => htmlspecialchars($this->input->post('no_hp', true)),
             'jenis_kelamin' => htmlspecialchars($this->input->post('jenis_kelamin', true)),
             'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+            'tgl_lahir' => htmlspecialchars($this->input->post('tgl_lahir', true)),
             'tempat_lahir' => htmlspecialchars($this->input->post('tempat_lahir', true)),
             'foto_profil' => $image,
             'password' => $password

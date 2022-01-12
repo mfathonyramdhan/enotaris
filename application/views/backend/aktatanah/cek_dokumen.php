@@ -182,7 +182,7 @@
                                 <a href="<?= base_url('assets/berkas/kk/'.$cek_dokumen['scan_kk']) ?>" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
                             </div>
                             <div class="col-md-3">
-                                <a href="<?= base_url('assets/berkas/pbb/'.$cek_dokumen['scan_pbb']) ?>" class="btn btn-info btn-small" target_blank>Lihat KTP</a>
+                                <a href="<?= base_url('assets/berkas/pbb/'.$cek_dokumen['scan_pbb']) ?>" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
                             </div>
                             <?php if($cek_dokumen['status_permohonan'] == 3 || $cek_dokumen['status_permohonan'] == 4){ ?>
                             <div class="col-md-3">
@@ -192,36 +192,53 @@
                         </div>
                         <?php if($cek_dokumen['status_permohonan'] == 1){ ?>
                         <br>
-                            <h4>Catatan :</h4>
                         <br>
-                        <form action="<?= base_url('admin/Menuutama/setujui_aktaT') ?>" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="form-group col-4">
-                                    <label for="">Biaya</label>
-                                    <input type="number" class="form-control" id="" placeholder="Masukkan Biaya" name="biaya" required>
+                            <div class="row justify-content-center">
+                            <a href="#" onclick="form_setujui()" id="setujui" class="btn btn-primary align-self-end">Setujui</a>&nbsp
+                            <a href="#" onclick="form_tolak()" id="tolak" class="btn btn-danger align-self-end">Tolak</a>
+                            </div>
+                        <?php } ?>
+
+                        <div id="form_setujui">
+                            <form action="<?= base_url('admin/Menuutama/setujui_aktaT') ?>" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                                <div class="row justify-content-center">
+                                    <div class="form-group col-8">
+                                        <label for="">Biaya</label>
+                                        <input type="number" class="form-control" id="" placeholder="Masukkan Biaya" name="biaya" required>
+                                    </div>
                                 </div>
+                                <div class="row justify-content-center">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
+                            
+                            </form>
+                        </div>
+
+                        <div id="form_tolak">
+                        <form action="<?= base_url('admin/Menuutama/tolak_dokumen') ?>" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                            <div class="row justify-content-center">
                                 <div class="form-group col-8">
-                                    <label for="">Catatan</label>
-                                    <input type="text" class="form-control" id="" placeholder="Masukkan Catatan" name="catatan" required>
+                                    <label for="">Alasan Penolakan</label>
+                                    <input type="text" class="form-control" id="" placeholder="Masukkan Keterangan Alasan Penolakan" name="catatan" required>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary align-self-end">Setujui</button>
-                                <a href="" class="btn btn-danger align-self-end">Tolak</a>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
-                        <?php } ?>
+                        </div>
+
                         <?php if($cek_dokumen['status_permohonan'] == 3){ ?>
+                            <br>
                             <br>
                         <div class="row justify-content-center">
                             <form action="<?= base_url('admin/Menuutama/proses_aktaT') ?>" method="POST">
                             <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
-                                <div class="card-footer">
                                     <button type="submit" class="btn btn-primary align-self-end">Proses Permohonan</button>
-                                    <a href="" class="btn btn-danger align-self-end">Tolak</a>
-                                </div>
+                                    <a href="<?= base_url('admin/Menuutama/tolak_pembayaran/'.$cek_dokumen['kode_permohonan']) ?>" class="btn btn-danger align-self-end">Tolak</a>
+                                
                             </form>
                         </div>
                         <?php } ?>
@@ -268,7 +285,28 @@
 <?php $this->load->view('backend/template/js') ?>
 
 <script>
+    $('#form_setujui').hide();
+    $('#form_tolak').hide();
+
     $('.datepicker').datepicker();
+
+    function form_setujui() {
+        var x = document.getElementById("form_setujui");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function form_tolak() {
+        var x = document.getElementById("form_tolak");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 </script>
 </body>
 

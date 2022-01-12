@@ -187,7 +187,7 @@
   margin-right: auto;
   width: 300px;
   padding-bottom: 20px;">
-                    <img src="<?= base_url('/assets/img/pembayaran/bankBri.png') ?>" class="img-fluid" alt="" data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;" />
+                <img src="<?= base_url('/assets/img/pembayaran/bankBri.png') ?>" class="img-fluid" alt="" data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;" />
                 </div>
 
                 <h3 style="text-align: center;">7748-01-004303-53-6</h3>

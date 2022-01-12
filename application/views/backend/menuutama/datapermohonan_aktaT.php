@@ -34,7 +34,7 @@
         <div class="card">
           <div class="card-header">
           <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 300px;">
+                                <div class="input-group input-group-sm" style="width: 300px;">
                                         <input type="text" name="search" class="form-control float-right" placeholder="Cari">
 
                                         <div class="input-group-append">
@@ -72,8 +72,14 @@
                     <td>
                       <?php if($b['status_permohonan'] == 1){ ?>
                         <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>
-                      <?php }else if($b['status_permohonan'] == 2 || $b['status_permohonan'] == 3 || $b['status_permohonan'] == 4 || $b['status_permohonan'] == 5){?>
+                      <?php }else if($b['status_permohonan'] == 2 || $b['status_permohonan'] == 5){?>
                         <span class="badge bg-primary"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 3){ ?>
+                        <span class="badge bg-info"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 4){ ?>
+                        <span class="badge bg-success"><?= $b['nama_status_permohonan'] ?></span>
+                      <?php }else if($b['status_permohonan'] == 6 || $b['status_permohonan'] == 7){ ?>
+                        <span class="badge bg-danger"><?= $b['nama_status_permohonan'] ?></span>
                       <?php } ?>
                     </td>
                     <td> 
