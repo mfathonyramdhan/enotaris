@@ -125,7 +125,7 @@
 								line-height: 150%;
 								font-size: 15px;
 								color: #64686d;">
-                            &#8203 &#8203 &#8203 e-Notaris adalah salah suatu layanan Notaris dan PPAT dengan menggunakan teknologi Moden yang terbaru dan sudah berkembang. e-Notaris adalah salah suatu layanan Notaris dan PPAT dengan menggunakan teknologi Moden yang terbaru dan sudah berkembang. e-Notaris adalah salah suatu layanan Notaris dan PPAT dengan menggunakan teknologi Moden yang terbaru dan sudah berkembang.
+                            &#8203 &#8203 &#8203 e-Notaris adalah salah suatu layanan Notaris dan PPAT dengan menggunakan teknologi Moden yang terbaru dan sudah berkembang.
                         </p>
 
                     </div>
@@ -144,32 +144,32 @@
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 0ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/setoran.png">
-                            <h3>Akta Tanah</h3>
-                            <button type="button" class="btn-lg btn-warning">Pilih</button>
+                            <h3 style="color: white;">Akta Tanah</h3>
+                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 100ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/skpd.png">
-                            <h3>Pendirian CV/PT</h3>
-                            <button type="button" class="btn-lg btn-warning">Pilih</button>
+                            <h3 style="color: white;">Pendirian CV/PT</h3>
+                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="200ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 200ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3>Waris</h3>
-                            <button type="button" class="btn-lg btn-warning">Pilih</button>
+                            <h3 style="color: white;">Waris</h3>
+                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3>Lainnya</h3>
-                            <button type="button" class="btn-lg btn-warning">Pilih</button>
+                            <h3 style="color: white;">Lainnya</h3>
+                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
@@ -182,31 +182,17 @@
         <section id="clients" class="clients section-bg">
             <div class="container" data-aos="fade-up">
                 <h2 data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Informasi Pembayaran</h2>
-
-                <div class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/bankJatim.jpg') ?>" class="img-fluid" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/indomaret.png') ?>" class="img-fluid" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/alfamart.png') ?>" class="img-fluid" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/tokopedia.jpg') ?>" class="img-fluid" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/gopay.png') ?>" class="img-fluid" alt="" />
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url('/assets/img/pembayaran/ovo.png') ?>" class="img-fluid" alt="" />
-                        </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
+                <div class="imgPembayaran" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  padding-bottom: 20px;">
+                    <img src="<?= base_url('/assets/img/pembayaran/bankBri.png') ?>" class="img-fluid" alt="" data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;" />
                 </div>
+
+                <h3 style="text-align: center;">7748-01-004303-53-6</h3>
+                <p style="text-align: center;">BRI a/n <strong>Sherli Hardhyarti</strong> </p>
+
             </div>
         </section>
 
@@ -220,19 +206,19 @@
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>Alamat Kantor :</h4>
-                                <p>Jl. Soekarno No. 1 , Sumbersari, Kec. Sumbersari, Kabupaten Jember, Jawa Timur 68343</p>
+                                <p>Jl Mastrip V No.4, Sumbersari, Jember</p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email :</h4>
-                                <p>csenotaris@gmail.com</p>
+                                <p>sherlynotaris@gmail.com</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Telp. :</h4>
-                                <p>+62 338 123123</p>
+                                <p>+62 852 5806 5041</p>
                             </div>
 
 
