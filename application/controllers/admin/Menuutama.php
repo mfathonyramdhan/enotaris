@@ -225,6 +225,93 @@ class Menuutama extends CI_Controller
         }
 	}
 
+	public function proses_aktaT()
+	{
+		$pesan = array();
+		$data = [
+			'catatan' => 'Permohonan Sedang Diproses',
+			'status_permohonan' => 4
+		];
+		
+		$where = array(
+			'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+		);
 
+		if (empty($pesan)) {
+			$result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode('', $pesan)
+            ));
+            redirect('admin/Menuutama/cek_dokumen_aktaT/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diproses'
+            ));
+            redirect('admin/Menuutama/datapermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diproses'
+            ));
+            redirect('admin/Menuutama/cek_dokumen_aktaT/'.$this->input->post('kode_permohonan'));
+        }
+	}
+
+	public function upload_aktaT()
+	{
+		$pesan = array();
+        // Upload Bukti Pembayaran
+        $config['upload_path']          = 'assets/berkas/akta_tanah/';  // folder upload 
+        $config['allowed_types']        = 'png|jpg|jpeg|pdf'; // jenis file
+        $config['max_size']             = 8000;
+        $config['file_name']            = 'AktaTanah_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('hasil_aktaT')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $aktaT = $file['file_name'];
+
+        $data = [
+			'catatan' => 'Permohonan selesai, silahkan unduh berkas anda',
+            'berkas_hasil' => $aktaT,
+            'status_permohonan' => 5
+        ];
+
+        $where = array(
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+        );
+        
+        if(empty($pesan))
+        {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => implode(',', $pesan)
+            ));
+            redirect('admin/Menuutama/cek_dokumen_aktaT/'.$this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diselesaikan'
+            ));
+            redirect('admin/Menuutama/datapermohonan_aktaT');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diselesaikan'
+            ));
+            redirect('admin/Menuutama/cek_dokumen_aktaT/'.$this->input->post('kode_permohonan'));
+        }
+	}
 	
 }

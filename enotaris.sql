@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 10:09 AM
+-- Generation Time: Jan 12, 2022 at 01:35 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -80,6 +80,7 @@ CREATE TABLE `tb_permohonan` (
   `status_permohonan` int(11) NOT NULL,
   `catatan` varchar(250) DEFAULT NULL,
   `bukti_pembayaran` varchar(250) NOT NULL,
+  `berkas_hasil` varchar(250) NOT NULL,
   `tgl_permohonan` date NOT NULL,
   `tahun_permohonan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -88,10 +89,10 @@ CREATE TABLE `tb_permohonan` (
 -- Dumping data for table `tb_permohonan`
 --
 
-INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `deadline`, `lokasi_tanah`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `biaya`, `status_permohonan`, `catatan`, `bukti_pembayaran`, `tgl_permohonan`, `tahun_permohonan`) VALUES
-(5, 'AKTA_YDW1', 3, 1, '2022-01-23', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', NULL, 1, '', '', '2022-01-12', '2022'),
-(6, 'AKNAH_evn2', 3, 1, '2022-01-23', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', NULL, 1, '', '', '2022-01-12', '2022'),
-(7, 'AKNAH_Bob2', 3, 1, '2022-01-25', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '1500000', 3, 'Permohonan telah disetujui, mohon segera melakukan pembayaran.', 'BUKTI_AKNAH_Bob2.jpg', '2022-01-12', '2022');
+INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `deadline`, `lokasi_tanah`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `biaya`, `status_permohonan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`) VALUES
+(5, 'AKTA_YDW1', 3, 1, '2022-01-23', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', NULL, 1, '', '', '', '2022-01-12', '2022'),
+(6, 'AKNAH_evn2', 3, 1, '2022-01-23', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', NULL, 1, '', '', '', '2022-01-12', '2022'),
+(7, 'AKNAH_Bob2', 3, 1, '2022-01-25', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '1500000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,9 @@ CREATE TABLE `tb_status_permohonan` (
 INSERT INTO `tb_status_permohonan` (`id_status_permohonan`, `nama_status_permohonan`) VALUES
 (1, 'Diajukan'),
 (2, 'Disetujui'),
-(3, 'Telah Dibayar');
+(3, 'Telah Dibayar'),
+(4, 'Diproses'),
+(5, 'Selesai');
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,7 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `password`, `nik`, `no_hp`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tgl_lahir`, `foto_profil`, `level_user`, `tgl_daftar`) VALUES
 (1, 'admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', '', '', '', 'lumajang', '', NULL, 'default.jpg', 1, '2022-01-11 11:30:33'),
 (3, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-01-11 12:46:16'),
-(4, 'coba', 'coba@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-01-12 02:18:30');
+(5, 'coba', 'coba@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-01-12 11:16:02');
 
 --
 -- Indexes for dumped tables
@@ -208,13 +211,13 @@ ALTER TABLE `tb_permohonan`
 -- AUTO_INCREMENT for table `tb_status_permohonan`
 --
 ALTER TABLE `tb_status_permohonan`
-  MODIFY `id_status_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_status_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

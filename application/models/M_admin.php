@@ -184,4 +184,18 @@ class M_admin extends CI_Model {
         return $this->db->update('tb_permohonan', $data, $where);
     }
 
+    function get_reminder()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_permohonan p');
+        $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
+        $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
+        $this->db->join('tb_jenis_permohonan', 'p.jenis_permohonan = tb_jenis_permohonan.id_jenis_permohonan');
+        $this->db->where('status_permohonan', 4);
+        $this->db->order_by('deadline', 'ASC');
+        $this->db->limit(5);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

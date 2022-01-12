@@ -97,7 +97,7 @@
 
                                                 <td><?= $b['nama_level'] ?> </td>
 
-                                            <td><a href="<?php echo base_url('admin/ManajemenAkun/editakun/').$b['id_user'] ?>"><span class="badge bg-primary" style="margin-right: 10px;"> Edit Data</span></a><a href="#" data-toggle="modal" data-target="#removeModal"><span class="badge bg-danger">Hapus</span></a></td>
+                                            <td><a href="<?php echo base_url('admin/ManajemenAkun/editakun/').$b['id_user'] ?>"><span class="badge bg-primary" style="margin-right: 10px;"> Edit Data</span></a><a href="<?= base_url('admin/ManajemenAkun/hapus_akun/') . $b['id_user'] ?>" onclick="return confirm('Yakin ingin menghapus data ini?')"><span class="badge bg-danger">Hapus</span></a></td>
 
 
                                         </tr>
@@ -134,7 +134,7 @@
 
 </div>
 <!-- ./wrapper -->
-
+<!-- 
 <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -151,12 +151,32 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>
 <script>
     $('.datepicker').datepicker();
+
+    $('button').click(function(){
+  
+    swal({
+    title: 'Are you sure?',
+    text: "It will permanently deleted !",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+    }).then(function() {
+    swal(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+    );
+    })
+    
+    })
 </script>
 </body>
 

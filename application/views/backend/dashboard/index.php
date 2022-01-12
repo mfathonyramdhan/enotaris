@@ -148,34 +148,38 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">No</th>
-                      <th>Nama</th>
+                      <th>Kode Permohonan</th>
                       <th>Tanggal Deadline</th>
                       <th style="width: 40px">Waktu</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Rizal</td>
-                      <td>
-                        12-8-2021
-                      </td>
-                      <td><span class="badge bg-danger">4 Hari terlambat</span></td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Wati</td>
-                      <td>
-                        28-8-2021
-                      </td>
-                      <td><span class="badge bg-warning">12 Hari lagi</span></td>
-                    </tr>
+                    <?php
+                    $no = 1;
+                    foreach($reminder as $r){ ?>
+                      <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $r['kode_permohonan'] ?></td>
+                        <td>
+                          <?= $r['deadline'] ?>
+                        </td>
+                        <?php 
+                          $now = strtotime(date('Y-m-d'));
+                          $dl = strtotime($r['deadline']);
+                          $interval = abs($dl - $now);
+                          $years = floor($interval / (365*60*60*24));
+                          $months = floor(($interval - $years * 365*60*60*24) / (30*60*60*24));
+                          $days = floor(($interval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                        ?>
+                        <td><span class="badge bg-danger"><?= $days ?> Hari Lagi</span></td>
+                      </tr>
+                    <?php } ?>
 
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
+              <!-- <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
                   <li class="page-item"><a class="page-link" href="#">«</a></li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -183,7 +187,7 @@
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
                   <li class="page-item"><a class="page-link" href="#">»</a></li>
                 </ul>
-              </div>
+              </div> -->
             </div>
             <!-- Map card -->
             <div class="card bg-gradient-primary" style="display : none">

@@ -184,7 +184,7 @@
                             <div class="col-md-3">
                                 <a href="<?= base_url('assets/berkas/pbb/'.$cek_dokumen['scan_pbb']) ?>" class="btn btn-info btn-small" target_blank>Lihat KTP</a>
                             </div>
-                            <?php if($cek_dokumen['status_permohonan'] == 3){ ?>
+                            <?php if($cek_dokumen['status_permohonan'] == 3 || $cek_dokumen['status_permohonan'] == 4){ ?>
                             <div class="col-md-3">
                                 <a href="<?= base_url('assets/berkas/bukti_pembayaran/'.$cek_dokumen['bukti_pembayaran']) ?>" class="btn btn-info btn-small" target_blank>Lihat Bukti Pembayaran</a>
                             </div>
@@ -213,9 +213,46 @@
                             </div>
                         </form>
                         <?php } ?>
-                        
+                        <?php if($cek_dokumen['status_permohonan'] == 3){ ?>
+                            <br>
+                        <div class="row justify-content-center">
+                            <form action="<?= base_url('admin/Menuutama/proses_aktaT') ?>" method="POST">
+                            <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary align-self-end">Proses Permohonan</button>
+                                    <a href="" class="btn btn-danger align-self-end">Tolak</a>
+                                </div>
+                            </form>
+                        </div>
+                        <?php } ?>
                     </div>    
                 </div>
+                <br>
+                <?php if($cek_dokumen['status_permohonan'] == 4){ ?>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Upload Akta Tanah</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                    <form action="<?= base_url('admin/Menuutama/upload_aktaT') ?>" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="form-group col">
+                                    <label for="exampleInputFile">Upload Akta Tanah</label>
+                                    <div class="custom-file">
+                                        <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                                        <input type="file" class="form-control" id="exampleInputFile" name="hasil_aktaT">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <button type="submit" class="btn btn-primary align-self-end">Submit</button>
+                            </div>
+                        </form>
+                    </div>    
+                </div>
+                <?php } ?>
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+		$data['reminder'] = $this->M_admin->get_reminder();
 		$data['page_title'] = 'Dashboard';
 		$this->load->view('backend/template/meta',$data);
         $this->load->view('backend/template/navbar',$data);
