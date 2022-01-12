@@ -221,8 +221,7 @@
                                 <p>+62 852 5806 5041</p>
                             </div>
 
-
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7898.452541944334!2d113.70020206693847!3d-8.179946325612711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6957cc2e5ce95%3A0xa74892ebb11ed689!2sKantor%20Notaris%20%26%20PPAT%20Ermi%20Sunarsih%20S.H.%2CM.Kn!5e0!3m2!1sid!2sid!4v1641555829745!5m2!1sid!2sid" frameborder="0" style="border: 0; width: 100%; height: 290px" allowfullscreen></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d246.83704772310847!2d113.72470328483682!3d-8.163125136753347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd69589d7e64f6f%3A0x5565d7f71ef28810!2sNotaris%20SHERLI%20HARDHYARTI%20P.%2CS.H.%2CM.Kn!5e0!3m2!1sid!2sid!4v1641980354978!5m2!1sid!2sid" frameborder="0" style="border: 0; width: 100%; height: 290px" allowfullscreen></iframe>
                         </div>
                     </div>
 
