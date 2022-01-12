@@ -26,6 +26,11 @@
                 echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
             }
         ?>
+        <?php if ($user['email'] == '' || $user['no_hp'] == '' || $user['jenis_kelamin'] == '' || $user['alamat'] == '' || $user['tempat_lahir'] == '' || $user['tgl_lahir'] == '' || $user['foto_profil'] == '') { ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Hello <?= $user['nama'] ?>!</strong> Segera lengkapi data diri anda.
+        </div>
+      <?php } ?>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">

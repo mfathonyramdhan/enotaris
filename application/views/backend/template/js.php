@@ -6,6 +6,9 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+<script src="<?php echo base_url('assets/autocomplete/js/jquery-3.3.1.js') ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/autocomplete/js/bootstrap.js') ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('assets/autocomplete/js/jquery-ui.js') ?>" type="text/javascript"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('assets/plugins') ?>/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->

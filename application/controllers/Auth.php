@@ -32,12 +32,18 @@ class Auth extends CI_Controller
             $this->session->set_userdata($data);
 
             // return var_dump($user);
-            if ($user['level_user'] >= 1 && $user['level_user'] <= 2) {
+            if ($user['level_user'] == 1) {
                 $this->session->set_flashdata('pesan', array(
                     'status_pesan' => true,
                     'isi_pesan' => 'Berhasil Login, Selamat Datang!'
                 ));
                 redirect('admin/dashboard');
+            }else if ($user['level_user'] == 2) {
+                $this->session->set_flashdata('pesan', array(
+                    'status_pesan' => true,
+                    'isi_pesan' => 'Berhasil Login, Selamat Datang!'
+                ));
+                redirect('admin/ManajemenAkun/profilsaya');
             } else {
                 $this->session->set_flashdata('pesan', array(
                     'status_pesan' => true,

@@ -35,6 +35,7 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+        <?php if($user['level_user'] == 1){ ?>
         <li class="nav-item">
           <a href="<?php echo site_url('admin/dashboard') ?>" class="nav-link">
             <!-- active -->
@@ -45,6 +46,7 @@
             </p>
           </a>
         </li>
+        <?php } ?>
 
         <li class="nav-header">MANAJEMEN AKUN </li>
         <li class="nav-item">
@@ -89,8 +91,9 @@
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
+            <?php if($user['nama_level'] == "admin"){ ?>
             <li class="nav-item">
-              <a href="<?php echo site_url('user/aktatanah/index') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/formpermohonan_aktaT') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Formulir Permohonan
@@ -99,7 +102,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/datapermohonan') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/datapermohonan_aktaT') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Permohonan
@@ -107,8 +110,19 @@
                 </p>
               </a>
             </li>
+            <?php } ?>
+            <?php if($user['nama_level'] == 'user'){ ?>
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/statuspermohonan') ?>" class="nav-link">
+              <a href="<?php echo site_url('user/Menuutama/akta_tanah') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Formulir Permohonan
+
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo site_url('user/Menuutama/statuspermohonan_aktaT') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Status Permohonan
@@ -116,6 +130,7 @@
                 </p>
               </a>
             </li>
+            <?php } ?>
           </ul>
         </li>
 
@@ -180,7 +195,8 @@
             </li>
           </ul>
         </li>
-
+        
+        <?php if($user['level_user'] == 1){?>
         <li class="nav-header">MENU LAPORAN
         </li>
         <li class="nav-item">
@@ -223,6 +239,7 @@
             </p>
           </a>
         </li>
+        <?php } ?>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

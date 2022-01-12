@@ -28,7 +28,24 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins') ?>/summernote/summernote-bs4.min.css">
 
+  <style>
+        #ui-id-1 {
+            background-color: white;
+            list-style: none;
+            /* border: blue 2px solid; */
+            width: 100px;
+            box-shadow: 0px 0px 5px #888888;
+        }
 
+        .ui-menu-item{
+            margin-left: -3%;
+        }
+
+        .ui-menu-item :hover{
+            list-style: none;
+            background-color: grey;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

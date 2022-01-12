@@ -134,7 +134,6 @@ class ManajemenAkun extends CI_Controller
         $data['start'] = $start;
         $data['keyword'] = $q;
         $data['Pagination'] = $this->pagination->create_links();
-        $data['jumlah_akun'] = $jumlah_data;
 
         $this->load->view('backend/template/meta',$data);
         $this->load->view('backend/template/navbar',$data);

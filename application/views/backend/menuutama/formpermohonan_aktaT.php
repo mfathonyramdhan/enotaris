@@ -37,10 +37,16 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="<?= base_url('user/Menuutama/tambah_akta_tanah') ?>" method="POST" enctype="multipart/form-data">
+                    <form action="<?= base_url('admin/Menuutama/tambah_akta_tanah') ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-                        <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-12" id="item_auto">
+                                    <label for="">Nama</label>
+                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
+                                    <input type="hidden" name="id_user" id="id_user">
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="">Lokasi</label>
@@ -120,6 +126,7 @@
 
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>
+
 <script>
     $('.datepicker').datepicker();
 
@@ -133,13 +140,24 @@
                 success: function(data) {
 
                     var html = JSON.parse(data);
-                    
                     var kode = 'AKNAH_' + html;
                     var nodaf = kode;
                     $('#kode_permohonan').val(nodaf);
                 }
             });
         });
+
+    $(document).ready(function() {
+
+    $('#nama').autocomplete({
+        source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
+        select: function(event, ui) {
+            $("#id_user").val(ui.item.id_dosen);
+            $("#nama").val(ui.item.description);
+        }
+    });
+    $('#nama').select();
+    });
 </script>
 </body>
 
