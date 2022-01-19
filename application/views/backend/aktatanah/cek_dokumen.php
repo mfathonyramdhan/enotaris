@@ -207,6 +207,10 @@
                                         <label for="">Biaya</label>
                                         <input type="number" class="form-control" id="" placeholder="Masukkan Biaya" name="biaya" required>
                                     </div>
+                                    <div class="form-group col-4">
+                                        <label for="">Estimasi Penyelesaian Permohonan</label>
+                                        <input type="date" class="form-control" id="" name="deadline" required>
+                                    </div>
                                 </div>
                                 <div class="row justify-content-center">
                                     <button class="btn btn-primary">Submit</button>

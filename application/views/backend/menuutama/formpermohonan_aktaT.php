@@ -68,10 +68,10 @@
                                         <option value="Milik Pemerintah">Milik Pemerintah</option>
                                     </select>
                                 </div>
-                                <div class="form-group col">
+                                <!-- <div class="form-group col">
                                     <label for="">Deadline</label>
                                     <input type="date" class="form-control" id="" placeholder="Masukkan Deadline" name="deadline" required>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="row">

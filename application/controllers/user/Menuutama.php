@@ -92,7 +92,7 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
             'jenis_permohonan' => 1,
-            'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'lokasi_tanah' => htmlspecialchars($this->input->post('lokasi', true)),
             'luas_tanah' => htmlspecialchars($this->input->post('luas_tanah', true)),
             'status_kepemilikan' => htmlspecialchars($this->input->post('status_kepemilikan', true)),

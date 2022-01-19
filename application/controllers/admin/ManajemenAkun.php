@@ -25,11 +25,20 @@ class ManajemenAkun extends CI_Controller
 
     public function update_akun(){
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
+        $this->form_validation->set_rules('nik', 'NIK', 'trim|max_length[16]');
 
         $pesan = array();
 
         if ($this->form_validation->run() == false) {
             array_push($pesan, validation_errors());
+        }
+
+        $tgl_lahir = strtotime(htmlspecialchars($this->input->post('tgl_lahir', true)));
+        $now = strtotime(date('Y-m-d'));
+        $interval = abs($now - $tgl_lahir);
+        $years = ceil($interval / (365*60*60*24));
+        if($years < 17){
+            array_push($pesan, 'Usia harus lebih atau sama dengan 17 tahun!');
         }
 
         $config['upload_path']          = 'assets/img/foto_profil';  // folder upload 

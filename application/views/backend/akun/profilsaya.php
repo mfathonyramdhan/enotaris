@@ -187,7 +187,8 @@
                                                 </div>
                                                 <div class="form-group col">
                                                     <label for="">Tanggal Lahir</label>
-                                                    <input type="date" class="form-control" id="" value="<?= $user['tgl_lahir'] ?>" name="tgl_lahir">
+                                                    <input type="date" class="form-control" id="tgl_lahir" value="<?= $user['tgl_lahir'] ?>" name="tgl_lahir">
+                                                    <span class="text-danger" id="notif"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -214,7 +215,7 @@
 
 
                                             <!-- /.card-body -->
-
+                                            
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary align-self-end">Simpan Perubahan</button>
                                             </div>
@@ -255,6 +256,23 @@
     $("#image").change(function() {
     readURL(this);
     });
+
+    var coba = $('#tgl_lahir').val();
+    console.log(coba);
+
+    $(function() {
+    $("#tgl_lahir").on("change",function(){
+        var selected = $(this).val();
+        var date1 = new Date(selected);
+        var date2 = new Date();
+        var waktu = date2.getTime() - date1.getTime();
+        var tahun = waktu/(1000*3600*24*365);
+        var hasil = Math.ceil(tahun);
+        if(hasil < 17){
+            $('#notif').html('*Usia harus lebih dari atau sama dengan 17 Tahun')
+        }
+    });
+});
 </script>
 </body>
 

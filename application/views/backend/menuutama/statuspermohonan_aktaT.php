@@ -48,11 +48,12 @@
           <div class="card-body">
             <table class="table table-bordered">
               <thead>
-                <tr>
+                <tr align="center">
                   <th style="width: 10px">No</th>
                   <th>Kode Pengajuan Permohonan</th>
                   <th>Tanggal Pengajuan Permohonan</th>
                   <th>Jenis Permohonan</th>
+                  <th>Estimasi Pengerjaan</th>
                   <th style="width: 40px">Status</th>
                   <th style="width: 200px">Catatan</th>
                 </tr>
@@ -66,6 +67,21 @@
                     <td> <?= $b['kode_permohonan'] ?> </td>
                     <td> <?= $b['tgl_permohonan'] ?> </td>
                     <td> <?= $b['nama_jenis_permohonan'] ?> </td>
+                    <td align="center">
+                      <?php
+                        if($b['deadline'] == ""){
+                          echo "-";
+                        }else{
+                          $now = strtotime(date('Y-m-d'));
+                          $dl = strtotime($b['deadline']);
+                          $interval = abs($dl - $now);
+                          $years = floor($interval / (365*60*60*24));
+                          $months = floor(($interval - $years * 365*60*60*24) / (30*60*60*24));
+                          $days = floor(($interval - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                          echo $days.' Hari Lagi';
+                        }
+                      ?>
+                    </td>
                     <td>
                       <?php if($b['status_permohonan'] == 1){ ?>
                         <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>

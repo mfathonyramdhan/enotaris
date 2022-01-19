@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-8">
+                                <div class="form-group col-12">
                                     <label>Status kepemilikan</label>
                                     <select class="form-control" name="status_kepemilikan" required>
                                         <option selected disabled>Pilih status kepemilikan tanah :</option>
@@ -62,10 +62,10 @@
                                         <option value="Milik Pemerintah">Milik Pemerintah</option>
                                     </select>
                                 </div>
-                                <div class="form-group col">
+                                <!-- <div class="form-group col">
                                     <label for="">Deadline</label>
                                     <input type="date" class="form-control" id="" placeholder="Masukkan Deadline" name="deadline" required>
-                                </div>
+                                </div> -->
                             </div>
 
                             <div class="row">

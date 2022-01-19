@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 06:03 PM
+-- Generation Time: Jan 19, 2022 at 08:06 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -69,7 +69,7 @@ CREATE TABLE `tb_permohonan` (
   `kode_permohonan` varchar(150) NOT NULL,
   `pemohon` int(11) NOT NULL,
   `jenis_permohonan` int(11) NOT NULL,
-  `deadline` date NOT NULL,
+  `deadline` date DEFAULT NULL,
   `lokasi_tanah` varchar(250) NOT NULL,
   `luas_tanah` varchar(100) NOT NULL,
   `status_kepemilikan` varchar(100) NOT NULL,
@@ -94,7 +94,8 @@ INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jen
 (6, 'AKNAH_evn2', 3, 1, '2022-01-23', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '2000000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022'),
 (7, 'AKNAH_Bob2', 3, 1, '2022-01-25', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '1500000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022'),
 (8, 'AKNAH_QyR2', 3, 1, '2022-01-24', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '1700000', 3, 'Sistem sedang melakukan pengecekan bukti pembayaran.', 'BUKTI_AKNAH_QyR2_jY9.jpg', '', '2022-01-12', '2022'),
-(9, 'AKNAH_tcK2', 3, 1, '2022-01-26', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', NULL, 1, 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022');
+(9, 'AKNAH_tcK2', 3, 1, '2022-01-26', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', NULL, 1, 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022'),
+(10, 'AKNAH_sW52', 3, 1, '2022-01-31', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '1750000', 2, 'Permohonan telah disetujui, segera lakukan pembayaran.', '', '', '2022-01-19', '2022');
 
 -- --------------------------------------------------------
 
@@ -208,7 +209,7 @@ ALTER TABLE `tb_level_user`
 -- AUTO_INCREMENT for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_status_permohonan`
