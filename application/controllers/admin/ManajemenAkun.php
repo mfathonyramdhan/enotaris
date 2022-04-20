@@ -8,22 +8,23 @@ class ManajemenAkun extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_admin');
-        if(empty($this->session->userdata('id_user'))){
-			redirect('auth');
-		}
+        if (empty($this->session->userdata('id_user'))) {
+            redirect('auth');
+        }
     }
 
     public function profilsaya()
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Profil Saya';
-        $this->load->view('backend/template/meta',$data);
-        $this->load->view('backend/template/navbar',$data);
-        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
         $this->load->view('backend/akun/profilsaya', $data);
     }
 
-    public function update_akun(){
+    public function update_akun()
+    {
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
         $this->form_validation->set_rules('nik', 'NIK', 'trim|max_length[16]');
 
@@ -36,13 +37,13 @@ class ManajemenAkun extends CI_Controller
         $tgl_lahir = strtotime(htmlspecialchars($this->input->post('tgl_lahir', true)));
         $now = strtotime(date('Y-m-d'));
         $interval = abs($now - $tgl_lahir);
-        $years = ceil($interval / (365*60*60*24));
-        if($years < 17){
+        $years = ceil($interval / (365 * 60 * 60 * 24));
+        if ($years < 17) {
             array_push($pesan, 'Usia harus lebih atau sama dengan 17 tahun!');
         }
 
         $config['upload_path']          = 'assets/img/foto_profil';  // folder upload 
-        $config['allowed_types']        = 'gif|jpg|png'; // jenis file
+        $config['allowed_types']        = 'gif|jpg|png|jpeg'; // jenis file
         $config['max_size']             = 8000;
 
         $this->load->library('upload', $config);
@@ -55,10 +56,9 @@ class ManajemenAkun extends CI_Controller
         $file = $this->upload->data();
         $image = $_FILES['image']['size'] != 0 ? $file['file_name'] : $this->input->post('image1');
 
-        if(!empty($this->input->post('password')))
-        {
+        if (!empty($this->input->post('password'))) {
             $password = md5($this->input->post('password', true));
-        }else{
+        } else {
             $password = $this->input->post('password1');
         }
 
@@ -103,7 +103,7 @@ class ManajemenAkun extends CI_Controller
         }
     }
 
-    public function dataakun($start=0)
+    public function dataakun($start = 0)
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Data Akun';
@@ -145,9 +145,9 @@ class ManajemenAkun extends CI_Controller
         $data['keyword'] = $q;
         $data['Pagination'] = $this->pagination->create_links();
 
-        $this->load->view('backend/template/meta',$data);
-        $this->load->view('backend/template/navbar',$data);
-        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
         $this->load->view('backend/akun/dataakun', $data);
     }
 
@@ -156,13 +156,14 @@ class ManajemenAkun extends CI_Controller
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['detail_akun'] = $this->M_admin->detail_akun($id_user);
         $data['page_title'] = 'Edit Data Akun';
-        $this->load->view('backend/template/meta',$data);
-        $this->load->view('backend/template/navbar',$data);
-        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
         $this->load->view('backend/akun/editakun', $data);
     }
 
-    public function proses_edit_akun(){
+    public function proses_edit_akun()
+    {
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
 
         $pesan = array();
@@ -185,10 +186,9 @@ class ManajemenAkun extends CI_Controller
         $file = $this->upload->data();
         $image = $_FILES['image']['size'] != 0 ? $file['file_name'] : $this->input->post('image1');
 
-        if(!empty($this->input->post('password')))
-        {
+        if (!empty($this->input->post('password'))) {
             $password = md5($this->input->post('password', true));
-        }else{
+        } else {
             $password = $this->input->post('password1');
         }
 
@@ -236,9 +236,9 @@ class ManajemenAkun extends CI_Controller
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Tambah Admin';
-        $this->load->view('backend/template/meta',$data);
-        $this->load->view('backend/template/navbar',$data);
-        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
         $this->load->view('backend/akun/tambah_admin', $data);
     }
 
@@ -260,8 +260,8 @@ class ManajemenAkun extends CI_Controller
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'email' => htmlspecialchars($this->input->post('email', true)),
-			'password' => md5($this->input->post('password1', true)),
-			'foto_profil' => 'default.jpg',
+            'password' => md5($this->input->post('password1', true)),
+            'foto_profil' => 'default.jpg',
             'level_user' => 1
         ];
 
@@ -289,7 +289,8 @@ class ManajemenAkun extends CI_Controller
         }
     }
 
-    public function hapus_akun($id_user){
+    public function hapus_akun($id_user)
+    {
         $where = array('id_user' => $id_user);
         $result = $this->M_admin->hapus_akun($where, 'tb_user');
         if ($result == true) {

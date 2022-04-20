@@ -184,6 +184,7 @@ if (!empty($pesan)) {
                   <?php
                   $no = 1;
                   foreach ($reminder as $r) { ?>
+
                     <tr>
                       <td><?= $no++ ?></td>
                       <td><?= $r['kode_permohonan'] ?></td>

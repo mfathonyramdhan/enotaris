@@ -50,7 +50,7 @@
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
                     <li><a class="nav-link scrollto" href="#layanan">Layanan</a></li>
 
-                    <li><a class="nav-link scrollto" href="#clients">Pembayaran</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="#clients">Pembayaran</a></li> -->
 
                     <li>
                         <a class="nav-link scrollto" href="#contact">Kontak Kami</a>
@@ -179,7 +179,7 @@
 
 
 
-        <section id="clients" class="clients section-bg">
+        <!-- <section id="clients" class="clients section-bg">
             <div class="container" data-aos="fade-up">
                 <h2 data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Informasi Pembayaran</h2>
                 <div class="imgPembayaran" style="display: block;
@@ -194,13 +194,16 @@
                 <p style="text-align: center;">BRI a/n <strong>Sherli Hardhyarti</strong> </p>
 
             </div>
-        </section>
+        </section> -->
 
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
                 <h2 data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hubungi Kami</h2>
 
-                <div class="row">
+                <center>
+                    <a href="https://api.whatsapp.com/send?phone=6288270875468&text=Permisi%2C%20Saya%20membutuhkan%20layanan%20notaris%20dari%20E-Notaris%20Mohon%20dibantu%20Terimakasih" class="btn btn-success"><img src="<?= base_url("assets/img/whatsapp-24.png") ?>"> Chat Via Whatsapp</a>
+                </center>
+                <!-- <div class="row">
                     <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
                         <div class="info">
                             <div class="address">
@@ -258,7 +261,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
 

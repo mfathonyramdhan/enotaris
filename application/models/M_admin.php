@@ -1,6 +1,7 @@
 <?php
 
-class M_admin extends CI_Model {
+class M_admin extends CI_Model
+{
 
     function data_user($id_user)
     {
@@ -61,10 +62,10 @@ class M_admin extends CI_Model {
     }
 
     public function tambah_user($data)
-	{
-		return $this->db->insert('tb_user', $data);
+    {
+        return $this->db->insert('tb_user', $data);
     }
-    
+
     public function hapus_akun($where, $table)
     {
         $this->db->where($where);
@@ -116,7 +117,7 @@ class M_admin extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-    
+
     function get_user($title)
     {
         $this->db->like('nama', $title);
@@ -197,5 +198,4 @@ class M_admin extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
-
 }

@@ -4,19 +4,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Controller
 {
 
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_auth');
-	}
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('M_auth');
+    }
 
-	public function index()
-	{
-		$this->load->view('frontend/homepage/landingpage/login');
-	}
+    public function index()
+    {
+        $this->load->view('frontend/homepage/landingpage/login');
+    }
 
-	public function proses_login(){
-		$email = htmlspecialchars($this->input->post('email', true));
+    public function proses_login()
+    {
+        $email = htmlspecialchars($this->input->post('email', true));
         $password = htmlspecialchars($this->input->post('password', true));
 
         $user = $this->M_auth->cekUser($email);
@@ -38,7 +39,7 @@ class Auth extends CI_Controller
                     'isi_pesan' => 'Berhasil Login, Selamat Datang!'
                 ));
                 redirect('admin/dashboard');
-            }else if ($user['level_user'] == 2) {
+            } else if ($user['level_user'] == 2) {
                 $this->session->set_flashdata('pesan', array(
                     'status_pesan' => true,
                     'isi_pesan' => 'Berhasil Login, Selamat Datang!'
@@ -58,15 +59,15 @@ class Auth extends CI_Controller
             ));
             redirect('auth');
         }
-	}
+    }
 
-	public function register()
-	{
-		$this->load->view('frontend/homepage/landingpage/register');
-	}
+    public function register()
+    {
+        $this->load->view('frontend/homepage/landingpage/register');
+    }
 
-	public function proses_register()
-	{
+    public function proses_register()
+    {
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
         $this->form_validation->set_rules('password1', 'Password', 'trim|min_length[5]|matches[password2]', [
             'matches' => 'Password tidak cocok!',
@@ -83,8 +84,8 @@ class Auth extends CI_Controller
         $data = [
             'nama' => htmlspecialchars($this->input->post('nama', true)),
             'email' => htmlspecialchars($this->input->post('email', true)),
-			'password' => md5($this->input->post('password1', true)),
-			'foto_profil' => 'default.jpg',
+            'password' => md5($this->input->post('password1', true)),
+            'foto_profil' => 'default.jpg',
             'level_user' => 2
         ];
 
@@ -93,7 +94,8 @@ class Auth extends CI_Controller
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
-                'isi_pesan' => implode(',', $pesan)
+                'isi_pesan' => 'Isi Form Dengan Valid!',
+                'error' => implode(',', $pesan)
             ));
             redirect('auth/register');
         }
@@ -110,5 +112,5 @@ class Auth extends CI_Controller
             ));
             redirect('auth/register');
         }
-	}
+    }
 }
