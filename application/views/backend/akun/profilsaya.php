@@ -179,7 +179,7 @@ if (!empty($pesan)) {
 
                                             <div class="form-group col">
                                                 <label for="">No Telp/HP</label>
-                                                <input type="number" class="form-control" id="" placeholder="Masukkan No. Telp/HP" value="<?= $user['no_hp'] ?>" name="no_hp">
+                                                <input type="number" class="form-control" id="" placeholder="Masukkan No. Telp/HP" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==13) return false;" value="<?= $user['no_hp'] ?>" name="no_hp">
                                             </div>
                                         </div>
                                         <div class="row">

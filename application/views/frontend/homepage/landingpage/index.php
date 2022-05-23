@@ -203,8 +203,8 @@
                 <center>
                     <a href="https://api.whatsapp.com/send?phone=6288270875468&text=Permisi%2C%20Saya%20membutuhkan%20layanan%20notaris%20dari%20E-Notaris%20Mohon%20dibantu%20Terimakasih" class="btn btn-success"><img src="<?= base_url("assets/img/whatsapp-24.png") ?>"> Chat Via Whatsapp</a>
                 </center>
-                <!-- <div class="row">
-                    <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                <div class="row" style="padding-top: 50px">
+                    <div class="" data-aos="fade-up" data-aos-delay="100">
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
@@ -228,7 +228,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                    <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
                         <form action="forms/contact.html" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="form-group col-md-6">
@@ -260,8 +260,8 @@
                                 <button type="submit">Kirim Pesan</button>
                             </div>
                         </form>
-                    </div>
-                </div> -->
+                    </div> -->
+                </div>
             </div>
         </section>
 

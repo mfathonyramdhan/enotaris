@@ -139,13 +139,13 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-columns"></i>
             <p>
-              Pendirian CV/PT
+              Pendirian CV / PT
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formpermohonan') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/formpendirian_cv') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Formulir Permohonan
@@ -154,7 +154,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/datapermohonan') ?>" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Permohonan
@@ -176,7 +176,7 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formpermohonan') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/formhakwaris') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Formulir Permohonan
@@ -185,7 +185,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/datapermohonan') ?>" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Permohonan

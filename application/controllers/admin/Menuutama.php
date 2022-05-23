@@ -72,6 +72,26 @@ class Menuutama extends CI_Controller
 		$this->load->view('backend/menuutama/formpermohonan_aktaT', $data);
 	}
 
+        public function formpendirian_cv()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta',$data);
+        $this->load->view('backend/template/navbar',$data);
+        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/menuutama/formpendirian_cv', $data);
+    }
+
+    public function formhakwaris()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta',$data);
+        $this->load->view('backend/template/navbar',$data);
+        $this->load->view('backend/template/sidebar',$data);
+        $this->load->view('backend/menuutama/formhakwaris', $data);
+    }
+
 	public function get_user()
 	{
 		if (isset($_GET['term'])) {

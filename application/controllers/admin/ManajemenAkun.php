@@ -27,6 +27,7 @@ class ManajemenAkun extends CI_Controller
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|valid_email');
         $this->form_validation->set_rules('nik', 'NIK', 'trim|max_length[16]');
+        $this->form_validation->set_rules('no_hp', 'NIK', 'trim|max_length[13]');
 
         $pesan = array();
 
