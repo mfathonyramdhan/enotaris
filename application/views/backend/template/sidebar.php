@@ -102,7 +102,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_aktaT') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/1') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -122,7 +122,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('user/Menuutama/statuspermohonan_aktaT') ?>" class="nav-link">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/1') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Status Permohonan
@@ -153,15 +153,28 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
+            <?php if ($user['nama_level'] == 'admin') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/2') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
 
-                </p>
-              </a>
-            </li>
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+            <?php if ($user['nama_level'] == 'user') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/2') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
+
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </li>
 
@@ -184,15 +197,28 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
+            <?php if ($user['nama_level'] == 'admin') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/3') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
 
-                </p>
-              </a>
-            </li>
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+            <?php if ($user['nama_level'] == 'user') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/3') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
+
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </li>
 
