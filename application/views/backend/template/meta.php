@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $page_title ?> </title>
-
+    <link rel="icon" type="image/x-icon" href="<?= base_url('/assets/img/favicon.ico') ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/vendor/sweetalert/dist/sweetalert2.min.css') ?>">
     <script type="text/javascript" src="<?= base_url('assets/vendor/sweetalert/dist/sweetalert2.all.min.js') ?>"></script>
     <!-- Google Font: Source Sans Pro -->

@@ -10,12 +10,7 @@
     <meta content="" name="keywords" />
 
 
-    <link rel="shortcut icon" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/favicon.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" href="https://web.situbondokab.go.id/tema/kominfo_kab_situbondo/apple-touch-icon.png">
-    <link href="<?= base_url('/assets/img/favicon.png') ?>" rel="apple-touch-icon" />
-
+    <link rel="icon" type="image/x-icon" href="<?= base_url('/assets/img/favicon.ico') ?>" />
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" />
 
@@ -39,7 +34,7 @@
         <div class="container d-flex align-items-center justify-content-between">
             <div class="logo">
                 <h1 class="text-light">
-                    <a href="<?= base_url('welcome') ?>"><img src="<?= base_url('/assets/img/enotarislogo.png') ?>" alt=""></a>
+                    <a href="<?= base_url('welcome') ?>"><img src="<?= base_url('/assets/img/enotarisindex.png') ?>" alt=""></a>
                 </h1>
 
             </div>
@@ -48,7 +43,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-                    <li><a class="nav-link scrollto" href="#layanan">Layanan</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Layanan</a></li>
 
                     <!-- <li><a class="nav-link scrollto" href="#clients">Pembayaran</a></li> -->
 
@@ -85,7 +80,7 @@
 
                     </h1>
 
-                    <button class="submit2" onclick="location.href='login.html'">
+                    <button class="submit2" onclick="location.href='https://api.whatsapp.com/send?phone=62885258065041&text=Permisi%2C%20Saya%20membutuhkan%20layanan%20notaris%20dari%20E-Notaris%20Mohon%20dibantu%20Terimakasih'">
                         Konsultasi Gratis
                     </button>
 
@@ -118,7 +113,7 @@
 						align-items-center
 						justify-content-center
 						about-img">
-                        <p data-aos="fade-up" data-aos-delay="100" style="text-align: justify; padding-top: 10px;   font-family: Poppins;
+                        <p data-aos="fade-up" data-aos-delay="100" style="text-align: justify; padding-top: 10px;   font-family: Open Sans;
 								font-style: normal;
 								font-weight: normal;
 								font-size: 18px;
@@ -132,16 +127,26 @@
                 </div>
             </div>
         </section>
-
-
-        <section id="layanan" style="background: linear-gradient(-90deg, #65b7ff, #005bea) " class="">
-            <div class="container">
+        <section id="portfolio" class="portfolio" style="background: linear-gradient(-90deg, #65b7ff, #005bea) ">
+            <div class="container text-center" data-aos="fade-up">
                 <div class="section-header">
-                    <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown; padding-bottom: 10px; color: #fff; box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);">Layanan Kami</h2>
+                    <h2 class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown; padding-bottom: 10px; color: #fff; ">Layanan Kami</h2>
                 </div>
 
-                <div class="row text-center" style="padding-top: 30px;">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-12">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">Semua</li>
+                            <li data-filter=".filter-notaris">Notaris</li>
+                            <li data-filter=".filter-ppat">PPAT</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 0ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/setoran.png">
                             <h3 style="color: white;">Akta Tanah</h3>
@@ -149,7 +154,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 100ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/skpd.png">
                             <h3 style="color: white;">Pendirian CV/PT</h3>
@@ -157,7 +162,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="200ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 200ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
                             <h3 style="color: white;">Waris</h3>
@@ -165,7 +170,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
                             <h3 style="color: white;">Lainnya</h3>
@@ -173,9 +178,15 @@
 
                         </div>
                     </div>
+
+
+
                 </div>
+
             </div>
-        </section>
+        </section><!-- End Portfolio Section -->
+
+
 
 
 
@@ -199,9 +210,10 @@
         <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
                 <h2 data-aos="fade-up" class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">Hubungi Kami</h2>
+                <p class="text-center">Konsultasikan kebutuhan Notaris / PPAT anda secara rinci <br>dan aman via WhatsApp dengan klik tombol dibawah ini. </p>
 
                 <center>
-                    <a href="https://api.whatsapp.com/send?phone=6288270875468&text=Permisi%2C%20Saya%20membutuhkan%20layanan%20notaris%20dari%20E-Notaris%20Mohon%20dibantu%20Terimakasih" class="btn btn-success"><img src="<?= base_url("assets/img/whatsapp-24.png") ?>"> Chat Via Whatsapp</a>
+                    <a href="https://api.whatsapp.com/send?phone=62885258065041&text=Permisi%2C%20Saya%20membutuhkan%20layanan%20notaris%20dari%20E-Notaris%20Mohon%20dibantu%20Terimakasih" class="btn btn-success"><img src="<?= base_url("assets/img/whatsapp-24.png") ?>"> Chat Via Whatsapp</a>
                 </center>
                 <div class="row" style="padding-top: 50px">
                     <div class="" data-aos="fade-up" data-aos-delay="100">
@@ -215,7 +227,7 @@
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email :</h4>
-                                <p>sherlynotaris@gmail.com</p>
+                                <p>sherlihp@yahoo.com</p>
                             </div>
 
                             <div class="phone">

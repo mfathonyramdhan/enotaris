@@ -78,7 +78,7 @@
           </li>
         <?php } ?>
 
-        <li class="nav-header">MENU UTAMA
+        <li class="nav-header">LAYANAN NOTARIS
         </li>
 
         <!-- akta tanah dropdown -->
@@ -132,6 +132,9 @@
               </li>
             <?php } ?>
           </ul>
+        </li>
+
+        <li class="nav-header">LAYANAN PPAT
         </li>
 
         <!-- pendirian cv/pt dropdown -->
@@ -197,7 +200,7 @@
         </li>
 
         <!-- lain-lain dropdown -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>
@@ -225,7 +228,7 @@
               </a>
             </li>
           </ul>
-        </li>
+        </li> -->
 
         <?php if ($user['level_user'] == 1) { ?>
           <li class="nav-header">MENU LAPORAN
