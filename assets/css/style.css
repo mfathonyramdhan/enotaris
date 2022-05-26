@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open Sans:200,300,400,500,600,700,800,900&display=swap");
 
 body {
-	font-family: "Poppins", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	color: #212529;
 }
 
@@ -22,7 +22,7 @@ h4,
 h5,
 h6,
 .font-primary {
-	font-family: "Poppins", sans-serif;
+	font-family: "Open Sans", sans-serif;
 }
 .back-to-top {
 	position: fixed;
@@ -181,6 +181,129 @@ h6,
 	left: 100%;
 	visibility: visible;
 }
+ul.filters {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 30px 0;
+}
+
+ul.filters > li {
+	list-style: none;
+	display: inline-block;
+}
+
+ul.filters > li > a {
+	display: block;
+	color: #434e5e;
+	text-decoration: none;
+	padding: 5px 20px;
+}
+
+ul.filters > li > a:hover {
+	background-color: #e6e9ed;
+}
+
+ul.filters > li.active > a {
+	color: #fff;
+	background-color: #28bea8;
+}
+
+.card {
+	position: relative;
+	margin-bottom: 50px;
+	color: #000;
+	border-radius: 0;
+	border: 1px solid #eee;
+	background-color: #fff;
+	box-shadow: 1px 1px 1.5px rgba(0, 0, 0, 0.075);
+}
+
+.card-head {
+	position: relative;
+	overflow: hidden;
+}
+
+.card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background-color: rgba(67, 78, 94, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	-webkit-transition: ease-in-out 0.2s;
+	-moz-transition: ease-in-out 0.2s;
+	-ms-transition: ease-in-out 0.2s;
+	transition: ease-in-out 0.2s;
+}
+
+.card-hover {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(40, 190, 168, 0.9);
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: 30px;
+	-webkit-transition: ease-in-out 0.2s;
+	-moz-transition: ease-in-out 0.2s;
+	-ms-transition: ease-in-out 0.2s;
+	transition: ease-in-out 0.2s;
+}
+
+.card-body {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+h4.title {
+	color: #434e5e;
+	font-size: 1.2rem;
+	margin-bottom: 0;
+}
+
+.card-btn {
+	margin-bottom: -40px;
+	font-size: 0.9rem;
+	background-color: #fff;
+	color: #222;
+	border: 1px solid #eee;
+	border-radius: 0;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.card-btn:hover {
+	background-color: #28bea8;
+	color: #fff;
+}
+
+.abc ul {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.abc ul li {
+	list-style: none;
+	background: #eee;
+	padding: 8px 20px;
+	margin: 5px;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
 @media (max-width: 1366px) {
 	.navbar .dropdown .dropdown ul {
 		left: -90%;
@@ -311,7 +434,7 @@ h6,
 }
 
 #hero .btn-get-started {
-	font-family: "Poppins", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-weight: 500;
 	font-size: 16px;
 	letter-spacing: 1px;
@@ -481,7 +604,7 @@ section {
 	color: #f39e7a;
 }
 .about p {
-	font-family: Poppins;
+	font-family: Open Sans;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 18px;
@@ -588,13 +711,13 @@ section {
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 20px;
-	color: #212529;
+	color: #fff;
 	margin-bottom: 5px;
 	transition: all 0.3s ease-in-out;
 }
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-	color: #005bea;
+	color: #ffba0c;
 }
 .portfolio #portfolio-flters li:last-child {
 	margin-right: 0;
@@ -1123,7 +1246,7 @@ section {
 	font-size: 14px;
 	line-height: 24px;
 	margin-bottom: 0;
-	font-family: "Poppins", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	color: #5c5c5c;
 }
 #footer .footer-top h4 {
