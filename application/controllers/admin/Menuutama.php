@@ -68,14 +68,15 @@ class Menuutama extends CI_Controller
         }
     }
 
-    public function formpermohonan_aktaT()
+    // ---------------------------------------LAYANAN NOTARIS
+    public function formperjanjian_sewa()
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Formulir Permohonan';
         $this->load->view('backend/template/meta', $data);
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
-        $this->load->view('backend/menuutama/formpermohonan_aktaT', $data);
+        $this->load->view('backend/menuutama/formperjanjian_sewa', $data);
     }
 
     public function formpendirian_cv()
@@ -88,6 +89,28 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/menuutama/formpendirian_cv', $data);
     }
 
+
+    public function formperubahan_rrups()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formperubahan_rrups', $data);
+    }
+
+
+    public function formpendirian_yayasan()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formpendirian_yayasan', $data);
+    }
+
     public function formhakwaris()
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
@@ -96,6 +119,96 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
         $this->load->view('backend/menuutama/formhakwaris', $data);
+    }
+
+    public function formperjanjian_lainlain()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formperjanjian_lainlain', $data);
+    }
+
+    // ----------------------------------------------LAYANAN PPAT
+    public function formhibah_pemberi()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formhibah_pemberi', $data);
+    }
+
+    public function formhibah_penerima()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formhibah_penerima', $data);
+    }
+
+    public function formjualbelitanah()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formjualbelitanah', $data);
+    }
+    public function formtukartanah()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formtukartanah', $data);
+    }
+
+    public function formpermohonan_aktaT()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formpermohonan_aktaT', $data);
+    }
+
+    public function formkuasa()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formkuasa', $data);
+    }
+
+    public function formbagihak()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formbagihak', $data);
+    }
+
+    public function formapht()
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Formulir Permohonan';
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/formapht', $data);
     }
 
     public function get_user()
