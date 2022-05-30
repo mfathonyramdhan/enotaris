@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 08:06 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: May 26, 2022 at 06:17 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -37,7 +38,9 @@ CREATE TABLE `tb_jenis_permohonan` (
 --
 
 INSERT INTO `tb_jenis_permohonan` (`id_jenis_permohonan`, `nama_jenis_permohonan`) VALUES
-(1, 'Akta Tanah');
+(1, 'Akta Tanah'),
+(2, 'Pendirian CV/PT'),
+(3, 'Ahli Waris');
 
 -- --------------------------------------------------------
 
@@ -70,12 +73,19 @@ CREATE TABLE `tb_permohonan` (
   `pemohon` int(11) NOT NULL,
   `jenis_permohonan` int(11) NOT NULL,
   `deadline` date DEFAULT NULL,
-  `lokasi_tanah` varchar(250) NOT NULL,
+  `nama_cv` varchar(255) NOT NULL,
+  `bidang_usaha` varchar(255) NOT NULL,
+  `lokasi` varchar(250) NOT NULL,
   `luas_tanah` varchar(100) NOT NULL,
   `status_kepemilikan` varchar(100) NOT NULL,
   `scan_ktp` varchar(200) NOT NULL,
   `scan_kk` varchar(200) NOT NULL,
   `scan_pbb` varchar(200) NOT NULL,
+  `scan_npwp` varchar(255) NOT NULL,
+  `foto_direktur` varchar(255) NOT NULL,
+  `sk_desa` varchar(255) NOT NULL,
+  `akta_kematian` varchar(255) NOT NULL,
+  `sp_ahli_waris` varchar(255) NOT NULL,
   `biaya` varchar(150) DEFAULT NULL,
   `status_permohonan` int(11) NOT NULL,
   `catatan` varchar(250) DEFAULT NULL,
@@ -89,13 +99,15 @@ CREATE TABLE `tb_permohonan` (
 -- Dumping data for table `tb_permohonan`
 --
 
-INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `deadline`, `lokasi_tanah`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `biaya`, `status_permohonan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`) VALUES
-(5, 'AKTA_YDW1', 3, 1, '2022-01-23', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', NULL, 1, '', '', '', '2022-01-12', '2022'),
-(6, 'AKNAH_evn2', 3, 1, '2022-01-23', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '2000000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022'),
-(7, 'AKNAH_Bob2', 3, 1, '2022-01-25', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '1500000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022'),
-(8, 'AKNAH_QyR2', 3, 1, '2022-01-24', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '1700000', 3, 'Sistem sedang melakukan pengecekan bukti pembayaran.', 'BUKTI_AKNAH_QyR2_jY9.jpg', '', '2022-01-12', '2022'),
-(9, 'AKNAH_tcK2', 3, 1, '2022-01-26', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', NULL, 1, 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022'),
-(10, 'AKNAH_sW52', 3, 1, '2022-01-31', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '1750000', 2, 'Permohonan telah disetujui, segera lakukan pembayaran.', '', '', '2022-01-19', '2022');
+INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `deadline`, `nama_cv`, `bidang_usaha`, `lokasi`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `scan_npwp`, `foto_direktur`, `sk_desa`, `akta_kematian`, `sp_ahli_waris`, `biaya`, `status_permohonan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`) VALUES
+(5, 'AKTA_YDW1', 3, 1, '2022-05-23', '', '', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', '', '', '', '', '', NULL, 1, '', '', '', '2022-01-12', '2022'),
+(6, 'AKNAH_evn2', 3, 1, '2022-05-23', '', '', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '', '', '', '', '', '2000000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022'),
+(7, 'AKNAH_Bob2', 3, 1, '2022-05-25', '', '', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '', '', '', '', '', '1500000', 5, 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022'),
+(8, 'AKNAH_QyR2', 3, 1, '2022-05-24', '', '', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '', '', '', '', '', '1700000', 3, 'Sistem sedang melakukan pengecekan bukti pembayaran.', 'BUKTI_AKNAH_QyR2_jY9.jpg', '', '2022-01-12', '2022'),
+(9, 'AKNAH_tcK2', 3, 1, '2022-05-26', '', '', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', '', '', '', '', '', NULL, 1, 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022'),
+(10, 'AKNAH_sW52', 3, 1, '2022-05-31', '', '', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '', '', '', '', '', '1750000', 2, 'Permohonan telah disetujui, segera lakukan pembayaran.', '', '', '2022-01-19', '2022'),
+(12, 'CVPT_3gX1', 3, 2, NULL, 'PT. Sinar Media', '', 'Patrang, Jember', '', '', 'KTP_CVPT_3gX11.pdf', 'KK_CVPT_3gX11.pdf', 'PBB_CVPT_3gX11.pdf', 'NPWP_CVPT_3gX11.pdf', 'FTDR_CVPT_3gX11.jpeg', '', '', '', NULL, 1, NULL, '', '', '2022-05-25', '2022'),
+(13, 'WARIS_ZWi1', 3, 3, NULL, '', '', '', '', '', 'KTP_WARIS_ZWi1.pdf', 'KK_WARIS_ZWi1.pdf', '', '', '', 'SKDESA_WARIS_ZWi1.pdf', 'AKKEM_WARIS_ZWi1.pdf', 'SPAHWA_WARIS_ZWi1.pdf', NULL, 1, NULL, '', '', '2022-05-26', '2022');
 
 -- --------------------------------------------------------
 
@@ -140,7 +152,7 @@ CREATE TABLE `tb_user` (
   `tgl_lahir` date DEFAULT NULL,
   `foto_profil` varchar(250) DEFAULT NULL,
   `level_user` int(11) NOT NULL,
-  `tgl_daftar` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tgl_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -148,8 +160,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `password`, `nik`, `no_hp`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tgl_lahir`, `foto_profil`, `level_user`, `tgl_daftar`) VALUES
-(1, 'admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', '', '', '', 'lumajang', 'Jember', '2000-02-22', 'default.jpg', 1, '2022-01-12 14:23:41'),
-(3, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '350129502934', '', '', '', '', '0000-00-00', 'Penguins.jpg', 2, '2022-01-12 15:51:46');
+(1, 'admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', '3508051110950001', '', '', 'lumajang', 'Jember', '2000-02-22', 'default.jpg', 1, '2022-04-20 14:48:55'),
+(3, 'user', 'user@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '350129502934', '', '', '', '', '0000-00-00', 'u.png', 2, '2022-04-20 15:30:35'),
+(8, 'coba', 'coba@gmail.com', 'a3040f90cc20fa672fe31efcae41d2db', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-04-20 17:18:39');
 
 --
 -- Indexes for dumped tables
@@ -197,7 +210,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_jenis_permohonan`
 --
 ALTER TABLE `tb_jenis_permohonan`
-  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_level_user`
@@ -209,7 +222,7 @@ ALTER TABLE `tb_level_user`
 -- AUTO_INCREMENT for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tb_status_permohonan`
@@ -221,7 +234,7 @@ ALTER TABLE `tb_status_permohonan`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

@@ -81,342 +81,7 @@
         <li class="nav-header">LAYANAN NOTARIS
         </li>
 
-        <!-- NOTARIS01 - Perjanjian sewa menyewa -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
-            <p>
-              Perjanjian Sewa
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formperjanjian_sewa') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- NOTARIS02 - Pendirian CV/PT -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
-            <p>
-              Pendirian CV / PT
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formpendirian_cv') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- NOTARIS03 - Perubahan Risalah Rapat Umum Pemegang Saham -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
-            <p>
-              Perubahan RRUPS
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formperubahan_rrups') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- NOTARIS04 - Pendirian Yayasan -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-columns"></i>
-            <p>
-              Pendirian Yayasan
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formpendirian_yayasan') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- NOTARIS05 - Akta Warisan -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
-            <p>
-              Waris
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhakwaris') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- NOTARIS06 - Perjanjian kerjasama, utang piutang, kontrak kerja, dan lain-lain -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
-            <p>
-              Perjanjian Lain - lain
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formperjanjian_lainlain') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-header">LAYANAN PPAT
-        </li>
-
-        <!-- PPAT01 - Hibah  -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
-            <p>
-              Hibah
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_pemberi') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan (Pemberi)
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_penerima') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan (Penerima)
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
-
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- PPAT02 - Jual beli tanah  -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
-            <p>
-              Jual Beli Tanah
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <?php if ($user['nama_level'] == "admin") { ?>
-              <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formjualbelitanah') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Data Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
-            <?php if ($user['nama_level'] == 'user') { ?>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
-          </ul>
-        </li>
-
-        <!-- PPAT03 - Tukar menukar tanah  -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
-            <p>
-              Tukar Menukar Tanah
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <?php if ($user['nama_level'] == "admin") { ?>
-              <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formtukartanah') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Data Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
-            <?php if ($user['nama_level'] == 'user') { ?>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
-          </ul>
-        </li>
-
-        <!-- PPAT04 - Pemberian Hak Pakai atas Tanah Hak Milik serta Hak Guna atas Bangunan   -->
+        <!-- akta tanah dropdown -->
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tree"></i>
@@ -437,7 +102,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_aktaT') ?>" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/1') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -457,7 +122,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('user/Menuutama/statuspermohonan_aktaT') ?>" class="nav-link">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/1') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Status Permohonan
@@ -469,28 +134,31 @@
           </ul>
         </li>
 
-        <!-- PPAT05 - Pemberian kuasa atas pembebanan Hak Tanggungan   -->
+        <li class="nav-header">LAYANAN PPAT
+        </li>
+
+        <!-- pendirian cv/pt dropdown -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-columns"></i>
             <p>
-              Pemberian Kuasa
+              Pendirian CV / PT
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
-            <?php if ($user['nama_level'] == "admin") { ?>
-              <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formkuasa') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+            <li class="nav-item">
+              <a href="<?php echo site_url('admin/Menuutama/formpendirian_cv') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Formulir Permohonan
 
-                  </p>
-                </a>
-              </li>
+                </p>
+              </a>
+            </li>
+            <?php if ($user['nama_level'] == 'admin') { ?>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/2') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -501,19 +169,10 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/2') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
+                    Data Permohonan
 
                   </p>
                 </a>
@@ -522,28 +181,28 @@
           </ul>
         </li>
 
-        <!-- PPAT06 - Pembagian atas hak bersama terhadap tanah   -->
+        <!-- waris dropdown -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
-              Pembagian Hak Tanah
+              Waris
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
-            <?php if ($user['nama_level'] == "admin") { ?>
-              <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formbagihak') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+            <li class="nav-item">
+              <a href="<?php echo site_url('admin/Menuutama/formhakwaris') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Formulir Permohonan
 
-                  </p>
-                </a>
-              </li>
+                </p>
+              </a>
+            </li>
+            <?php if ($user['nama_level'] == 'admin') { ?>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/3') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -554,49 +213,7 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
-          </ul>
-        </li>
-
-        <!-- PPAT07 - Pembuatan APHT (Akta Pemberian Hak Tanggungan)   -->
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
-            <p>
-              Pembuatan APHT
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <?php if ($user['nama_level'] == "admin") { ?>
-              <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formapht') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/3') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -605,33 +222,8 @@
                 </a>
               </li>
             <?php } ?>
-            <?php if ($user['nama_level'] == 'user') { ?>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
-
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
-
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
           </ul>
         </li>
-
-
-
-
-
 
         <!-- lain-lain dropdown -->
         <!-- <li class="nav-item">

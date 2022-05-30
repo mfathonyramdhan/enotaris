@@ -77,37 +77,37 @@ class M_admin extends CI_Model
         return $this->db->insert('tb_permohonan', $data);
     }
 
-    function tampil_akta_user()
+    function tampil_permohonan_user($jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => 1);
+        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => $jenis);
         $this->db->where($array);
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    function jumlah_akta_user()
+    function jumlah_permohonan_user($jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => 1);
+        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => $jenis);
         $this->db->where($array);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function data_akta_user($number, $offset, $keyword = '')
+    function data_permohonan_user($number, $offset, $keyword = '', $jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => 1);
+        $array = array('pemohon' => $this->session->userdata('id_user'), 'jenis_permohonan' => $jenis);
         $this->db->where($array);
         if (!empty($keyword)) {
             $this->db->like('tgl_permohonan', $keyword);
@@ -127,38 +127,38 @@ class M_admin extends CI_Model
         return $this->db->get('tb_user')->result();
     }
 
-    function tampil_akta_admin()
+    function tampil_permohonan_admin($jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $this->db->where('jenis_permohonan', 1);
+        $this->db->where('jenis_permohonan', $jenis);
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    function jumlah_akta_admin()
+    function jumlah_permohonan_admin($jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $this->db->where('jenis_permohonan', 1);
+        $this->db->where('jenis_permohonan', $jenis);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    function data_akta_admin($number, $offset, $keyword = '')
+    function data_permohonan_admin($number, $offset, $keyword = '', $jenis)
     {
         $this->db->select('*');
         $this->db->from('tb_permohonan p');
         $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
         $this->db->join('tb_jenis_permohonan jp', 'p.jenis_permohonan = jp.id_jenis_permohonan');
         $this->db->join('tb_status_permohonan', 'p.status_permohonan = tb_status_permohonan.id_status_permohonan');
-        $this->db->where('jenis_permohonan', 1);
+        $this->db->where('jenis_permohonan', $jenis);
         if (!empty($keyword)) {
             $this->db->like('tgl_permohonan', $keyword);
             $this->db->or_like('kode_permohonan', $keyword);
@@ -197,5 +197,15 @@ class M_admin extends CI_Model
         $this->db->limit(5);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+    public function tambah_cv($data)
+    {
+        return $this->db->insert('tb_permohonan', $data);
+    }
+
+    public function tambah_waris($data)
+    {
+        return $this->db->insert('tb_permohonan', $data);
     }
 }
