@@ -31,33 +31,18 @@
             <!-- Small boxes (Stat box) -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Permohonan Pendirian CV / PT</h3>
+                    <h3 class="card-title">Formulir Penerima Hibah</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action="<?= base_url('#') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col-12" id="item_auto">
-                                <label for="">Nama CV</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                <input type="hidden" name="id_user" id="id_user">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="">Lokasi CV</label>
-                                <input type="text" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="lokasi" required>
-                            </div>
-                        </div>
-
-
 
                         <div class="row">
 
                             <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan KTP Direktur & Komisaris</label>
+                                <label for="exampleInputFile">Upload Scan KTP Penerima Hibah</label>
                                 <div class="custom-file">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
@@ -69,7 +54,7 @@
                         <div class="row">
 
                             <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan KK Direktur & Komisaris</label>
+                                <label for="exampleInputFile">Upload Scan KK Penerima Hibah</label>
                                 <div class="custom-file">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
@@ -78,42 +63,7 @@
 
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan NPWP Direktur & Komisaris</label>
-                                <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
-                                    <span class="text-danger">*Masukkan file berformat .pdf</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan PBB</label>
-                                <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
-                                    <span class="text-danger">*Masukkan file berformat .pdf</span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group col-12" id="item_auto">
-                                <label for="">Bidang Usaha</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                <input type="hidden" name="id_user" id="id_user">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="exampleInputFile">Upload Foto Direktur</label>
-                                <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
-                                    <span class="text-danger">*Ukuran Foto 3x4 dengan Background Merah. File berformat jpg/png</span>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Keterangan</label>
