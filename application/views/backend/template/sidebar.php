@@ -99,15 +99,28 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Data Permohonan
+            <?php if ($user['nama_level'] == 'admin') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/4') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
 
-                </p>
-              </a>
-            </li>
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+            <?php if ($user['nama_level'] == 'user') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/4') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Permohonan
+
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </li>
 
@@ -688,7 +701,7 @@
           <li class="nav-header">MENU LAPORAN
           </li>
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/laporan_notaris') ?>" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Laporan Notaris
@@ -697,7 +710,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/laporan_ppat') ?>" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Laporan PPAT

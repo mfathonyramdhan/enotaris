@@ -17,6 +17,14 @@ class Menuutama extends CI_Controller
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Riwayat Permohonan';
+        $data['notaris_diajukan'] = $this->M_admin->jumlah_notaris_diajukan();
+        $data['notaris_pembayaran'] = $this->M_admin->jumlah_notaris_menunggu_pembayaran();
+        $data['notaris_diproses'] = $this->M_admin->jumlah_notaris_diproses();
+        $data['notaris_selesai'] = $this->M_admin->jumlah_notaris_selesai();
+        $data['ppat_diajukan'] = $this->M_admin->jumlah_ppat_diajukan();
+        $data['ppat_pembayaran'] = $this->M_admin->jumlah_ppat_menunggu_pembayaran();
+        $data['ppat_diproses'] = $this->M_admin->jumlah_ppat_diproses();
+        $data['ppat_selesai'] = $this->M_admin->jumlah_ppat_selesai();
 
         $q = isset($_GET['search']) ? $_GET['search'] : '';
         $data['daftar_akta'] = $this->M_admin->tampil_permohonan_admin($jenis);
@@ -65,6 +73,12 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/datapermohonan_cv', $data);
         } elseif ($jenis == 3) {
             $this->load->view('backend/menuutama/datapermohonan_waris', $data);
+        } elseif ($jenis == 4) {
+            $this->load->view('backend/menuutama/datapermohonan_sewa', $data);
+        } elseif ($jenis == 'laporan_notaris') {
+            $this->load->view('backend/menuutama/laporan_notaris', $data);
+        } elseif ($jenis == 'laporan_ppat') {
+            $this->load->view('backend/menuutama/laporan_ppat', $data);
         }
     }
 
@@ -280,6 +294,7 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
             'jenis_permohonan' => 1,
+            'jenis_layanan' => 'ppat',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
             'luas_tanah' => htmlspecialchars($this->input->post('luas_tanah', true)),
@@ -368,6 +383,7 @@ class Menuutama extends CI_Controller
     {
         $pesan = array();
         $data = [
+            'tgl_pelunasan' => date('Y-m-d'),
             'catatan' => 'Permohonan Sedang Diproses',
             'status_permohonan' => 4
         ];
@@ -623,6 +639,7 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
             'jenis_permohonan' => 2,
+            'jenis_layanan' => 'notaris',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'nama_cv' => htmlspecialchars($this->input->post('nama_cv', true)),
             'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
@@ -759,6 +776,7 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
             'jenis_permohonan' => 3,
+            'jenis_layanan' => 'notaris',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'scan_ktp' => $ktp,
             'scan_kk' => $kk,
@@ -790,6 +808,125 @@ class Menuutama extends CI_Controller
                 'isi_pesan' => 'Permohonan Gagal Diajukan'
             ));
             redirect('admin/Menuutama/formhakwaris');
+        }
+    }
+
+    public function getKodeSewa()
+    {
+        $hasil = $this->db->query("select id_permohonan, kode_permohonan from tb_permohonan WHERE jenis_permohonan = 4 ORDER BY kode_permohonan DESC LIMIT 1");
+        $acak = random_string('alnum', 3);
+
+        if ($hasil->num_rows() > 0) {
+            $nmr = explode('_', $hasil->row()->kode_permohonan);
+            $slice = substr($nmr[1], 3);
+            $merge = sprintf("%1d", (int)$slice + 1);
+            $data = $acak . $merge;
+        } else {
+            $data = $acak . '1';
+        }
+        echo json_encode($data);
+    }
+
+    public function tambah_sewa()
+    {
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $ktp = $file['file_name'];
+
+        // Upload KK
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $kk = $file['file_name'];
+
+        // Upload Sertifikat Asli
+        $config['upload_path']          = 'assets/berkas/sertif_asli/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'SERTIF_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_sertif')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $sertif = $file['file_name'];
+
+        // Upload PBB
+        $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_pbb')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $pbb = $file['file_name'];
+
+        $data = [
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'jenis_permohonan' => 4,
+            'jenis_layanan' => 'notaris',
+            // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
+            'sertif_asli' => $sertif,
+            'scan_pbb' => $pbb,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'status_permohonan' => 1,
+            'tgl_permohonan' => date('Y-m-d'),
+            'tahun_permohonan' => date('Y')
+        ];
+        if (empty($pesan)) {
+            $result = $this->M_admin->tambah_sewa($data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('admin/Menuutama/formperjanjian_sewa');
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diajukan'
+            ));
+            redirect('admin/Menuutama/formperjanjian_sewa');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
+            ));
+            redirect('admin/Menuutama/formperjanjian_sewa');
         }
     }
 }

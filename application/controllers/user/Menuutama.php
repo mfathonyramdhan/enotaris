@@ -179,6 +179,8 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/Menuutama/datapermohonan_cv_user', $data);
         } elseif ($jenis == 3) {
             $this->load->view('backend/Menuutama/datapermohonan_waris_user', $data);
+        } elseif ($jenis == 4) {
+            $this->load->view('backend/Menuutama/datapermohonan_sewa_user', $data);
         }
     }
 
