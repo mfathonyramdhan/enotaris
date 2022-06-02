@@ -117,7 +117,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Diajukan'
             ));
-            redirect('user/Menuutama/statuspermohonan_aktaT');
+            redirect('user/Menuutama/akta_tanah');
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
