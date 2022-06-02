@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jun 2022 pada 05.59
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.6
+-- Generation Time: Jun 02, 2022 at 05:47 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_jenis_permohonan`
+-- Table structure for table `tb_jenis_permohonan`
 --
 
 CREATE TABLE `tb_jenis_permohonan` (
@@ -33,7 +34,7 @@ CREATE TABLE `tb_jenis_permohonan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_jenis_permohonan`
+-- Dumping data for table `tb_jenis_permohonan`
 --
 
 INSERT INTO `tb_jenis_permohonan` (`id_jenis_permohonan`, `nama_jenis_permohonan`) VALUES
@@ -42,12 +43,38 @@ INSERT INTO `tb_jenis_permohonan` (`id_jenis_permohonan`, `nama_jenis_permohonan
 (3, 'Ahli Waris'),
 (4, 'Sewa Menyewa'),
 (5, 'Perubahan RRUPS'),
-(6, 'Pendirian Yayasan');
+(6, 'Pendirian Yayasan'),
+(7, 'Perjanjian Lain-Lain');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_level_user`
+-- Table structure for table `tb_keuangan`
+--
+
+CREATE TABLE `tb_keuangan` (
+  `id_keuangan` int(11) NOT NULL,
+  `jumlah` varchar(250) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `tanggal` date NOT NULL,
+  `bulan` varchar(20) NOT NULL,
+  `saldo_terakhir` varchar(250) NOT NULL,
+  `keterangan` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_keuangan`
+--
+
+INSERT INTO `tb_keuangan` (`id_keuangan`, `jumlah`, `status`, `tanggal`, `bulan`, `saldo_terakhir`, `keterangan`) VALUES
+(1, '2000000', 'Pemasukan', '2022-01-13', 'January', '2000000', 'Pemasukan dari Kode Permohonan AKNAH_evn2'),
+(2, '1500000', 'Pemasukan', '2022-01-14', 'January', '3500000', 'Pemasukan dari Kode Permohonan AKNAH_Bob2'),
+(3, '1750000', 'Pemasukan', '2022-06-02', 'June', '5250000', 'Pemasukan dari Kode PermohonanAKNAH_sW52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_level_user`
 --
 
 CREATE TABLE `tb_level_user` (
@@ -56,7 +83,7 @@ CREATE TABLE `tb_level_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_level_user`
+-- Dumping data for table `tb_level_user`
 --
 
 INSERT INTO `tb_level_user` (`id_level`, `nama_level`) VALUES
@@ -66,7 +93,7 @@ INSERT INTO `tb_level_user` (`id_level`, `nama_level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_permohonan`
+-- Table structure for table `tb_permohonan`
 --
 
 CREATE TABLE `tb_permohonan` (
@@ -102,25 +129,28 @@ CREATE TABLE `tb_permohonan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_permohonan`
+-- Dumping data for table `tb_permohonan`
 --
 
 INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `jenis_layanan`, `deadline`, `nama_cv`, `bidang_usaha`, `lokasi`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `scan_npwp`, `sertif_asli`, `foto_direktur`, `sk_desa`, `akta_kematian`, `sp_ahli_waris`, `biaya`, `tgl_pelunasan`, `status_permohonan`, `keterangan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`) VALUES
 (5, 'AKTA_YDW1', 3, 1, 'ppat', '2022-05-23', '', '', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', '', '', '', '2022-01-12', '2022'),
 (6, 'AKNAH_evn2', 3, 1, 'ppat', '2022-05-23', '', '', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '', '', '', '', '', '', '2000000', '2022-01-13', 5, '', 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022'),
 (7, 'AKNAH_Bob2', 3, 1, 'ppat', '2022-05-25', '', '', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '', '', '', '', '', '', '1500000', '2022-01-14', 5, '', 'Permohonan selesai, silahkan unduh berkas anda', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022'),
-(8, 'AKNAH_QyR2', 3, 1, 'ppat', '2022-05-24', '', '', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '', '', '', '', '', '', '1700000', '2022-01-14', 3, '', 'Sistem sedang melakukan pengecekan bukti pembayaran.', 'BUKTI_AKNAH_QyR2_jY9.jpg', '', '2022-01-12', '2022'),
+(8, 'AKNAH_QyR2', 3, 1, 'ppat', '2022-05-24', '', '', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '', '', '', '', '', '', '1700000', '2022-01-14', 4, '', 'Sistem sedang melakukan pengecekan bukti pembayaran.', 'BUKTI_AKNAH_QyR2_jY9.jpg', '', '2022-01-12', '2022'),
 (9, 'AKNAH_tcK2', 3, 1, 'ppat', '2022-05-26', '', '', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', '', '', '', '', '', '', NULL, '2022-01-15', 1, '', 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022'),
-(10, 'AKNAH_sW52', 3, 1, 'ppat', '2022-05-31', '', '', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '', '', '', '', '', '', '1750000', '2022-01-20', 2, '', 'Permohonan telah disetujui, segera lakukan pembayaran.', '', '', '2022-01-19', '2022'),
+(10, 'AKNAH_sW52', 3, 1, 'ppat', '2022-05-31', '', '', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '', '', '', '', '', '', '1750000', '2022-06-02', 4, '', 'Permohonan Sedang Diproses', 'BUKTI_AKNAH_sW52.png', '', '2022-01-19', '2022'),
 (12, 'CVPT_3gX1', 3, 2, 'notaris', NULL, 'PT. Sinar Media', '', 'Patrang, Jember', '', '', 'KTP_CVPT_3gX11.pdf', 'KK_CVPT_3gX11.pdf', 'PBB_CVPT_3gX11.pdf', 'NPWP_CVPT_3gX11.pdf', '', 'FTDR_CVPT_3gX11.jpeg', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-25', '2022'),
 (13, 'WARIS_ZWi1', 3, 3, 'notaris', NULL, '', '', '', '', '', 'KTP_WARIS_ZWi1.pdf', 'KK_WARIS_ZWi1.pdf', '', '', '', '', 'SKDESA_WARIS_ZWi1.pdf', 'AKKEM_WARIS_ZWi1.pdf', 'SPAHWA_WARIS_ZWi1.pdf', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-26', '2022'),
 (14, 'SEWA_Vxs1', 3, 4, 'notaris', NULL, '', '', '', '', '', 'KTP_SEWA_Vxs1.pdf', 'KK_SEWA_Vxs1.pdf', 'PBB_SEWA_Vxs1.pdf', '', 'SERTIF_SEWA_Vxs1.pdf', '', '', '', '', NULL, '0000-00-00', 1, 'Mencoba Form Perjanjian Sewa', NULL, '', '', '2022-05-31', '2022'),
-(36, 'RRUPS_CyK1', 1, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_CyK1.pdf', 'KK_RRUPS_CyK1.pdf', '', 'NPWP_RRUPS_CyK1.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'asd', NULL, '', '', '2022-06-02', '2022');
+(36, 'RRUPS_CyK1', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_CyK1.pdf', 'KK_RRUPS_CyK1.pdf', '', 'NPWP_RRUPS_CyK1.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'asd', NULL, '', '', '2022-06-02', '2022'),
+(39, 'RRUPS_TRl2', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_TRl2.pdf', 'KK_RRUPS_TRl2.pdf', '', 'NPWP_RRUPS_TRl2.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan RRUPS', NULL, '', '', '2022-06-02', '2022'),
+(41, 'YYSN_OQw1', 3, 6, 'notaris', NULL, '', '', '', '', '', 'KTP_YYSN_OQw11.pdf', 'KK_YYSN_OQw11.pdf', '', 'NPWP_YYSN_OQw11.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Yayasan', NULL, '', '', '2022-06-02', '2022'),
+(43, 'PERLAIN_k201', 3, 7, 'notaris', NULL, '', '', '', '', '', 'KTP_PERLAIN_k201.pdf', 'KK_PERLAIN_k201.pdf', '', '', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Perjanjian Lain Lain', NULL, '', '', '2022-06-02', '2022');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_status_permohonan`
+-- Table structure for table `tb_status_permohonan`
 --
 
 CREATE TABLE `tb_status_permohonan` (
@@ -129,7 +159,7 @@ CREATE TABLE `tb_status_permohonan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_status_permohonan`
+-- Dumping data for table `tb_status_permohonan`
 --
 
 INSERT INTO `tb_status_permohonan` (`id_status_permohonan`, `nama_status_permohonan`) VALUES
@@ -144,7 +174,7 @@ INSERT INTO `tb_status_permohonan` (`id_status_permohonan`, `nama_status_permoho
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -160,11 +190,11 @@ CREATE TABLE `tb_user` (
   `tgl_lahir` date DEFAULT NULL,
   `foto_profil` varchar(250) DEFAULT NULL,
   `level_user` int(11) NOT NULL,
-  `tgl_daftar` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `tgl_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `password`, `nik`, `no_hp`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tgl_lahir`, `foto_profil`, `level_user`, `tgl_daftar`) VALUES
@@ -178,19 +208,25 @@ INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `password`, `nik`, `no_hp`, `
 --
 
 --
--- Indeks untuk tabel `tb_jenis_permohonan`
+-- Indexes for table `tb_jenis_permohonan`
 --
 ALTER TABLE `tb_jenis_permohonan`
   ADD PRIMARY KEY (`id_jenis_permohonan`);
 
 --
--- Indeks untuk tabel `tb_level_user`
+-- Indexes for table `tb_keuangan`
+--
+ALTER TABLE `tb_keuangan`
+  ADD PRIMARY KEY (`id_keuangan`);
+
+--
+-- Indexes for table `tb_level_user`
 --
 ALTER TABLE `tb_level_user`
   ADD PRIMARY KEY (`id_level`);
 
 --
--- Indeks untuk tabel `tb_permohonan`
+-- Indexes for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
   ADD PRIMARY KEY (`id_permohonan`),
@@ -199,58 +235,64 @@ ALTER TABLE `tb_permohonan`
   ADD KEY `fk_jenis_permohonan` (`jenis_permohonan`);
 
 --
--- Indeks untuk tabel `tb_status_permohonan`
+-- Indexes for table `tb_status_permohonan`
 --
 ALTER TABLE `tb_status_permohonan`
   ADD PRIMARY KEY (`id_status_permohonan`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `fk_level_user` (`level_user`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_jenis_permohonan`
+-- AUTO_INCREMENT for table `tb_jenis_permohonan`
 --
 ALTER TABLE `tb_jenis_permohonan`
-  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_level_user`
+-- AUTO_INCREMENT for table `tb_keuangan`
+--
+ALTER TABLE `tb_keuangan`
+  MODIFY `id_keuangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_level_user`
 --
 ALTER TABLE `tb_level_user`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_permohonan`
+-- AUTO_INCREMENT for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_status_permohonan`
+-- AUTO_INCREMENT for table `tb_status_permohonan`
 --
 ALTER TABLE `tb_status_permohonan`
   MODIFY `id_status_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tb_permohonan`
+-- Constraints for table `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
   ADD CONSTRAINT `fk_jenis_permohonan` FOREIGN KEY (`jenis_permohonan`) REFERENCES `tb_jenis_permohonan` (`id_jenis_permohonan`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -258,7 +300,7 @@ ALTER TABLE `tb_permohonan`
   ADD CONSTRAINT `fk_status_permohonan` FOREIGN KEY (`status_permohonan`) REFERENCES `tb_status_permohonan` (`id_status_permohonan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tb_user`
+-- Constraints for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD CONSTRAINT `fk_level_user` FOREIGN KEY (`level_user`) REFERENCES `tb_level_user` (`id_level`) ON DELETE CASCADE ON UPDATE CASCADE;
