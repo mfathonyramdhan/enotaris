@@ -311,4 +311,14 @@ class M_admin extends CI_Model
     {
         return $this->db->insert('tb_permohonan', $data);
     }
+
+    public function tambah_rrups($data)
+    {
+        return $this->db->insert('tb_permohonan', $data);
+    }
+
+    public function tambah_yayasan($data)
+    {
+        return $this->db->insert('tb_permohonan', $data);
+    }
 }

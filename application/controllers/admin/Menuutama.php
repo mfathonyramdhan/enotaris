@@ -75,6 +75,10 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/datapermohonan_waris', $data);
         } elseif ($jenis == 4) {
             $this->load->view('backend/menuutama/datapermohonan_sewa', $data);
+        } elseif ($jenis == 5) {
+            $this->load->view('backend/menuutama/datapermohonan_rrups', $data);
+        } elseif ($jenis == 6) {
+            $this->load->view('backend/menuutama/datapermohonan_yayasan', $data);
         } elseif ($jenis == 'laporan_notaris') {
             $this->load->view('backend/menuutama/laporan_notaris', $data);
         } elseif ($jenis == 'laporan_ppat') {
@@ -927,6 +931,213 @@ class Menuutama extends CI_Controller
                 'isi_pesan' => 'Permohonan Gagal Diajukan'
             ));
             redirect('admin/Menuutama/formperjanjian_sewa');
+        }
+    }
+
+    public function getKodeRrups()
+    {
+        $hasil = $this->db->query("select id_permohonan, kode_permohonan from tb_permohonan WHERE jenis_permohonan = 5 ORDER BY kode_permohonan DESC LIMIT 1");
+        $acak = random_string('alnum', 3);
+
+        if ($hasil->num_rows() > 0) {
+            $nmr = explode('_', $hasil->row()->kode_permohonan);
+            $slice = substr($nmr[1], 3);
+            $merge = sprintf("%1d", (int)$slice + 1);
+            $data = $acak . $merge;
+        } else {
+            $data = $acak . '1';
+        }
+        echo json_encode($data);
+    }
+
+    public function tambah_rrups()
+    {
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $ktp = $file['file_name'];
+
+        // Upload KK
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $kk = $file['file_name'];
+
+        // Upload NPWP
+        $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'NPWP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_npwp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $npwp = $file['file_name'];
+
+
+        $data = [
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'jenis_permohonan' => 5,
+            'jenis_layanan' => 'notaris',
+            // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
+            'scan_npwp' => $npwp,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'status_permohonan' => 1,
+            'tgl_permohonan' => date('Y-m-d'),
+            'tahun_permohonan' => date('Y')
+        ];
+        if (empty($pesan)) {
+            $result = $this->M_admin->tambah_sewa($data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('admin/Menuutama/formperubahan_rrups');
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diajukan'
+            ));
+            redirect('admin/Menuutama/formperubahan_rrups');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
+            ));
+            redirect('admin/Menuutama/formperubahan_rrups');
+        }
+    }
+
+    public function getKodeYayasan()
+    {
+        $hasil = $this->db->query("select id_permohonan, kode_permohonan from tb_permohonan WHERE jenis_permohonan = 6 ORDER BY kode_permohonan DESC LIMIT 1");
+        $acak = random_string('alnum', 3);
+
+        if ($hasil->num_rows() > 0) {
+            $nmr = explode('_', $hasil->row()->kode_permohonan);
+            $slice = substr($nmr[1], 3);
+            $merge = sprintf("%1d", (int)$slice + 1);
+            $data = $acak . $merge;
+        } else {
+            $data = $acak . '1';
+        }
+        echo json_encode($data);
+    }
+
+    public function tambah_yayasan()
+    {
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $ktp = $file['file_name'];
+
+        // Upload KK
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $kk = $file['file_name'];
+
+        // Upload NPWP
+        $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'NPWP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_npwp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $npwp = $file['file_name'];
+
+        $data = [
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'jenis_permohonan' => 6,
+            'jenis_layanan' => 'notaris',
+            // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
+            'scan_npwp' => $npwp,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'status_permohonan' => 1,
+            'tgl_permohonan' => date('Y-m-d'),
+            'tahun_permohonan' => date('Y')
+        ];
+        if (empty($pesan)) {
+            $result = $this->M_admin->tambah_yayasan($data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('admin/Menuutama/formpendirian_yayasan');
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diajukan'
+            ));
+            redirect('admin/Menuutama/formpendirian_yayasan');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
+            ));
+            redirect('admin/Menuutama/formpendirian_yayasan');
         }
     }
 }
