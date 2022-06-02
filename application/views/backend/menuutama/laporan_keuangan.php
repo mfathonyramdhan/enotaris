@@ -62,18 +62,15 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <center class="mb-3">Menunggu Konfirmasi : <span class="text-danger"><?= $notaris_diajukan ?> Permohonan</span> | Menunggu Pembayaran : <span class="text-warning"><?= $notaris_pembayaran ?> Permohonan</span> | Dalam Pengerjaan : <span class="text-primary"><?= $notaris_diproses ?> Permohonan</span> | Selesai : <span class="text-success"><?= $notaris_selesai ?> Permohonan</span></center>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th style="width: 10px">No</th>
-                                <th>No. Bulanan</th>
-                                <th>Kode Pengajuan Permohonan</th>
-                                <th>Tanggal Pengajuan</th>
-                                <th>Nama Pemohon</th>
-                                <th>Jenis Permohonan</th>
+                                <th>Jumlah</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Tanggal</th>
+                                <th>Saldo Terakhir</th>
+                                <th>Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,27 +79,11 @@
                                 <?php foreach ($page_akta as $b) { ?>
                                     <tr>
                                         <td> <?= $no++ ?> </td>
-                                        <td> <?= '-' ?> </td>
-                                        <td> <?= $b['kode_permohonan'] ?> </td>
-                                        <td> <?= $b['tgl_permohonan'] ?> </td>
-                                        <td> <?= $b['nama'] ?> </td>
-                                        <td> <?= $b['nama_jenis_permohonan'] ?> </td>
-                                        <td>
-                                            <?php if ($b['status_permohonan'] == 1) { ?>
-                                                <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 2 || $b['status_permohonan'] == 5) { ?>
-                                                <span class="badge bg-primary"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 3) { ?>
-                                                <span class="badge bg-info"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 4) { ?>
-                                                <span class="badge bg-success"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 6 || $b['status_permohonan'] == 7) { ?>
-                                                <span class="badge bg-danger"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } ?>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-warning"><a href="#" class="text-light">Edit No. Bulanan</a></span>
-                                        </td>
+                                        <td> <?= "Rp " . number_format($b['jumlah'], 0, ",", ".") ?> </td>
+                                        <td> <?= $b['status'] ?> </td>
+                                        <td> <?= $b['tanggal'] ?> </td>
+                                        <td> <?= "Rp " . number_format($b['saldo_terakhir'], 0, ",", ".") ?> </td>
+                                        <td> <?= $b['keterangan'] ?> </td>
                                     </tr>
                                 <?php } ?>
                             <?php else : ?>

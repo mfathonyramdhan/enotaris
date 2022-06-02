@@ -174,13 +174,13 @@
                     <br>
                     <div class="row justify-content-center">
                         <div class="col-md-3">
-                            <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
+                            <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
                         </div>
                         <?php if ($cek_dokumen['status_permohonan'] == 3 || $cek_dokumen['status_permohonan'] == 4) { ?>
                             <div class="col-md-3">
@@ -269,6 +269,22 @@
                                 <button type="submit" class="btn btn-primary align-self-end">Submit</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if ($cek_dokumen['status_permohonan'] == 5) { ?>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Berkas Hasil</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <center>
+                            <div class="col-md-3">
+                                <a href="<?= base_url('assets/berkas/akta_tanah/' . $cek_dokumen['berkas_hasil']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Download Berkas</a>
+                            </div>
+                        </center>
                     </div>
                 </div>
             <?php } ?>

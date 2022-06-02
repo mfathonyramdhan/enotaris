@@ -185,6 +185,8 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/Menuutama/datapermohonan_rrups_user', $data);
         } elseif ($jenis == 6) {
             $this->load->view('backend/Menuutama/datapermohonan_yayasan_user', $data);
+        } elseif ($jenis == 7) {
+            $this->load->view('backend/Menuutama/datapermohonan_janjiLain_user', $data);
         }
     }
 
@@ -242,7 +244,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Berhasil Melakukan Pembayaran'
             ));
-            redirect('user/Menuutama/statuspermohonan_aktaT');
+            redirect('user/Menuutama/datapermohonan_user/1');
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,

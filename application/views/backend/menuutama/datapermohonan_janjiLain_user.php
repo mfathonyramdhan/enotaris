@@ -62,18 +62,16 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <center class="mb-3">Menunggu Konfirmasi : <span class="text-danger"><?= $notaris_diajukan ?> Permohonan</span> | Menunggu Pembayaran : <span class="text-warning"><?= $notaris_pembayaran ?> Permohonan</span> | Dalam Pengerjaan : <span class="text-primary"><?= $notaris_diproses ?> Permohonan</span> | Selesai : <span class="text-success"><?= $notaris_selesai ?> Permohonan</span></center>
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
+                            <tr align="center">
                                 <th style="width: 10px">No</th>
-                                <th>No. Bulanan</th>
                                 <th>Kode Pengajuan Permohonan</th>
-                                <th>Tanggal Pengajuan</th>
-                                <th>Nama Pemohon</th>
+                                <th>Tanggal Pengajuan Permohonan</th>
                                 <th>Jenis Permohonan</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Estimasi Pengerjaan</th>
+                                <th style="width: 40px">Status</th>
+                                <th style="width: 200px">Keterangan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,26 +80,55 @@
                                 <?php foreach ($page_akta as $b) { ?>
                                     <tr>
                                         <td> <?= $no++ ?> </td>
-                                        <td> <?= '-' ?> </td>
                                         <td> <?= $b['kode_permohonan'] ?> </td>
                                         <td> <?= $b['tgl_permohonan'] ?> </td>
-                                        <td> <?= $b['nama'] ?> </td>
                                         <td> <?= $b['nama_jenis_permohonan'] ?> </td>
+                                        <td align="center">
+                                            <?php
+                                            if ($b['deadline'] == "") {
+                                                echo "-";
+                                            } else {
+                                                $now = strtotime(date('Y-m-d'));
+                                                $dl = strtotime($b['deadline']);
+                                                $interval = abs($dl - $now);
+                                                $years = floor($interval / (365 * 60 * 60 * 24));
+                                                $months = floor(($interval - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                                                $days = floor(($interval - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                                                echo $days . ' Hari Lagi';
+                                            }
+                                            ?>
+                                        </td>
                                         <td>
                                             <?php if ($b['status_permohonan'] == 1) { ?>
                                                 <span class="badge bg-warning"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 2 || $b['status_permohonan'] == 5) { ?>
+                                            <?php } else if ($b['status_permohonan'] == 2) { ?>
                                                 <span class="badge bg-primary"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 3) { ?>
+                                            <?php } else if ($b['status_permohonan'] == 3 || $b['status_permohonan'] == 4) { ?>
                                                 <span class="badge bg-info"><?= $b['nama_status_permohonan'] ?></span>
-                                            <?php } else if ($b['status_permohonan'] == 4) { ?>
+                                            <?php } else if ($b['status_permohonan'] == 5) { ?>
                                                 <span class="badge bg-success"><?= $b['nama_status_permohonan'] ?></span>
                                             <?php } else if ($b['status_permohonan'] == 6 || $b['status_permohonan'] == 7) { ?>
                                                 <span class="badge bg-danger"><?= $b['nama_status_permohonan'] ?></span>
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <span class="badge badge-warning"><a href="#" class="text-light">Edit No. Bulanan</a></span>
+                                            <?php
+                                            if ($b['keterangan'] == '') {
+                                                echo 'Tidak Ada Catatan';
+                                            } else {
+                                                echo $b['keterangan'];
+                                            }
+                                            ?>
+                                            <br>
+                                            <?php if ($b['status_permohonan'] == 2) { ?>
+                                                <a href="<?= base_url('user/Menuutama/bayar/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Lakukan Pembayaran</span></a>
+                                            <?php } ?>
+                                            <?php if ($b['status_permohonan'] == 6) { ?>
+                                                <a href="<?= base_url('user/Menuutama/edit_dokumen/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Data</span></a>
+                                            <?php } ?>
+                                            <?php if ($b['status_permohonan'] == 7) { ?>
+                                                <a href="<?= base_url('user/Menuutama/edit_pembayaran/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Pembayaran</span></a>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                 <?php } ?>

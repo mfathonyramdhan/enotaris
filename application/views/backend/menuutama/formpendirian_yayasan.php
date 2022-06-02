@@ -107,7 +107,6 @@
 
 
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
-                                <input type="hidden" name="id_user" id="id_user">
 
 
                             </div>

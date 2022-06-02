@@ -19,28 +19,10 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan)) {
-        if ($pesan['status_pesan'] == true && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "success",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Gagal",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "error",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        }
+    if (!empty($pesan) && $pesan['status_pesan'] == true) {
+        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
+    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
+        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
     }
     ?>
     <!-- Main content -->
@@ -62,18 +44,17 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <center class="mb-3">Menunggu Konfirmasi : <span class="text-danger"><?= $notaris_diajukan ?> Permohonan</span> | Menunggu Pembayaran : <span class="text-warning"><?= $notaris_pembayaran ?> Permohonan</span> | Dalam Pengerjaan : <span class="text-primary"><?= $notaris_diproses ?> Permohonan</span> | Selesai : <span class="text-success"><?= $notaris_selesai ?> Permohonan</span></center>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th style="width: 10px">No</th>
-                                <th>No. Bulanan</th>
                                 <th>Kode Pengajuan Permohonan</th>
-                                <th>Tanggal Pengajuan</th>
                                 <th>Nama Pemohon</th>
+                                <th>Tanggal Pengajuan</th>
                                 <th>Jenis Permohonan</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th style="width: 40px">Status</th>
+                                <th style="width: 200px">Keterangan</th>
+                                <th style="width: 200px">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,10 +63,9 @@
                                 <?php foreach ($page_akta as $b) { ?>
                                     <tr>
                                         <td> <?= $no++ ?> </td>
-                                        <td> <?= '-' ?> </td>
                                         <td> <?= $b['kode_permohonan'] ?> </td>
-                                        <td> <?= $b['tgl_permohonan'] ?> </td>
                                         <td> <?= $b['nama'] ?> </td>
+                                        <td> <?= $b['tgl_permohonan'] ?> </td>
                                         <td> <?= $b['nama_jenis_permohonan'] ?> </td>
                                         <td>
                                             <?php if ($b['status_permohonan'] == 1) { ?>
@@ -101,8 +81,15 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <span class="badge badge-warning"><a href="#" class="text-light">Edit No. Bulanan</a></span>
+                                            <?php
+                                            if ($b['keterangan'] == '') {
+                                                echo 'Tidak Ada Catatan';
+                                            } else {
+                                                echo $b['keterangan'];
+                                            }
+                                            ?>
                                         </td>
+                                        <td> <a href="<?= base_url('admin/Menuutama/cek_dokumen_aktaT/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a> <a href="#"> <span class="badge bg-warning">Pembayaran</span></a></td>
                                     </tr>
                                 <?php } ?>
                             <?php else : ?>

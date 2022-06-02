@@ -101,7 +101,7 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <span class="badge badge-warning"><a href="#" class="text-light">Edit No. Bulanan</a></span>
+                                            <a href="<?= base_url('admin/Menuutama/cek_dokumen_aktaT/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a>
                                         </td>
                                     </tr>
                                 <?php } ?>

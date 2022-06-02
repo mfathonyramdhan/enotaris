@@ -79,10 +79,14 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/datapermohonan_rrups', $data);
         } elseif ($jenis == 6) {
             $this->load->view('backend/menuutama/datapermohonan_yayasan', $data);
+        } elseif ($jenis == 7) {
+            $this->load->view('backend/menuutama/datapermohonan_janjiLain', $data);
         } elseif ($jenis == 'laporan_notaris') {
             $this->load->view('backend/menuutama/laporan_notaris', $data);
         } elseif ($jenis == 'laporan_ppat') {
             $this->load->view('backend/menuutama/laporan_ppat', $data);
+        } elseif ($jenis == 'arsip') {
+            $this->load->view('backend/menuutama/arsip', $data);
         }
     }
 
@@ -311,7 +315,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_akta_tanah($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -385,6 +389,10 @@ class Menuutama extends CI_Controller
 
     public function proses_aktaT()
     {
+        $kode_permohonan = htmlspecialchars($this->input->post('kode_permohonan', true));
+        $permohonan = $this->M_admin->cek_dokumen($kode_permohonan);
+        $saldo = $this->M_admin->saldo_terakhir();
+
         $pesan = array();
         $data = [
             'tgl_pelunasan' => date('Y-m-d'),
@@ -393,11 +401,24 @@ class Menuutama extends CI_Controller
         ];
 
         $where = array(
-            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+            'kode_permohonan' => $kode_permohonan
         );
 
         if (empty($pesan)) {
             $result = $this->M_admin->update_aktaT($where, $data);
+
+            $saldo_terakhir = $saldo['saldo_terakhir'] + $permohonan['biaya'];
+
+            $array = [
+                'jumlah' => $permohonan['biaya'],
+                'status' => 'Pemasukan',
+                'tanggal' => date('Y-m-d'),
+                'bulan' => date('F'),
+                'saldo_terakhir' => $saldo_terakhir,
+                'keterangan' => 'Pemasukan dari Kode Permohonan' . $kode_permohonan
+            ];
+
+            $this->M_admin->tambah_keuangan($array);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -410,7 +431,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Diproses'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/1');
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -658,7 +679,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_cv($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -792,7 +813,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_waris($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -911,7 +932,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_sewa($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -1015,7 +1036,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_sewa($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -1117,8 +1138,9 @@ class Menuutama extends CI_Controller
             'tgl_permohonan' => date('Y-m-d'),
             'tahun_permohonan' => date('Y')
         ];
+
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_yayasan($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -1139,5 +1161,142 @@ class Menuutama extends CI_Controller
             ));
             redirect('admin/Menuutama/formpendirian_yayasan');
         }
+    }
+
+    public function getKodePerlain()
+    {
+        $hasil = $this->db->query("select id_permohonan, kode_permohonan from tb_permohonan WHERE jenis_permohonan = 7 ORDER BY kode_permohonan DESC LIMIT 1");
+        $acak = random_string('alnum', 3);
+
+        if ($hasil->num_rows() > 0) {
+            $nmr = explode('_', $hasil->row()->kode_permohonan);
+            $slice = substr($nmr[1], 3);
+            $merge = sprintf("%1d", (int)$slice + 1);
+            $data = $acak . $merge;
+        } else {
+            $data = $acak . '1';
+        }
+        echo json_encode($data);
+    }
+
+    public function tambah_perlain()
+    {
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $ktp = $file['file_name'];
+
+        // Upload KK
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+        $file = $this->upload->data();
+        $kk = $file['file_name'];
+
+        $data = [
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'jenis_permohonan' => 7,
+            'jenis_layanan' => 'notaris',
+            // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'status_permohonan' => 1,
+            'tgl_permohonan' => date('Y-m-d'),
+            'tahun_permohonan' => date('Y')
+        ];
+
+        if (empty($pesan)) {
+            $result = $this->M_admin->tambah_permohonan($data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('admin/Menuutama/formperjanjian_lainlain');
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diajukan'
+            ));
+            redirect('admin/Menuutama/formperjanjian_lainlain');
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
+            ));
+            redirect('admin/Menuutama/formperjanjian_lainlain');
+        }
+    }
+
+    public function laporan_keuangan($start = 0)
+    {
+        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
+        $data['page_title'] = 'Laporan Keuangan';
+
+        $q = isset($_GET['search']) ? $_GET['search'] : '';
+        $data['daftar_akta'] = $this->M_admin->tampil_laporan_keuangan();
+
+        // $this->load->database();
+        $jumlah_data = $this->M_admin->jumlah_laporan_keuangan($q);
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url('admin/Menuutama/datapermohonan_admin/');
+        $config['total_rows'] = $jumlah_data;
+        $config['per_page'] = 20;
+        $config['full_tag_open']   = '<ul class="pagination justify-content-end">';
+        $config['full_tag_close']  = '</ul>';
+
+        $config['first_link']      = 'First';
+        $config['first_tag_open']  = '<li class="page-link tabindex="-1" aria-disabled="true"">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_link']       = 'Last';
+        $config['last_tag_open']   = '<li class="page-link">';
+        $config['last_tag_close']  = '</li>';
+
+        $config['next_tag_open']   = '<li class="page-link">';
+        $config['next_tag_close']  = '</li>';
+
+        $config['prev_tag_open']   = '<li class="page-link">';
+        $config['prev_tag_close']  = '</li>';
+
+        $config['cur_tag_open']    = '<li class="active page-item"><a class="page-link" href="#">';
+        $config['cur_tag_close']   = '</a></li>';
+
+        $config['num_tag_open']    = '<li class="page-link">';
+        $config['num_tag_close']   = '</li>';
+        $this->pagination->initialize($config);
+        $data['page_akta'] = $this->M_admin->data_laporan_keuangan($config['per_page'], $start, $q);
+        $data['start'] = $start;
+        $data['keyword'] = $q;
+        $data['Pagination'] = $this->pagination->create_links();
+
+        $this->load->view('backend/template/meta', $data);
+        $this->load->view('backend/template/navbar', $data);
+        $this->load->view('backend/template/sidebar', $data);
+        $this->load->view('backend/menuutama/laporan_keuangan', $data);
     }
 }
