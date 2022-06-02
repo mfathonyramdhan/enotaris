@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0"><?php echo $page_title ?></h1>
+                    <h1 class="m-0">Arsip - Permohonan Selesai</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active"><?php echo $page_title ?></li>
+                        <li class="breadcrumb-item active">Arsip - Permohonan Selesai</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -58,16 +58,15 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="card-title"><?php echo $page_title ?></h3>
+                    <h3 class="card-title">Arsip - Permohonan Selesai</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <center class="mb-3">Menunggu Konfirmasi : <span class="text-danger"><?= $notaris_diajukan ?> Permohonan</span> | Menunggu Pembayaran : <span class="text-warning"><?= $notaris_pembayaran ?> Permohonan</span> | Dalam Pengerjaan : <span class="text-primary"><?= $notaris_diproses ?> Permohonan</span> | Selesai : <span class="text-success"><?= $notaris_selesai ?> Permohonan</span></center>
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th style="width: 10px">No</th>
-                                <th>No. Bulanan</th>
                                 <th>Kode Pengajuan Permohonan</th>
                                 <th>Tanggal Pengajuan</th>
                                 <th>Nama Pemohon</th>
@@ -82,7 +81,6 @@
                                 <?php foreach ($page_akta as $b) { ?>
                                     <tr>
                                         <td> <?= $no++ ?> </td>
-                                        <td> <?= '-' ?> </td>
                                         <td> <?= $b['kode_permohonan'] ?> </td>
                                         <td> <?= $b['tgl_permohonan'] ?> </td>
                                         <td> <?= $b['nama'] ?> </td>

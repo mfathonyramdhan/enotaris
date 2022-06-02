@@ -13,12 +13,12 @@
         <img src="<?php echo base_url('assets/img/foto_profil/') . $user['foto_profil'] ?>" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block"><?= $user['nama'] ?></a>
+        <a href="<?php echo site_url('admin/ManajemenAkun/profilsaya') ?>" class="d-block"><?= $user['nama'] ?></a>
       </div>
     </div>
 
     <!-- SidebarSearch Form -->
-    <div class="form-inline">
+    <!-- <div class="form-inline">
       <div class="input-group" data-widget="sidebar-search">
         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -27,7 +27,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -259,7 +259,7 @@
         <!-- NOTARIS05 - Akta Warisan -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-columns"></i>
             <p>
               Waris
               <i class="fas fa-angle-left right"></i>
@@ -303,7 +303,7 @@
         <!-- NOTARIS06 - Perjanjian kerjasama, utang piutang, kontrak kerja, dan lain-lain -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-book"></i>
+            <i class="nav-icon fas fa-columns"></i>
             <p>
               Perjanjian Lain - lain
               <i class="fas fa-angle-left right"></i>
@@ -390,7 +390,7 @@
         <!-- PPAT02 - Jual beli tanah  -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Jual Beli Tanah
               <i class="fas fa-angle-left right"></i>
@@ -443,7 +443,7 @@
         <!-- PPAT03 - Tukar menukar tanah  -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Tukar Menukar Tanah
               <i class="fas fa-angle-left right"></i>
@@ -496,7 +496,7 @@
         <!-- PPAT04 - Pemberian Hak Pakai atas Tanah Hak Milik serta Hak Guna atas Bangunan   -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Akta Tanah
               <i class="fas fa-angle-left right"></i>
@@ -549,7 +549,7 @@
         <!-- PPAT05 - Pemberian kuasa atas pembebanan Hak Tanggungan   -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Pemberian Kuasa
               <i class="fas fa-angle-left right"></i>
@@ -602,7 +602,7 @@
         <!-- PPAT06 - Pembagian atas hak bersama terhadap tanah   -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Pembagian Hak Tanah
               <i class="fas fa-angle-left right"></i>
@@ -655,7 +655,7 @@
         <!-- PPAT07 - Pembuatan APHT (Akta Pemberian Hak Tanggungan)   -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tree"></i>
+            <i class="nav-icon fas fa-book"></i>
             <p>
               Pembuatan APHT
               <i class="fas fa-angle-left right"></i>
