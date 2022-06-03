@@ -460,7 +460,7 @@ class Menuutama extends CI_Controller
         $aktaT = $file['file_name'];
 
         $data = [
-            'catatan' => 'Permohonan selesai, silahkan unduh berkas anda',
+            'catatan' => 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami. ',
             'berkas_hasil' => $aktaT,
             'status_permohonan' => 5
         ];

@@ -42,7 +42,6 @@
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Nama</label>
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                <input type="hidden" name="id_user" id="id_user">
                             </div>
                         </div>
                         <div class="row">
