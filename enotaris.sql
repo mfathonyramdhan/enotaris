@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jun 2022 pada 10.17
+-- Waktu pembuatan: 05 Jun 2022 pada 09.03
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -43,7 +43,8 @@ INSERT INTO `tb_jenis_permohonan` (`id_jenis_permohonan`, `nama_jenis_permohonan
 (4, 'Sewa Menyewa'),
 (5, 'Perubahan RRUPS'),
 (6, 'Pendirian Yayasan'),
-(7, 'Perjanjian Lain-Lain');
+(7, 'Perjanjian Lain-Lain'),
+(9, 'Jual Beli Tanah');
 
 -- --------------------------------------------------------
 
@@ -124,35 +125,45 @@ CREATE TABLE `tb_permohonan` (
   `bukti_pembayaran` varchar(250) NOT NULL,
   `berkas_hasil` varchar(250) NOT NULL,
   `tgl_permohonan` date NOT NULL,
-  `tahun_permohonan` varchar(50) NOT NULL
+  `tahun_permohonan` varchar(50) NOT NULL,
+  `jbtnh_namapenjual` varchar(100) NOT NULL,
+  `jbtnh_namapembeli` varchar(100) NOT NULL,
+  `jbtnh_nohppenjual` varchar(15) NOT NULL,
+  `jbtnh_nohppembeli` varchar(15) NOT NULL,
+  `scan_snikah` varchar(100) NOT NULL,
+  `scan_bpjs` varchar(100) NOT NULL,
+  `sertif_tanah` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tb_permohonan`
 --
 
-INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `jenis_layanan`, `deadline`, `nama_cv`, `bidang_usaha`, `lokasi`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `scan_npwp`, `sertif_asli`, `foto_direktur`, `sk_desa`, `akta_kematian`, `sp_ahli_waris`, `biaya`, `tgl_pelunasan`, `status_permohonan`, `keterangan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`) VALUES
-(5, 'AKTA_YDW1', 3, 1, 'ppat', '2022-05-23', '', '', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', '', '', '', '2022-01-12', '2022'),
-(6, 'AKNAH_evn2', 3, 1, 'ppat', '2022-05-23', '', '', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '', '', '', '', '', '', '2000000', '2022-01-13', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022'),
-(7, 'AKNAH_Bob2', 3, 1, 'ppat', '2022-05-25', '', '', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '', '', '', '', '', '', '1500000', '2022-01-14', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022'),
-(8, 'AKNAH_QyR2', 3, 1, 'ppat', '2022-05-24', '', '', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '', '', '', '', '', '', '1700000', '2022-01-14', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_QyR2_jY9.jpg', 'AktaTanah_AKNAH_QyR2.pdf', '2022-01-12', '2022'),
-(9, 'AKNAH_tcK2', 3, 1, 'ppat', '2022-05-26', '', '', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', '', '', '', '', '', '', NULL, '2022-01-15', 1, '', 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022'),
-(10, 'AKNAH_sW52', 3, 1, 'ppat', '2022-05-31', '', '', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '', '', '', '', '', '', '1750000', '2022-06-02', 4, '', 'Permohonan Sedang Diproses', 'BUKTI_AKNAH_sW52.png', '', '2022-01-19', '2022'),
-(12, 'CVPT_3gX1', 3, 2, 'notaris', NULL, 'PT. Sinar Media', '', 'Patrang, Jember', '', '', 'KTP_CVPT_3gX11.pdf', 'KK_CVPT_3gX11.pdf', 'PBB_CVPT_3gX11.pdf', 'NPWP_CVPT_3gX11.pdf', '', 'FTDR_CVPT_3gX11.jpeg', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-25', '2022'),
-(13, 'WARIS_ZWi1', 3, 3, 'notaris', NULL, '', '', '', '', '', 'KTP_WARIS_ZWi1.pdf', 'KK_WARIS_ZWi1.pdf', '', '', '', '', 'SKDESA_WARIS_ZWi1.pdf', 'AKKEM_WARIS_ZWi1.pdf', 'SPAHWA_WARIS_ZWi1.pdf', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-26', '2022'),
-(14, 'SEWA_Vxs1', 3, 4, 'notaris', NULL, '', '', '', '', '', 'KTP_SEWA_Vxs1.pdf', 'KK_SEWA_Vxs1.pdf', 'PBB_SEWA_Vxs1.pdf', '', 'SERTIF_SEWA_Vxs1.pdf', '', '', '', '', NULL, '0000-00-00', 1, 'Mencoba Form Perjanjian Sewa', NULL, '', '', '2022-05-31', '2022'),
-(36, 'RRUPS_CyK1', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_CyK1.pdf', 'KK_RRUPS_CyK1.pdf', '', 'NPWP_RRUPS_CyK1.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'asd', NULL, '', '', '2022-06-02', '2022'),
-(39, 'RRUPS_TRl2', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_TRl2.pdf', 'KK_RRUPS_TRl2.pdf', '', 'NPWP_RRUPS_TRl2.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan RRUPS', NULL, '', '', '2022-06-02', '2022'),
-(41, 'YYSN_OQw1', 3, 6, 'notaris', NULL, '', '', '', '', '', 'KTP_YYSN_OQw11.pdf', 'KK_YYSN_OQw11.pdf', '', 'NPWP_YYSN_OQw11.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Yayasan', NULL, '', '', '2022-06-02', '2022'),
-(43, 'PERLAIN_k201', 3, 7, 'notaris', NULL, '', '', '', '', '', 'KTP_PERLAIN_k201.pdf', 'KK_PERLAIN_k201.pdf', '', '', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Perjanjian Lain Lain', NULL, '', '', '2022-06-02', '2022'),
-(48, 'SEWA_GFA2', 3, 4, 'notaris', NULL, '', '', '', '', '', 'KTP_SEWA_GFA2.pdf', 'KK_SEWA_GFA2.pdf', 'PBB_SEWA_GFA2.pdf', '', 'SERTIF_SEWA_GFA2.pdf', '', '', '', '', NULL, '0000-00-00', 1, 'ok', NULL, '', '', '2022-06-02', '2022'),
-(54, 'AKNAH_mx42', 9, 1, '', NULL, '', '', 'Lumajang', '234', 'Milik Orang Tua', 'KTP_AKNAH_mx42.pdf', 'KK_AKNAH_mx42.pdf', 'PBB_AKNAH_mx42.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(55, 'AKNAH_qEe2', 9, 1, '', NULL, '', '', 'Lumajang', '235', 'Milik Orang Tua', 'KTP_AKNAH_qEe2.pdf', 'KK_AKNAH_qEe2.pdf', 'PBB_AKNAH_qEe2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(56, 'AKNAH_gxK2', 9, 1, '', NULL, '', '', 'Lumajang', '235', 'Milik Orang Tua', 'KTP_AKNAH_gxK2.pdf', 'KK_AKNAH_gxK2.pdf', 'PBB_AKNAH_gxK2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(57, 'AKNAH_1fo2', 9, 1, '', NULL, '', '', 'Lumajang', '123', 'Milik Orang Tua', 'KTP_AKNAH_1fo2.pdf', 'KK_AKNAH_1fo2.pdf', 'PBB_AKNAH_1fo2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(58, 'AKNAH_qh62', 9, 1, '', NULL, '', '', 'Lumajang', '123', 'Milik Orang Tua', 'KTP_AKNAH_qh62.pdf', 'KK_AKNAH_qh62.pdf', 'PBB_AKNAH_qh62.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(59, 'AKNAH_W1T2', 9, 1, '', NULL, '', '', 'Jember', '1234', 'Milik Pemerintah', 'KTP_AKNAH_W1T2.pdf', 'KK_AKNAH_W1T2.pdf', 'PBB_AKNAH_W1T2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022'),
-(61, 'AKNAH_9l32', 3, 1, 'ppat', NULL, '', '', 'Nugini', '200', 'Milik Orang Tua', 'KTP_AKNAH_9l32.pdf', 'KK_AKNAH_9l32.pdf', 'PBB_AKNAH_9l32.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-03', '2022');
+INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `jenis_layanan`, `deadline`, `nama_cv`, `bidang_usaha`, `lokasi`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `scan_npwp`, `sertif_asli`, `foto_direktur`, `sk_desa`, `akta_kematian`, `sp_ahli_waris`, `biaya`, `tgl_pelunasan`, `status_permohonan`, `keterangan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`, `jbtnh_namapenjual`, `jbtnh_namapembeli`, `jbtnh_nohppenjual`, `jbtnh_nohppembeli`, `scan_snikah`, `scan_bpjs`, `sertif_tanah`) VALUES
+(5, 'AKTA_YDW1', 3, 1, 'ppat', '2022-05-23', '', '', 'Jember', '200', 'Milik Sendiri', 'KTP_YDW1', 'KK_YDW1', 'PBB_YDW1', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', '', '', '', '2022-01-12', '2022', '', '', '', '', '', '', ''),
+(6, 'AKNAH_evn2', 3, 1, 'ppat', '2022-05-23', '', '', '', '200', 'Milik Sendiri', 'KTP_AKNAH_evn2.pdf', 'KK_AKNAH_evn2.pdf', 'PBB_AKNAH_evn2.pdf', '', '', '', '', '', '', '2000000', '2022-01-13', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_evn2.jpg', 'AktaTanah_AKNAH_evn2.jpg', '2022-01-12', '2022', '', '', '', '', '', '', ''),
+(7, 'AKNAH_Bob2', 3, 1, 'ppat', '2022-05-25', '', '', 'Lumajang', '150', 'Milik Sendiri', 'KTP_AKNAH_Bob2.pdf', 'KK_AKNAH_Bob2.pdf', 'PBB_AKNAH_Bob2.pdf', '', '', '', '', '', '', '1500000', '2022-01-14', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_Bob2.jpg', 'AktaTanah_AKNAH_Bob2.jpg', '2022-01-12', '2022', '', '', '', '', '', '', ''),
+(8, 'AKNAH_QyR2', 3, 1, 'ppat', '2022-05-24', '', '', 'lumajang', '100', 'Milik Orang Tua', 'KTP_AKNAH_QyR2.pdf', 'KK_AKNAH_QyR2.pdf', 'PBB_AKNAH_QyR2.pdf', '', '', '', '', '', '', '1700000', '2022-01-14', 5, '', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami.', 'BUKTI_AKNAH_QyR2_jY9.jpg', 'AktaTanah_AKNAH_QyR2.pdf', '2022-01-12', '2022', '', '', '', '', '', '', ''),
+(9, 'AKNAH_tcK2', 3, 1, 'ppat', '2022-05-26', '', '', 'Bondowoso', '130', 'Milik Sendiri', 'KTP_AKNAH_tcK2_XuV.pdf', 'KK_AKNAH_tcK2_XuV.pdf', 'PBB_AKNAH_tcK2_XuV.pdf', '', '', '', '', '', '', NULL, '2022-01-15', 1, '', 'Sistem sedang melakukan pengecekan dokumen.', '', '', '2022-01-12', '2022', '', '', '', '', '', '', ''),
+(10, 'AKNAH_sW52', 3, 1, 'ppat', '2022-05-31', '', '', 'Surabaya', '170', 'Milik Sendiri', 'KTP_AKNAH_sW52.pdf', 'KK_AKNAH_sW52.pdf', 'PBB_AKNAH_sW52.pdf', '', '', '', '', '', '', '1750000', '2022-06-02', 4, '', 'Permohonan Sedang Diproses', 'BUKTI_AKNAH_sW52.png', '', '2022-01-19', '2022', '', '', '', '', '', '', ''),
+(12, 'CVPT_3gX1', 3, 2, 'notaris', NULL, 'PT. Sinar Media', '', 'Patrang, Jember', '', '', 'KTP_CVPT_3gX11.pdf', 'KK_CVPT_3gX11.pdf', 'PBB_CVPT_3gX11.pdf', 'NPWP_CVPT_3gX11.pdf', '', 'FTDR_CVPT_3gX11.jpeg', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-25', '2022', '', '', '', '', '', '', ''),
+(13, 'WARIS_ZWi1', 3, 3, 'notaris', NULL, '', '', '', '', '', 'KTP_WARIS_ZWi1.pdf', 'KK_WARIS_ZWi1.pdf', '', '', '', '', 'SKDESA_WARIS_ZWi1.pdf', 'AKKEM_WARIS_ZWi1.pdf', 'SPAHWA_WARIS_ZWi1.pdf', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-05-26', '2022', '', '', '', '', '', '', ''),
+(14, 'SEWA_Vxs1', 3, 4, 'notaris', NULL, '', '', '', '', '', 'KTP_SEWA_Vxs1.pdf', 'KK_SEWA_Vxs1.pdf', 'PBB_SEWA_Vxs1.pdf', '', 'SERTIF_SEWA_Vxs1.pdf', '', '', '', '', NULL, '0000-00-00', 1, 'Mencoba Form Perjanjian Sewa', NULL, '', '', '2022-05-31', '2022', '', '', '', '', '', '', ''),
+(36, 'RRUPS_CyK1', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_CyK1.pdf', 'KK_RRUPS_CyK1.pdf', '', 'NPWP_RRUPS_CyK1.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'asd', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(39, 'RRUPS_TRl2', 3, 5, 'notaris', NULL, '', '', '', '', '', 'KTP_RRUPS_TRl2.pdf', 'KK_RRUPS_TRl2.pdf', '', 'NPWP_RRUPS_TRl2.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan RRUPS', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(41, 'YYSN_OQw1', 3, 6, 'notaris', NULL, '', '', '', '', '', 'KTP_YYSN_OQw11.pdf', 'KK_YYSN_OQw11.pdf', '', 'NPWP_YYSN_OQw11.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Yayasan', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(43, 'PERLAIN_k201', 3, 7, 'notaris', NULL, '', '', '', '', '', 'KTP_PERLAIN_k201.pdf', 'KK_PERLAIN_k201.pdf', '', '', '', '', '', '', '', NULL, '0000-00-00', 1, 'Pengajuan Perjanjian Lain Lain', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(48, 'SEWA_GFA2', 3, 4, 'notaris', NULL, '', '', '', '', '', 'KTP_SEWA_GFA2.pdf', 'KK_SEWA_GFA2.pdf', 'PBB_SEWA_GFA2.pdf', '', 'SERTIF_SEWA_GFA2.pdf', '', '', '', '', NULL, '0000-00-00', 1, 'ok', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(54, 'AKNAH_mx42', 9, 1, '', NULL, '', '', 'Lumajang', '234', 'Milik Orang Tua', 'KTP_AKNAH_mx42.pdf', 'KK_AKNAH_mx42.pdf', 'PBB_AKNAH_mx42.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(55, 'AKNAH_qEe2', 9, 1, '', NULL, '', '', 'Lumajang', '235', 'Milik Orang Tua', 'KTP_AKNAH_qEe2.pdf', 'KK_AKNAH_qEe2.pdf', 'PBB_AKNAH_qEe2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(56, 'AKNAH_gxK2', 9, 1, '', NULL, '', '', 'Lumajang', '235', 'Milik Orang Tua', 'KTP_AKNAH_gxK2.pdf', 'KK_AKNAH_gxK2.pdf', 'PBB_AKNAH_gxK2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(57, 'AKNAH_1fo2', 9, 1, '', NULL, '', '', 'Lumajang', '123', 'Milik Orang Tua', 'KTP_AKNAH_1fo2.pdf', 'KK_AKNAH_1fo2.pdf', 'PBB_AKNAH_1fo2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(58, 'AKNAH_qh62', 9, 1, '', NULL, '', '', 'Lumajang', '123', 'Milik Orang Tua', 'KTP_AKNAH_qh62.pdf', 'KK_AKNAH_qh62.pdf', 'PBB_AKNAH_qh62.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(59, 'AKNAH_W1T2', 9, 1, '', NULL, '', '', 'Jember', '1234', 'Milik Pemerintah', 'KTP_AKNAH_W1T2.pdf', 'KK_AKNAH_W1T2.pdf', 'PBB_AKNAH_W1T2.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-02', '2022', '', '', '', '', '', '', ''),
+(61, 'AKNAH_9l32', 3, 1, 'ppat', NULL, '', '', 'Nugini', '200', 'Milik Orang Tua', 'KTP_AKNAH_9l32.pdf', 'KK_AKNAH_9l32.pdf', 'PBB_AKNAH_9l32.pdf', '', '', '', '', '', '', NULL, '0000-00-00', 1, '', NULL, '', '', '2022-06-03', '2022', '', '', '', '', '', '', ''),
+(62, 'PERLAIN_MDW2', 3, 7, 'notaris', NULL, '', '', '', '', '', 'KTP_PERLAIN_MDW2.pdf', 'KK_PERLAIN_MDW2.pdf', '', '', '', '', '', '', '', NULL, '0000-00-00', 1, '123', NULL, '', '', '2022-06-05', '2022', '', '', '', '', '', '', ''),
+(63, '', 3, 9, 'ppat', NULL, '', '', '', '', '', 'KTP_16.pdf', 'KK_16.pdf', 'PBB_6.pdf', 'NPWP_16.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, 'yayasan test', NULL, '', '', '2022-06-05', '2022', 'Fathony', 'Arman', '123123123', '123123123', 'SNKH_3.pdf', 'BPJS_6.pdf', 'SRTF_.pdf'),
+(64, '', 3, 9, 'ppat', NULL, '', '', '', '', '', 'KTP_17.pdf', 'KK_17.pdf', 'PBB_7.pdf', 'NPWP_17.pdf', '', '', '', '', '', NULL, '0000-00-00', 1, '123', NULL, '', '', '2022-06-05', '2022', 'Fathony', 'Arman', '123', '123', 'SNKH_4.pdf', 'BPJS_7.pdf', 'SRTF_1.pdf');
 
 -- --------------------------------------------------------
 
@@ -262,7 +273,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_jenis_permohonan`
 --
 ALTER TABLE `tb_jenis_permohonan`
-  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_jenis_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_keuangan`
@@ -280,7 +291,7 @@ ALTER TABLE `tb_level_user`
 -- AUTO_INCREMENT untuk tabel `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_status_permohonan`
