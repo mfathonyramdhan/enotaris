@@ -147,7 +147,7 @@
             success: function(data) {
 
                 var html = JSON.parse(data);
-                var kode = 'YYSN_' + html;
+                var kode = 'YYSAN_' + html;
                 var nodaf = kode;
                 $('#kode_permohonan').val(nodaf);
             }

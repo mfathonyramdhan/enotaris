@@ -358,19 +358,10 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_pemberi') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/formhibah') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
-                  Formulir Permohonan (Pemberi)
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_penerima') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan (Penerima)
+                  Formulir Permohonan
 
                 </p>
               </a>
