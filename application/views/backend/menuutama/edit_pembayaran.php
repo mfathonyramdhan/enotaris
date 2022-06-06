@@ -19,10 +19,28 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan) && $pesan['status_pesan'] == true) {
-        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
-    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
-        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+    if (!empty($pesan)) {
+        if ($pesan['status_pesan'] == true && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "success",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Gagal",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "error",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        }
     }
     ?>
     <!-- Main content -->
@@ -61,6 +79,7 @@
                                 <label for="exampleInputFile">Upload Bukti Pembayaran</label>
                                 <div class="custom-file">
                                     <input type="hidden" name="kode_permohonan" value="<?= $pembayaran['kode_permohonan'] ?>">
+                                    <input type="hidden" name="jenis_permohonan" value="<?= $pembayaran['jenis_permohonan'] ?>">
                                     <input type="hidden" name="bukti_pembayaran1" value=<?= $pembayaran['bukti_pembayaran'] ?>>
                                     <input type="file" class="form-control" id="exampleInputFile" name="bukti_pembayaran">
                                 </div>

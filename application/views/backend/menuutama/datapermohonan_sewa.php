@@ -19,10 +19,28 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan) && $pesan['status_pesan'] == true) {
-        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
-    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
-        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+    if (!empty($pesan)) {
+        if ($pesan['status_pesan'] == true && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "success",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Gagal",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "error",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        }
     }
     ?>
     <!-- Main content -->
@@ -89,7 +107,7 @@
                                             }
                                             ?>
                                         </td>
-                                        <td> <a href="<?= base_url('admin/Menuutama/cek_dokumen_aktaT/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a> <a href="#"> <span class="badge bg-warning">Pembayaran</span></a></td>
+                                        <td> <a href="<?= base_url('admin/Menuutama/cek_dokumen/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a> <a href="#"> <span class="badge bg-warning">Pembayaran</span></a></td>
                                     </tr>
                                 <?php } ?>
                             <?php else : ?>
