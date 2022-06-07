@@ -107,7 +107,7 @@
                                             }
                                             ?>
                                         </td>
-                                        <td> <a href="<?= base_url('admin/Menuutama/cek_dokumen_aktaT/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a> <a href="#"> <span class="badge bg-warning">Pembayaran</span></a></td>
+                                        <td> <a href="<?= base_url('admin/Menuutama/cek_dokumen/') . $b['kode_permohonan']; ?>"><span class="badge bg-warning" style="margin-right:10px;">Cek Dokumen</span></a> </td>
                                     </tr>
                                 <?php } ?>
                             <?php else : ?>

@@ -81,8 +81,18 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/datapermohonan_yayasan', $data);
         } elseif ($jenis == 7) {
             $this->load->view('backend/menuutama/datapermohonan_janjiLain', $data);
+        } elseif ($jenis == 8) {
+            $this->load->view('backend/menuutama/datapermohonan_hibah', $data);
         } elseif ($jenis == 9) {
             $this->load->view('backend/menuutama/datapermohonan_jualbelitanah', $data);
+        } elseif ($jenis == 10) {
+            $this->load->view('backend/menuutama/datapermohonan_tukartanah', $data);
+        } elseif ($jenis == 11) {
+            $this->load->view('backend/menuutama/datapermohonan_kuasa', $data);
+        } elseif ($jenis == 12) {
+            $this->load->view('backend/menuutama/datapermohonan_bagihak', $data);
+        } elseif ($jenis == 13) {
+            $this->load->view('backend/menuutama/datapermohonan_apht', $data);
         } elseif ($jenis == 'laporan_notaris') {
             $this->load->view('backend/menuutama/laporan_notaris', $data);
         } elseif ($jenis == 'laporan_ppat') {

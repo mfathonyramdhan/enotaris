@@ -196,7 +196,6 @@
                         </div>
 
                         <div class="row">
-
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan BPJS Pihak Penukar 1</label>
                                 <div class="custom-file">
@@ -212,15 +211,12 @@
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
-
                         </div>
 
 
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Keterangan</label>
-
-
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
                             </div>
                         </div>

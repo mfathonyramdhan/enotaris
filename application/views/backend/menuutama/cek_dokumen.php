@@ -59,6 +59,7 @@
                             <a href="<?= base_url('assets/berkas/bukti_pembayaran/' . $cek_dokumen['bukti_pembayaran']) ?>" class="btn btn-info btn-small" target_blank>Lihat Bukti Pembayaran</a>
                         </div>
                     <?php } ?>
+                    <!-- AKTA TANAH -->
                     <?php if ($cek_dokumen['jenis_permohonan'] == 1) { ?>
                         <div class="row">
                             <div class="col-md-7">
@@ -68,7 +69,7 @@
                                     <div class="col-md-7">
                                         <div class="row">
                                             <div class="col-md-5">
-                                                <p>Nama Lengkap</p>
+                                                <p>Nama Akun Pemohon</p>
                                             </div>
                                             <div class="col-md-1">
                                                 <p>:</p>
@@ -188,6 +189,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- PERJANJIAN SEWA -->
                     <?php } elseif ($cek_dokumen['jenis_permohonan'] == 4) { ?>
                         <h4>Data Pemohon :</h4>
                         <br>
@@ -276,26 +279,1587 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- PENDIRIAN CV / PT -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 2) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <h4>Data CV / PT :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        Nama CV / PT
+                                    </div>
+                                    <div class="col-md-1">
+                                        :
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?= $cek_dokumen['nama_cv'] ?>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        Bidang Usaha
+                                    </div>
+                                    <div class="col-md-1">
+                                        :
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?= $cek_dokumen['bidang_usaha'] ?>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        Lokasi CV / PT
+                                    </div>
+                                    <div class="col-md-1">
+                                        :
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?= $cek_dokumen['lokasi'] ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WARIS -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 3) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- PERUBAHAN RRUPS & PENDIRIAN YAYASAN-->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 5 | 6) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- perjanjian lain lain -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 7) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 08 - hibah -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 8) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 09 - jbtnh -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 9) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+
+
+                                <h4>Data Jual Beli Tanah :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Nama Penjual</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['jbtnh_namapenjual'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['jbtnh_namapenjual'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Nama Pembeli</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['jbtnh_namapembeli'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['jbtnh_namapembeli'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>No. HP Penjual</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['jbtnh_nohppenjual'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['jbtnh_nohppenjual'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>No. HP Pembeli</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['jbtnh_nohppembeli'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['jbtnh_nohppembeli'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <!-- 10 - tkrtnh -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 10) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+
+
+                                        <h4>Data Tukar Tanah :</h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Pihak 1</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['tkrtnh_namapihak1'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['tkrtnh_namapihak1'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Pihak 2</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['tkrtnh_namapihak2'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['tkrtnh_namapihak2'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>No. HP Pihak 1</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['tkrtnh_nohppihak1'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['tkrtnh_nohppihak1'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>No. HP Pihak 2</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['tkrtnh_nohppihak2'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['tkrtnh_nohppihak2'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <!-- 11 - kuasa  -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 11) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <h4>Data Tukar Tanah :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Nama Pihak 1</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['tkrtnh_namapihak1'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['tkrtnh_namapihak1'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>Nama Pihak 2</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['tkrtnh_namapihak2'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['tkrtnh_namapihak2'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>No. HP Pihak 1</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['tkrtnh_nohppihak1'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['tkrtnh_nohppihak1'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p>No. HP Pihak 2</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <p>:</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p>
+                                            <?php
+                                            if ($cek_dokumen['tkrtnh_nohppihak2'] == '') {
+                                                echo '-';
+                                            } else {
+                                                echo $cek_dokumen['tkrtnh_nohppihak2'];
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <!-- 12 - kuasa -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 12) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <!-- 13 - apht -->
+                    <?php } elseif ($cek_dokumen['jenis_permohonan'] == 13) { ?>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h4>Data Pemohon :</h4>
+                                <br>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Nama Akun Pemohon</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['nama'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Email</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p><?= $cek_dokumen['email'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p>Alamat</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['alamat'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['alamat'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>NIK</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['nik'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['nik'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <p>No.Telp</p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <p>:</p>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <p>
+                                                    <?php
+                                                    if ($cek_dokumen['no_hp'] == '') {
+                                                        echo '-';
+                                                    } else {
+                                                        echo $cek_dokumen['no_hp'];
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
                     <?php } ?>
                     <br>
                     <h4>Dokumen :</h4>
                     <br>
                     <div class="row justify-content-center">
-                        <div class="col-md-2">
-                            <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
-                        </div>
+                        <!-- akta tanah -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 1) { ?>
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
+                            </div>
+                        <?php } ?>
+
+                        <!-- pendirian cv/pt -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 2) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat NPWP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/foto_direktur/' . $cek_dokumen['foto_direktur']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat Foto Direktur</a>
+                            </div>
+                        <?php } ?>
+
+                        <!-- WARIS -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 3) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/sk_desa/' . $cek_dokumen['sk_desa']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat SK dari Desa</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/akta_kematian/' . $cek_dokumen['akta_kematian']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat SK / Akta Kematian</a>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/sp_ahli_waris/' . $cek_dokumen['sp_ahli_waris']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat SP Ahli Waris</a>
+                            </div>
+                        <?php } ?>
+
+                        <!-- perjanjian sewa -->
                         <?php if ($cek_dokumen['jenis_permohonan'] == 4) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat PBB</a>
+                            </div>
                             <div class="col-md-2">
                                 <a href="<?= base_url('assets/berkas/sertif_asli/' . $cek_dokumen['sertif_asli']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat Sertifikat Asli</a>
                             </div>
                         <?php } ?>
+
+                        <!-- perubahan rrups-->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 5) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat NPWP</a>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- pendirian yayasan -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 6) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp']) ?>" target="_blank" class="btn btn-info btn-small" target_blank>Lihat NPWP</a>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- pendirian yayasan -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 7) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- pendirian yayasan -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 7) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- hibah-->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 8) { ?>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP Pemberi</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK Pemberi</a>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/scan_snikah/' . $cek_dokumen['scan_snikah']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Surat Nikah Pemberi</a>
+                            </div>
+
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/ktp2/' . $cek_dokumen['scan_ktp2']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP Penerima</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK Penerima</a>
+                            </div>
+
+
+
+                        <?php } ?>
+
+                        <!-- jbtnh -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 9) { ?>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP Penjual</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK Penjual</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat NPWP Penjual</a>
+                                </div>
+
+
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/snikah/' . $cek_dokumen['scan_snikah']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat Surat Nikah Penjual</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Scan PBB</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/sertif_tanah/' . $cek_dokumen['sertif_tanah']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Scan Sertif Tanah</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/bpjs/' . $cek_dokumen['scan_bpjs']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat BPJS Pembeli</a>
+                                </div>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- jbtnh -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 10) { ?>
+                            <div class="row" style="padding-bottom: 50px;">
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">KTP Pihak 1</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">KK Pihak 1</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/snikah/' . $cek_dokumen['scan_snikah']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Surat Nikah Pihak 1</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Scan PBB Pihak 1</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/sertif_tanah/' . $cek_dokumen['sertif_tanah']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Sertif Tanah Pihak 1</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/bpjs/' . $cek_dokumen['scan_bpjs']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">BPJS Pihak 1</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">NPWP Pihak 1</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">KTP Pihak 2</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">KK Pihak 2</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/snikah/' . $cek_dokumen['scan_snikah2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Surat Nikah Pihak 2</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Scan PBB Pihak 2</a>
+                                </div>
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/sertif_tanah/' . $cek_dokumen['sertif_tanah2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Sertif Tanah Pihak 2</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/bpjs/' . $cek_dokumen['scan_bpjs2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">BPJS Pihak 2</a>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <a href="<?= base_url('assets/berkas/npwp/' . $cek_dokumen['scan_npwp2']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">NPWP Pihak 2</a>
+                                </div>
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- 11 - kuasa  -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 11) { ?>
+                            <div class="row" style="padding-bottom: 50px;">
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP </a>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/sertif_asli/' . $cek_dokumen['sertif_asli']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Akta / Sertifikat</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat PBB</a>
+                                </div>
+
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- 12 - kuasa -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 12) { ?>
+                            <div class="row" style="padding-bottom: 50px;">
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP Ahli Waris</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK Ahli Waris</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/sk_desa/' . $cek_dokumen['sk_desa']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Surat Waris dari Desa</a>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/akta_kematian/' . $cek_dokumen['akta_kematian']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Akta Kematian</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/sertif_asli/' . $cek_dokumen['sertif_asli']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Akta Tanah</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/scan_pbb/' . $cek_dokumen['scan_pbb']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat PBB</a>
+                                </div>
+
+                            </div>
+
+                        <?php } ?>
+
+                        <!-- 13 - apht -->
+                        <?php if ($cek_dokumen['jenis_permohonan'] == 13) { ?>
+                            <div class="row" style="padding-bottom: 50px;">
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/ktp/' . $cek_dokumen['scan_ktp']) ?>" target="_blank" id="ktp" class="btn btn-info btn-small" target="_blank">Lihat KTP </a>
+                                </div>
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/kk/' . $cek_dokumen['scan_kk']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat KK</a>
+                                </div>
+
+
+                                <div class="col">
+                                    <a href="<?= base_url('assets/berkas/sertif_asli/' . $cek_dokumen['sertif_asli']) ?>" target="_blank" class="btn btn-info btn-small" target="_blank">Lihat Sertifikat Jaminan</a>
+                                </div>
+
+
+                            </div>
+
+                        <?php } ?>
+
                     </div>
+
                     <?php if ($cek_dokumen['status_permohonan'] == 1) { ?>
                         <br>
                         <br>
