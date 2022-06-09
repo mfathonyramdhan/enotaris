@@ -19,28 +19,10 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan)) {
-        if ($pesan['status_pesan'] == true && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "success",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Gagal",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "error",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        }
+    if (!empty($pesan) && $pesan['status_pesan'] == true) {
+        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
+    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
+        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
     }
     ?>
     <!-- Main content -->
@@ -49,28 +31,18 @@
             <!-- Small boxes (Stat box) -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Pendirian Yayasan</h3>
+                    <h3 class="card-title">Formulir Penerima Hibah</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('admin/Menuutama/tambah_yayasan') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('#') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-                    <input type="hidden" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
                     <div class="card-body">
-
-                        <?php if ($user['nama_level'] == 'admin') { ?>
-                            <div class="row">
-                                <div class="form-group col-12" id="item_auto">
-                                    <label for="">Nama Pemohon</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                </div>
-                            </div>
-                        <?php } ?>
 
                         <div class="row">
 
                             <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan KTP</label>
+                                <label for="exampleInputFile">Upload Scan KTP Penerima Hibah</label>
                                 <div class="custom-file">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
@@ -82,7 +54,7 @@
                         <div class="row">
 
                             <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan KK</label>
+                                <label for="exampleInputFile">Upload Scan KK Penerima Hibah</label>
                                 <div class="custom-file">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
@@ -91,15 +63,6 @@
 
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan NPWP</label>
-                                <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_npwp">
-                                    <span class="text-danger">*Masukkan file berformat .pdf</span>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
@@ -107,6 +70,7 @@
 
 
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
+                                <input type="hidden" name="id_user" id="id_user">
 
 
                             </div>
@@ -140,14 +104,14 @@
     $(document).ready(function() {
         $.ajax({
             type: 'GET',
-            url: '<?php echo base_url(); ?>admin/Menuutama/getKodeYayasan',
+            url: '<?php echo base_url(); ?>user/Menuutama/getKodeAkta',
             beforeSend: function() {
                 $('.loading').show();
             },
             success: function(data) {
 
                 var html = JSON.parse(data);
-                var kode = 'YYSN_' + html;
+                var kode = 'AKNAH_' + html;
                 var nodaf = kode;
                 $('#kode_permohonan').val(nodaf);
             }

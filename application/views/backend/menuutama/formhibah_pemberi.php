@@ -31,47 +31,19 @@
             <!-- Small boxes (Stat box) -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Permohonan Akta Tanah oleh Client</h3>
+                    <h3 class="card-title">Formulir Pemberi Hibah</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('user/Menuutama/update_dokumen_aktaT') ?>" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="kode_permohonan" id="kode_permohonan" value="<?= $dokumen['kode_permohonan'] ?>">
-                    <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
+                <form action="<?= base_url('#') ?>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="kode_permohonan" id="kode_permohonan">
                     <div class="card-body">
-                        <div class="row">
-                            <div class="form-group col">
-                                <label for="">Lokasi</label>
-                                <input type="text" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="lokasi" value="<?= $dokumen['lokasi'] ?>" required>
-                            </div>
-                            <div class="form-group col">
-                                <label for="">Luas Tanah (m2)</label>
-                                <input type="number" class="form-control" id="" placeholder="Masukkan luas tanah" name="luas_tanah" value="<?= $dokumen['luas_tanah'] ?>" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-8">
-                                <label>Status kepemilikan</label>
-                                <select class="form-control" name="status_kepemilikan" required>
-                                    <option selected disabled>Pilih status kepemilikan tanah :</option>
-                                    <option value="Milik Sendiri">Milik Sendiri</option>
-                                    <option value="Milik Orang Tua">Milik Orang Tua</option>
-                                    <option value="Milik Pemerintah">Milik Pemerintah</option>
-                                </select>
-                            </div>
-                            <div class="form-group col">
-                                <label for="">Deadline</label>
-                                <input type="date" class="form-control" id="" placeholder="Masukkan Deadline" name="deadline" value="<?= $dokumen['deadline'] ?>" required>
-                            </div>
-                        </div>
 
                         <div class="row">
 
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KTP</label>
                                 <div class="custom-file">
-                                    <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_ktp'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -80,23 +52,36 @@
                         </div>
 
                         <div class="row">
+
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK</label>
                                 <div class="custom-file">
-                                    <input type="hidden" name="scan_kk1" value="<?= $dokumen['scan_kk'] ?>">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
+                                    <span class="text-danger">*Masukkan file berformat .pdf</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="exampleInputFile">Upload Scan Surat Nikah Suami Istri</label>
+                                <div class="custom-file">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="form-group col">
-                                <label for="exampleInputFile">Upload Scan PBB</label>
-                                <div class="custom-file">
-                                    <input type="hidden" name="scan_pbb1" value="<?= $dokumen['scan_pbb'] ?>">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
-                                    <span class="text-danger">*Masukkan file berformat .pdf</span>
-                                </div>
+                            <div class="form-group col-12" id="item_auto">
+                                <label for="">Keterangan</label>
+
+
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
+                                <input type="hidden" name="id_user" id="id_user">
+
+
                             </div>
                         </div>
 
@@ -104,7 +89,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Ajukan</button>
+                            <button type="#" class="btn btn-primary">Ajukan</button>
                         </div>
                 </form>
             </div>
@@ -121,8 +106,38 @@
 
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>
+
 <script>
     $('.datepicker').datepicker();
+
+    $(document).ready(function() {
+        $.ajax({
+            type: 'GET',
+            url: '<?php echo base_url(); ?>user/Menuutama/getKodeAkta',
+            beforeSend: function() {
+                $('.loading').show();
+            },
+            success: function(data) {
+
+                var html = JSON.parse(data);
+                var kode = 'AKNAH_' + html;
+                var nodaf = kode;
+                $('#kode_permohonan').val(nodaf);
+            }
+        });
+    });
+
+    $(document).ready(function() {
+
+        $('#nama').autocomplete({
+            source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
+            select: function(event, ui) {
+                $("#id_user").val(ui.item.id_dosen);
+                $("#nama").val(ui.item.description);
+            }
+        });
+        $('#nama').select();
+    });
 </script>
 </body>
 

@@ -126,7 +126,7 @@
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Bidang Usaha</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan bidang usaha" name="bidang_usaha" required>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="bidang_usaha" required>
                             </div>
                         </div>
 

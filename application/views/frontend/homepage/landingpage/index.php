@@ -148,145 +148,42 @@
 
                     <div class="col-md-3 col-sm-6 col-xs-12 portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="0ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3 style="color: white;"> Perjanjian Sewa
-                            </h3>
+                            <img src="https://pajakonline.jakarta.go.id/../assets/setoran.png">
+                            <h3 style="color: white;">Akta Tanah</h3>
                             <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
-
-
                     <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Pemberian Kuasa
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Pembagian Hak Tanah
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 100ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3 style="color: white;">Pendirian CV / PT</h3>
+                            <img src="https://pajakonline.jakarta.go.id/../assets/skpd.png">
+                            <h3 style="color: white;">Pendirian CV/PT</h3>
                             <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Akta Tanah
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="200ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 200ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3 style="color: white;"> Perubahan RRUPS
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
                             <h3 style="color: white;">Waris</h3>
                             <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Pembuatan APHT
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
                     <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
                         <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3 style="color: white;"> Perjanjian Lain - lain
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-                    <!-- end of layanan notaris -->
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
                             <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;">Hibah</h3>
+                            <h3 style="color: white;">Lainnya</h3>
                             <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
 
                         </div>
                     </div>
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Jual Beli Tanah
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-notaris">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/pelaporan.png">
-                            <h3 style="color: white;"> Pendirian Yayasan
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6 col-xs-12  portfolio-item filter-ppat">
-                        <div class="wow fadeInUp information-detail animated" data-wow-duration="400ms" data-wow-delay="300ms" style="visibility: visible; animation-duration: 400ms; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <img src="https://pajakonline.jakarta.go.id/../assets/lainnya.png">
-                            <h3 style="color: white;"> Tukar Menukar Tanah
-                            </h3>
-                            <!-- <button type="button" class="btn-lg btn-warning">Pilih</button> -->
-
-                        </div>
-                    </div>
-
-
-
 
 
 
                 </div>
+
+            </div>
         </section><!-- End Portfolio Section -->
 
 

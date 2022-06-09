@@ -19,28 +19,10 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan)) {
-        if ($pesan['status_pesan'] == true && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "success",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
-            echo '
-                    <script>
-                        Swal.fire({
-                            title: "Gagal",
-                            text: "' . $pesan['isi_pesan'] . '",
-                            type: "error",
-                            confirmButtonText: "Close"
-                        });
-                    </script>';
-        }
+    if (!empty($pesan) && $pesan['status_pesan'] == true) {
+        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
+    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
+        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
     }
     ?>
     <!-- Main content -->
@@ -60,6 +42,7 @@
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Nama</label>
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
+                                <input type="hidden" name="id_user" id="id_user">
                             </div>
                         </div>
                         <div class="row">
