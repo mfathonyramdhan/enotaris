@@ -37,6 +37,7 @@
                 <!-- form start -->
                 <form action="<?= base_url('user/Menuutama/update_dokumen_aktaT') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan" value="<?= $dokumen['kode_permohonan'] ?>">
+                    <input type="hidden" name="jenis_permohonan" id="jenis_permohonan" value="<?= $dokumen['jenis_permohonan'] ?>">
                     <input type="hidden" name="id_user" value="<?= $user['id_user'] ?>">
                     <div class="card-body">
                         <div class="row">

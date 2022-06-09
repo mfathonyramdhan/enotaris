@@ -358,25 +358,16 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_pemberi') ?>" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/formhibah') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
-                  Formulir Permohonan (Pemberi)
+                  Formulir Permohonan
 
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo site_url('admin/Menuutama/formhibah_penerima') ?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Formulir Permohonan (Penerima)
-
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/8') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Data Permohonan
@@ -408,7 +399,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/9') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -461,7 +452,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/10') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -495,7 +486,7 @@
 
         <!-- PPAT04 - Pemberian Hak Pakai atas Tanah Hak Milik serta Hak Guna atas Bangunan   -->
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link" style="background-color: dimgrey;">
             <i class="nav-icon fas fa-book"></i>
             <p>
               Akta Tanah
@@ -567,7 +558,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/11') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -620,7 +611,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/12') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
@@ -673,7 +664,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo site_url('admin/Menuutama/datapermohonan_admin/13') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Data Permohonan
