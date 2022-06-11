@@ -486,7 +486,7 @@
 
         <!-- PPAT04 - Pemberian Hak Pakai atas Tanah Hak Milik serta Hak Guna atas Bangunan   -->
         <li class="nav-item">
-          <a href="#" class="nav-link" style="background-color: dimgrey;">
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
             <p>
               Akta Tanah
