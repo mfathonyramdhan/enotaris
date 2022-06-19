@@ -29,6 +29,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins') ?>/summernote/summernote-bs4.min.css">
 
+
+
     <style>
         #ui-id-1 {
             background-color: white;

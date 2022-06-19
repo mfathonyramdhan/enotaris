@@ -13,19 +13,27 @@ class Menuutama extends CI_Controller
         }
     }
 
-    public function datapermohonan_aktaT($start = 0)
+    public function datapermohonan_admin($jenis, $start = 0)
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Riwayat Permohonan';
+        $data['notaris_diajukan'] = $this->M_admin->jumlah_notaris_diajukan();
+        $data['notaris_pembayaran'] = $this->M_admin->jumlah_notaris_menunggu_pembayaran();
+        $data['notaris_diproses'] = $this->M_admin->jumlah_notaris_diproses();
+        $data['notaris_selesai'] = $this->M_admin->jumlah_notaris_selesai();
+        $data['ppat_diajukan'] = $this->M_admin->jumlah_ppat_diajukan();
+        $data['ppat_pembayaran'] = $this->M_admin->jumlah_ppat_menunggu_pembayaran();
+        $data['ppat_diproses'] = $this->M_admin->jumlah_ppat_diproses();
+        $data['ppat_selesai'] = $this->M_admin->jumlah_ppat_selesai();
 
         $q = isset($_GET['search']) ? $_GET['search'] : '';
-        $data['daftar_akta'] = $this->M_admin->tampil_akta_admin();
+        $data['daftar_akta'] = $this->M_admin->tampil_permohonan_admin($jenis);
 
         // $this->load->database();
-        $jumlah_data = $this->M_admin->jumlah_akta_admin($q);
+        $jumlah_data = $this->M_admin->jumlah_permohonan_admin($q, $jenis);
 
         $this->load->library('pagination');
-        $config['base_url'] = base_url('admin/ManajemenAkun/datapermohonan_aktaT');
+        $config['base_url'] = base_url('admin/Menuutama/datapermohonan_admin/' . $jenis);
         $config['total_rows'] = $jumlah_data;
         $config['per_page'] = 20;
         $config['full_tag_open']   = '<ul class="pagination justify-content-end">';
@@ -51,7 +59,7 @@ class Menuutama extends CI_Controller
         $config['num_tag_open']    = '<li class="page-link">';
         $config['num_tag_close']   = '</li>';
         $this->pagination->initialize($config);
-        $data['page_akta'] = $this->M_admin->data_akta_admin($config['per_page'], $start, $q);
+        $data['page_akta'] = $this->M_admin->data_permohonan_admin($config['per_page'], $start, $q, $jenis);
         $data['start'] = $start;
         $data['keyword'] = $q;
         $data['Pagination'] = $this->pagination->create_links();
@@ -59,12 +67,42 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/template/meta', $data);
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
-        $this->load->view('backend/menuutama/datapermohonan_aktaT', $data);
+        if ($jenis == 1) {
+            $this->load->view('backend/menuutama/datapermohonan_aktaT', $data);
+        } elseif ($jenis == 2) {
+            $this->load->view('backend/menuutama/datapermohonan_cv', $data);
+        } elseif ($jenis == 3) {
+            $this->load->view('backend/menuutama/datapermohonan_waris', $data);
+        } elseif ($jenis == 4) {
+            $this->load->view('backend/menuutama/datapermohonan_sewa', $data);
+        } elseif ($jenis == 5) {
+            $this->load->view('backend/menuutama/datapermohonan_rrups', $data);
+        } elseif ($jenis == 6) {
+            $this->load->view('backend/menuutama/datapermohonan_yayasan', $data);
+        } elseif ($jenis == 7) {
+            $this->load->view('backend/menuutama/datapermohonan_janjiLain', $data);
+        } elseif ($jenis == 8) {
+            $this->load->view('backend/menuutama/datapermohonan_hibah', $data);
+        } elseif ($jenis == 9) {
+            $this->load->view('backend/menuutama/datapermohonan_jualbelitanah', $data);
+        } elseif ($jenis == 10) {
+            $this->load->view('backend/menuutama/datapermohonan_tukartanah', $data);
+        } elseif ($jenis == 11) {
+            $this->load->view('backend/menuutama/datapermohonan_kuasa', $data);
+        } elseif ($jenis == 12) {
+            $this->load->view('backend/menuutama/datapermohonan_bagihak', $data);
+        } elseif ($jenis == 13) {
+            $this->load->view('backend/menuutama/datapermohonan_apht', $data);
+        } elseif ($jenis == 'laporan_notaris') {
+            $this->load->view('backend/menuutama/laporan_notaris', $data);
+        } elseif ($jenis == 'laporan_ppat') {
+            $this->load->view('backend/menuutama/laporan_ppat', $data);
+        } elseif ($jenis == 'arsip') {
+            $this->load->view('backend/menuutama/arsip', $data);
+        }
     }
 
     // ---------------------------------------LAYANAN NOTARIS
-
-
     public function formperjanjian_sewa()
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
@@ -128,25 +166,16 @@ class Menuutama extends CI_Controller
     }
 
     // ----------------------------------------------LAYANAN PPAT
-    public function formhibah_pemberi()
+    public function formhibah()
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['page_title'] = 'Formulir Permohonan';
         $this->load->view('backend/template/meta', $data);
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
-        $this->load->view('backend/menuutama/formhibah_pemberi', $data);
+        $this->load->view('backend/menuutama/formhibah', $data);
     }
 
-    public function formhibah_penerima()
-    {
-        $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
-        $data['page_title'] = 'Formulir Permohonan';
-        $this->load->view('backend/template/meta', $data);
-        $this->load->view('backend/template/navbar', $data);
-        $this->load->view('backend/template/sidebar', $data);
-        $this->load->view('backend/menuutama/formhibah_penerima', $data);
-    }
 
     public function formjualbelitanah()
     {
@@ -229,7 +258,7 @@ class Menuutama extends CI_Controller
 
         // Upload KTP
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
-        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
         $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
 
@@ -244,7 +273,7 @@ class Menuutama extends CI_Controller
 
         // Upload KK
         $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
-        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
         $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
 
@@ -259,7 +288,7 @@ class Menuutama extends CI_Controller
 
         // Upload PBB
         $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
-        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
         $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan');
 
@@ -276,8 +305,9 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
             'jenis_permohonan' => 1,
+            'jenis_layanan' => 'ppat',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
-            'lokasi_tanah' => htmlspecialchars($this->input->post('lokasi', true)),
+            'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
             'luas_tanah' => htmlspecialchars($this->input->post('luas_tanah', true)),
             'status_kepemilikan' => htmlspecialchars($this->input->post('status_kepemilikan', true)),
             'scan_ktp' => $ktp,
@@ -288,7 +318,7 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
         if (empty($pesan)) {
-            $result = $this->M_admin->tambah_akta_tanah($data);
+            $result = $this->M_admin->tambah_permohonan($data);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -305,13 +335,13 @@ class Menuutama extends CI_Controller
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
-                'isi_pesan' => 'Add New Product Failed'
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
             ));
             redirect('admin/Menuutama/formpermohonan_aktaT');
         }
     }
 
-    public function cek_dokumen_aktaT($kode_permohonan)
+    public function cek_dokumen($kode_permohonan)
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
         $data['cek_dokumen'] = $this->M_admin->cek_dokumen($kode_permohonan);
@@ -319,11 +349,12 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/template/meta', $data);
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
-        $this->load->view('backend/aktatanah/cek_dokumen', $data);
+        $this->load->view('backend/menuutama/cek_dokumen', $data);
     }
 
-    public function setujui_aktaT()
+    public function setujui_permohonan()
     {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
         $pesan = array();
         $data = [
             'biaya' => htmlspecialchars($this->input->post('biaya', true)),
@@ -350,7 +381,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Disetujui'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/' . $jenis);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -360,50 +391,70 @@ class Menuutama extends CI_Controller
         }
     }
 
-    public function proses_aktaT()
+    public function proses_permohonan()
     {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
+        $kode_permohonan = htmlspecialchars($this->input->post('kode_permohonan', true));
+        $permohonan = $this->M_admin->cek_dokumen($kode_permohonan);
+        $saldo = $this->M_admin->saldo_terakhir();
+
         $pesan = array();
         $data = [
+            'tgl_pelunasan' => date('Y-m-d'),
             'catatan' => 'Permohonan Sedang Diproses',
             'status_permohonan' => 4
         ];
 
         $where = array(
-            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+            'kode_permohonan' => $kode_permohonan
         );
 
         if (empty($pesan)) {
             $result = $this->M_admin->update_aktaT($where, $data);
+
+            $saldo_terakhir = $saldo['saldo_terakhir'] + $permohonan['biaya'];
+
+            $array = [
+                'jumlah' => $permohonan['biaya'],
+                'status' => 'Pemasukan',
+                'tanggal' => date('Y-m-d'),
+                'bulan' => date('F'),
+                'saldo_terakhir' => $saldo_terakhir,
+                'keterangan' => 'Pemasukan dari Kode Permohonan' . $kode_permohonan
+            ];
+
+            $this->M_admin->tambah_keuangan($array);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
                 'isi_pesan' => implode('', $pesan)
             ));
-            redirect('admin/Menuutama/cek_dokumen_aktaT/' . $this->input->post('kode_permohonan'));
+            redirect('admin/Menuutama/cek_dokumen/' . $this->input->post('kode_permohonan'));
         }
         if ($result == true) {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Diproses'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/' . $jenis);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
                 'isi_pesan' => 'Permohonan Gagal Diproses'
             ));
-            redirect('admin/Menuutama/cek_dokumen_aktaT/' . $this->input->post('kode_permohonan'));
+            redirect('admin/Menuutama/cek_dokumen/' . $this->input->post('kode_permohonan'));
         }
     }
 
-    public function upload_aktaT()
+    public function upload_hasil()
     {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
         $pesan = array();
         // Upload Bukti Pembayaran
-        $config['upload_path']          = 'assets/berkas/akta_tanah/';  // folder upload 
-        $config['allowed_types']        = 'png|jpg|jpeg|pdf'; // jenis file
+        $config['upload_path']          = 'assets/berkas/hasil_permohonan/';  // folder upload 
+        $config['allowed_types']        = 'png|jpg|jpeg|jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 8000;
-        $config['file_name']            = 'AktaTanah_' . $this->input->post('kode_permohonan');
+        $config['file_name']            = 'HASIL_' . $this->input->post('kode_permohonan');
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -415,7 +466,7 @@ class Menuutama extends CI_Controller
         $aktaT = $file['file_name'];
 
         $data = [
-            'catatan' => 'Permohonan selesai, silahkan unduh berkas anda',
+            'catatan' => 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami. ',
             'berkas_hasil' => $aktaT,
             'status_permohonan' => 5
         ];
@@ -431,25 +482,26 @@ class Menuutama extends CI_Controller
                 'status_pesan' => false,
                 'isi_pesan' => implode(',', $pesan)
             ));
-            redirect('admin/Menuutama/cek_dokumen_aktaT/' . $this->input->post('kode_permohonan'));
+            redirect('admin/Menuutama/cek_dokumen/' . $this->input->post('kode_permohonan'));
         }
         if ($result == true) {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Diselesaikan'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/' . $jenis);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
                 'isi_pesan' => 'Permohonan Gagal Diselesaikan'
             ));
-            redirect('admin/Menuutama/cek_dokumen_aktaT/' . $this->input->post('kode_permohonan'));
+            redirect('admin/Menuutama/cek_dokumen/' . $this->input->post('kode_permohonan'));
         }
     }
 
     public function tolak_dokumen()
     {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
         $pesan = array();
         $data = [
             'catatan' => htmlspecialchars($this->input->post('catatan', true)),
@@ -474,7 +526,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Ditolak'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/' . $jenis);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -484,8 +536,10 @@ class Menuutama extends CI_Controller
         }
     }
 
-    public function tolak_pembayaran($kode_permohonan)
+    public function tolak_pembayaran()
     {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
+        $kode_permohonan = htmlspecialchars($this->input->post('kode_permohonan', true));
         $pesan = array();
         $data = [
             'catatan' => 'Bukti pembayaran tidak valid, mohon melakukan upload ulang.',
@@ -510,7 +564,7 @@ class Menuutama extends CI_Controller
                 'status_pesan' => true,
                 'isi_pesan' => 'Permohonan Berhasil Ditolak'
             ));
-            redirect('admin/Menuutama/datapermohonan_aktaT');
+            redirect('admin/Menuutama/datapermohonan_admin/' . $jenis);
         } else {
             $this->session->set_flashdata('pesan', array(
                 'status_pesan' => false,
@@ -1455,7 +1509,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'KTP2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1485,7 +1541,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'KK2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1515,7 +1573,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/snikah/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'SNKH2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1546,7 +1606,10 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'PBB2_' . $this->input->post('kode_permohonan');
+
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1576,6 +1639,7 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/sertif_tanah/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'SRTF2_' . $this->input->post('kode_permohonan');
 
         $this->load->library('upload', $config);
@@ -1606,6 +1670,7 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'NPWP2_' . $this->input->post('kode_permohonan');
 
         $this->load->library('upload', $config);
@@ -1636,7 +1701,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/bpjs/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
+
         $config['file_name']            = 'BPJS2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -2047,7 +2114,9 @@ class Menuutama extends CI_Controller
 
         $data = [
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
+
             'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+
             'jenis_permohonan' => 13,
             'jenis_layanan' => 'ppat',
             'scan_ktp' => $ktp,

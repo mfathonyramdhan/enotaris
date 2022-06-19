@@ -64,6 +64,7 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
+
                             <tr align="center">
                                 <th style="width: 10px">No</th>
                                 <th>Kode Pengajuan Permohonan</th>
@@ -72,6 +73,7 @@
                                 <th>Estimasi Pengerjaan</th>
                                 <th style="width: 40px">Status</th>
                                 <th style="width: 200px">Keterangan</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +83,7 @@
                                     <tr>
                                         <td> <?= $no++ ?> </td>
                                         <td> <?= $b['kode_permohonan'] ?> </td>
+
                                         <td> <?= $b['tgl_permohonan'] ?> </td>
                                         <td> <?= $b['nama_jenis_permohonan'] ?> </td>
                                         <td align="center">
@@ -106,6 +109,7 @@
                                             <?php } else if ($b['status_permohonan'] == 3 || $b['status_permohonan'] == 4) { ?>
                                                 <span class="badge bg-info"><?= $b['nama_status_permohonan'] ?></span>
                                             <?php } else if ($b['status_permohonan'] == 5) { ?>
+
                                                 <span class="badge bg-success"><?= $b['nama_status_permohonan'] ?></span>
                                             <?php } else if ($b['status_permohonan'] == 6 || $b['status_permohonan'] == 7) { ?>
                                                 <span class="badge bg-danger"><?= $b['nama_status_permohonan'] ?></span>
@@ -119,6 +123,7 @@
                                                 echo $b['catatan'];
                                             }
                                             ?>
+
                                             <br>
                                             <?php if ($b['status_permohonan'] == 2) { ?>
                                                 <a href="<?= base_url('user/Menuutama/bayar/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Lakukan Pembayaran</span></a>
@@ -130,6 +135,7 @@
                                                 <a href="<?= base_url('user/Menuutama/edit_pembayaran/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Pembayaran</span></a>
                                             <?php } ?>
                                         </td>
+
                                     </tr>
                                 <?php } ?>
                             <?php else : ?>

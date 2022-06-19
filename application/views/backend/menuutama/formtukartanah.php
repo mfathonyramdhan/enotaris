@@ -19,10 +19,28 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan) && $pesan['status_pesan'] == true) {
-        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
-    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
-        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+    if (!empty($pesan)) {
+        if ($pesan['status_pesan'] == true && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "success",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Gagal",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "error",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        }
     }
     ?>
     <!-- Main content -->
@@ -35,42 +53,47 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('admin/Menuutama/tambah_akta_tanah') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('admin/Menuutama/tambah_tukartanah') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-<<<<<<< Updated upstream
-=======
+
                     <input type="hidden" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
 
->>>>>>> Stashed changes
+
                     <div class="card-body">
+                        <?php if ($user['nama_level'] == 'admin') { ?>
+                            <div class="row">
+                                <div class="form-group col-12" id="item_auto">
+                                    <label for="">Nama Pemohon</label>
+                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
+                                </div>
+                            </div>
+                        <?php } ?>
                         <div class="row">
                             <div class="form-group col" id="item_auto">
                                 <label for="">Nama Pihak Penukar 1</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="" required>
-                                <input type="hidden" name="id_user" id="id_user">
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="tkrtnh_namapihak1" required>
                             </div>
 
                             <div class="form-group col" id="item_auto">
                                 <label for="">Nama Pihak Penukar 2</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="" required>
-                                <input type="hidden" name="id_user" id="id_user">
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="tkrtnh_namapihak2" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="">No. HP Pihak Penukar 1</label>
-                                <input type="number" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="" required>
+                                <input type="number" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="tkrtnh_nohppihak1" required>
                             </div>
                             <div class="form-group col">
                                 <label for="">No. HP Pihak Penukar 2</label>
-                                <input type="number" class="form-control" id="" placeholder="Masukkan luas tanah" name="" required>
+                                <input type="number" class="form-control" id="" placeholder="Masukkan luas tanah" name="tkrtnh_nohppihak2" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KTP Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -78,7 +101,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KTP Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -88,7 +111,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -96,7 +119,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -107,7 +130,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Surat Nikah Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_snikah">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -115,7 +138,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Surat Nikah Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_snikah2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -125,7 +148,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan PBB Tanah Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -133,7 +156,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan PBB Tanah Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -143,7 +166,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan Sertifikat Tanah Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="sertif_tanah">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -151,7 +174,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan Sertifikat Tanah Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="sertif_tanah2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -161,25 +184,24 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan NPWP Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_npwp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan NPWP Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_npwp2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan BPJS Pihak Penukar 1</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_bpjs">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -187,23 +209,17 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan BPJS Pihak Penukar 2</label>
                                 <div class="custom-file">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_bpjs2">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
-
                         </div>
 
 
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Keterangan</label>
-
-
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
-                                <input type="hidden" name="id_user" id="id_user">
-
-
                             </div>
                         </div>
 
@@ -235,7 +251,7 @@
     $(document).ready(function() {
         $.ajax({
             type: 'GET',
-            url: '<?php echo base_url(); ?>user/Menuutama/getKodeAkta',
+            url: '<?php echo base_url(); ?>admin/Menuutama/getKodeTkrtnh',
             beforeSend: function() {
                 $('.loading').show();
             },

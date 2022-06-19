@@ -59,14 +59,14 @@ if (!empty($pesan)) {
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>12</h3>
+              <h3><?= $jumlah_user ?></h3>
 
               <p>Pemohon</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fas fa-user"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
         </div>
         <!-- ./col -->
@@ -74,14 +74,14 @@ if (!empty($pesan)) {
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>82.000.000</h3>
+              <h3><?= number_format($saldo_terakhir['saldo_terakhir'], 0, ",", ".") ?></h3>
 
               <p>Pendapatan (Rp)</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fas fa-money-bill"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
         </div>
         <!-- ./col -->
@@ -89,14 +89,14 @@ if (!empty($pesan)) {
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>16</h3>
+              <h3 class="text-light"><?= $jumlah_permohonan ?></h3>
 
-              <p>Permohonan</p>
+              <p class="text-light">Permohonan</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fas fa-file"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer"><span class="text-light">More info</span> <i class="fas fa-arrow-circle-right text-light"></i></a> -->
           </div>
         </div>
         <!-- ./col -->
@@ -104,14 +104,14 @@ if (!empty($pesan)) {
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>8</h3>
+              <h3><?= count($reminder) ?></h3>
 
               <p>Pengingat</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fas fa-bell"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
         </div>
         <!-- ./col -->
@@ -121,7 +121,7 @@ if (!empty($pesan)) {
       <div class="row">
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
-          <!-- Custom tabs (Charts with tabs)-->
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">
@@ -138,7 +138,8 @@ if (!empty($pesan)) {
                   </li>
                 </ul>
               </div>
-            </div><!-- /.card-header -->
+            </div>
+            <!-- /.card-header -->
             <div class="card-body">
               <div class="tab-content p-0">
                 <!-- Morris chart - Sales -->
@@ -149,21 +150,14 @@ if (!empty($pesan)) {
                   <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                 </div>
               </div>
-            </div><!-- /.card-body -->
+            </div>
+            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
 
-          <!-- DIRECT CHAT -->
-
-          <!--/.direct-chat -->
-
-          <!-- TO DO List -->
-
-          <!-- /.card -->
         </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
+        <section class="col connectedSortable">
 
           <div class="card">
             <div class="card-header">
@@ -181,25 +175,33 @@ if (!empty($pesan)) {
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  $no = 1;
-                  foreach ($reminder as $r) { ?>
+                  <?php if (count($reminder) > 0) { ?>
+                    <?php
+                    $no = 1;
+                    foreach ($reminder as $r) { ?>
 
+                      <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $r['kode_permohonan'] ?></td>
+                        <td>
+                          <?= $r['deadline'] ?>
+                        </td>
+                        <?php
+                        $now = strtotime(date('Y-m-d'));
+                        $dl = strtotime($r['deadline']);
+                        $interval = abs($dl - $now);
+                        $years = floor($interval / (365 * 60 * 60 * 24));
+                        $months = floor(($interval - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                        $days = floor(($interval - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                        ?>
+                        <td><span class="badge bg-danger"><?= $days ?> Hari Lagi</span></td>
+                      </tr>
+                    <?php } ?>
+                  <?php } else { ?>
                     <tr>
-                      <td><?= $no++ ?></td>
-                      <td><?= $r['kode_permohonan'] ?></td>
-                      <td>
-                        <?= $r['deadline'] ?>
+                      <td colspan="4" align="center">
+                        Tidak Ada Permohonan Yang Harus Diselesaikan
                       </td>
-                      <?php
-                      $now = strtotime(date('Y-m-d'));
-                      $dl = strtotime($r['deadline']);
-                      $interval = abs($dl - $now);
-                      $years = floor($interval / (365 * 60 * 60 * 24));
-                      $months = floor(($interval - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-                      $days = floor(($interval - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-                      ?>
-                      <td><span class="badge bg-danger"><?= $days ?> Hari Lagi</span></td>
                     </tr>
                   <?php } ?>
 

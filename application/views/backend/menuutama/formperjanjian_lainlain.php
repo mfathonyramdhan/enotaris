@@ -19,10 +19,28 @@
     <!-- /.content-header -->
     <?php
     $pesan = $this->session->flashdata('pesan');
-    if (!empty($pesan) && $pesan['status_pesan'] == true) {
-        echo '<div class = "alert alert-success">' . $pesan['isi_pesan'] . '</div>';
-    } else if (!empty($pesan) && $pesan['status_pesan'] == false) {
-        echo '<div class = "alert alert-danger">' . $pesan['isi_pesan'] . '</div>';
+    if (!empty($pesan)) {
+        if ($pesan['status_pesan'] == true && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "success",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        } else if ($pesan['status_pesan'] == false && !empty($pesan)) {
+            echo '
+                    <script>
+                        Swal.fire({
+                            title: "Gagal",
+                            text: "' . $pesan['isi_pesan'] . '",
+                            type: "error",
+                            confirmButtonText: "Close"
+                        });
+                    </script>';
+        }
     }
     ?>
     <!-- Main content -->
@@ -35,9 +53,19 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('#') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('admin/Menuutama/tambah_perlain') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan">
+                    <input type="hidden" name="user" id="id_user" value="<?= $user['id_user'] ?>">
                     <div class="card-body">
+
+                        <?php if ($user['nama_level'] == 'admin') { ?>
+                            <div class="row">
+                                <div class="form-group col-12" id="item_auto">
+                                    <label for="">Nama Pemohon</label>
+                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
+                                </div>
+                            </div>
+                        <?php } ?>
 
                         <div class="row">
 
@@ -68,12 +96,7 @@
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Keterangan</label>
-
-
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
-                                <input type="hidden" name="id_user" id="id_user">
-
-
+                                <input type="text" class="form-control" id="keterangan" placeholder="Masukkan keterangan" name="keterangan" required>
                             </div>
                         </div>
 
@@ -105,14 +128,14 @@
     $(document).ready(function() {
         $.ajax({
             type: 'GET',
-            url: '<?php echo base_url(); ?>user/Menuutama/getKodeAkta',
+            url: '<?php echo base_url(); ?>admin/Menuutama/getKodePerlain',
             beforeSend: function() {
                 $('.loading').show();
             },
             success: function(data) {
 
                 var html = JSON.parse(data);
-                var kode = 'AKNAH_' + html;
+                var kode = 'PERLAIN_' + html;
                 var nodaf = kode;
                 $('#kode_permohonan').val(nodaf);
             }
