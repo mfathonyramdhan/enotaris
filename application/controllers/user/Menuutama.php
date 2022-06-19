@@ -187,8 +187,18 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/Menuutama/datapermohonan_yayasan_user', $data);
         } elseif ($jenis == 7) {
             $this->load->view('backend/Menuutama/datapermohonan_janjiLain_user', $data);
+        } elseif ($jenis == 8) {
+            $this->load->view('backend/Menuutama/datapermohonan_hibah_user', $data);
         } elseif ($jenis == 9) {
             $this->load->view('backend/Menuutama/datapermohonan_jualbelitanah_user', $data);
+        } elseif ($jenis == 10) {
+            $this->load->view('backend/menuutama/datapermohonan_tukartanah_user', $data);
+        } elseif ($jenis == 11) {
+            $this->load->view('backend/menuutama/datapermohonan_kuasa_user', $data);
+        } elseif ($jenis == 12) {
+            $this->load->view('backend/menuutama/datapermohonan_bagihak_user', $data);
+        } elseif ($jenis == 13) {
+            $this->load->view('backend/menuutama/datapermohonan_apht_user', $data);
         }
     }
 
@@ -268,7 +278,7 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
         if ($data['dokumen']['jenis_permohonan'] == 1) {
-            $this->load->view('backend/aktatanah/edit_dokumen', $data);
+            $this->load->view('backend/aktatanah/edit_dokumen', $data); 
         } elseif ($data['dokumen']['jenis_permohonan'] == 4) {
             $this->load->view('backend/menuutama/edit_sewa', $data);
             // ngeload tampilan editrrups
