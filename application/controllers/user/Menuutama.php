@@ -174,7 +174,7 @@ class Menuutama extends CI_Controller
         $this->load->view('backend/template/navbar', $data);
         $this->load->view('backend/template/sidebar', $data);
         if ($jenis == 1) {
-            $this->load->view('backend/Menuutama/statuspermohonan_aktaT', $data);
+            $this->load->view('backend/Menuutama/datapermohonan_aktaT_user', $data);
         } elseif ($jenis == 2) {
             $this->load->view('backend/Menuutama/datapermohonan_cv_user', $data);
         } elseif ($jenis == 3) {
@@ -289,9 +289,11 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/edit_rrups', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 6) {
             $this->load->view('backend/menuutama/edit_yayasan', $data);
-             // ngeload tampilan perjanjian lain lain
+            // ngeload tampilan perjanjian lain lain
         } elseif ($data['dokumen']['jenis_permohonan'] == 7) {
             $this->load->view('backend/menuutama/edit_perjLain', $data);
+        } elseif ($data['dokumen']['jenis_permohonan'] == 10) {
+            $this->load->view('backend/menuutama/edit_tukartanah', $data);
             // ngeload tampilan perjanjian lain lain
         } elseif ($data['dokumen']['jenis_permohonan'] == 13) {
             $this->load->view('backend/menuutama/edit_apht', $data);
@@ -458,9 +460,11 @@ class Menuutama extends CI_Controller
         ];
 
 
+
         $where = array(
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
         );
+
 
         // var_dump($pesan);
         // die;
@@ -487,8 +491,9 @@ class Menuutama extends CI_Controller
             redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
         }
     }
-
-    public function update_apht()
+  
+  //line update apht
+      public function update_apht()
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
@@ -584,8 +589,11 @@ class Menuutama extends CI_Controller
             redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
         }
     }
+  
+
 
     public function update_perjLain()
+
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
@@ -618,6 +626,7 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('scan_kk') && $_FILES['scan_kk']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
@@ -793,11 +802,13 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('akta_kematian') && $_FILES['akta_kematian']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
 
         $file = $this->upload->data();
+
         $akta_kematian = $_FILES['akta_kematian']['size'] != 0 ? $file['file_name'] : $this->input->post('akta_kematian1');
 
         // Upload SP Ahli Waris
@@ -816,6 +827,7 @@ class Menuutama extends CI_Controller
 
         $file = $this->upload->data();
         $sp_ahli_waris = $_FILES['sp_ahli_waris']['size'] != 0 ? $file['file_name'] : $this->input->post('sp_ahli_waris1');
+
 
         // Upload KTP
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
@@ -852,18 +864,23 @@ class Menuutama extends CI_Controller
         $kk = $_FILES['scan_kk']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk1');
 
         $data = [
+
             'sk_desa' => $sk_desa,
             'akta_kematian' => $akta_kematian,
             'sp_ahli_waris' => $sp_ahli_waris,
             'scan_ktp' => $ktp,
             'scan_kk' => $kk,
+
             'catatan' => 'Sistem sedang melakukan pengecekan dokumen.',
             'status_permohonan' => 1
         ];
 
+
         $where = array(
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
         );
+
+
 
         if (empty($pesan)) {
             $result = $this->M_admin->update_aktaT($where, $data);
@@ -889,7 +906,9 @@ class Menuutama extends CI_Controller
         }
     }
 
+
     public function update_cv()
+
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
@@ -946,6 +965,7 @@ class Menuutama extends CI_Controller
         $file = $this->upload->data();
         $npwp = $_FILES['scan_npwp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_npwp1');
 
+
         // upload PBB
         $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
         $config['allowed_types']        = 'pdf'; // jenis file
@@ -989,6 +1009,7 @@ class Menuutama extends CI_Controller
             'nama_cv' => htmlspecialchars($this->input->post('nama_cv', true)),
             'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
             'bidang_usaha' => htmlspecialchars($this->input->post('bidang_usaha', true)),
+
             'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
             'catatan' => 'Sistem sedang melakukan pengecekan dokumen.',
             'status_permohonan' => 1
@@ -998,8 +1019,10 @@ class Menuutama extends CI_Controller
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
         );
 
+
         // var_dump($pesan);
         // die;
+
         if (empty($pesan)) {
             $result = $this->M_admin->update_aktaT($where, $data);
         } else {
@@ -1024,11 +1047,14 @@ class Menuutama extends CI_Controller
         }
     }
 
+
     public function update_sewa()
+
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
         $pesan = array();
+
 
         // Upload KTP
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
@@ -1040,11 +1066,13 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('scan_ktp') && $_FILES['scan_ktp']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
 
         $file = $this->upload->data();
+
         $ktp = $_FILES['scan_ktp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_ktp1');
 
         // Upload KK
@@ -1057,11 +1085,13 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('scan_kk') && $_FILES['scan_kk']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
 
         $file = $this->upload->data();
+
         $kk = $_FILES['scan_kk']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk1');
 
         // Upload Sertifikat Asli
@@ -1074,11 +1104,13 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('scan_sertif') && $_FILES['scan_sertif']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
 
         $file = $this->upload->data();
+
         $sertif = $_FILES['scan_sertif']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_sertif1');
 
         // Upload PBB
@@ -1091,11 +1123,13 @@ class Menuutama extends CI_Controller
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
         if (!$this->upload->do_upload('scan_pbb') && $_FILES['scan_pbb']['size'] != 0) //sesuai dengan name pada form 
+
         {
             array_push($pesan, $this->upload->display_errors());
         }
 
         $file = $this->upload->data();
+
         $pbb = $_FILES['scan_pbb']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_pbb1');
 
         $data = [
@@ -1103,6 +1137,329 @@ class Menuutama extends CI_Controller
             'scan_kk' => $kk,
             'sertif_asli' => $sertif,
             'scan_pbb' => $pbb,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+
+            'status_permohonan' => 1
+        ];
+
+        $where = array(
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+        );
+
+        if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+
+                'isi_pesan' => 'Permohonan Berhasil Diajukan'
+
+            ));
+            redirect('user/Menuutama/datapermohonan_user/' . $jenis);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+
+                'isi_pesan' => 'Permohonan Gagal Diajukan'
+
+            ));
+            redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
+        }
+    }
+
+
+    public function update_tukartanah()
+
+    {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
+
+        $pesan = array();
+
+
+        // Upload KTP1
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp') && $_FILES['scan_ktp']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $ktp = $_FILES['scan_ktp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_ktp1');
+
+
+        // Upload KTP2
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KTP2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp2') && $_FILES['scan_ktp2']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $ktp2 = $_FILES['scan_ktp2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_ktp2_1');
+
+        // Upload KK1
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk') && $_FILES['scan_kk']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $kk = $_FILES['scan_kk']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk1');
+
+
+        // Upload KK2
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KK2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk2') && $_FILES['scan_kk2']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $kk2 = $_FILES['scan_kk2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk2_1');
+
+        // Upload Surat Nikah scan_snikah1
+        $config['upload_path']          = 'assets/berkas/snikah/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'SNKH_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_snikah') && $_FILES['scan_snikah']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $snikah = $_FILES['scan_snikah']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_snikah1');
+
+        // Upload Surat Nikah scan_snikah2
+        $config['upload_path']          = 'assets/berkas/snikah/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'SNKH2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_snikah2') && $_FILES['scan_snikah2']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $snikah2 = $_FILES['scan_snikah2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_snikah2_1');
+
+        // Upload PBB
+        $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_pbb') && $_FILES['scan_pbb']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $pbb = $_FILES['scan_pbb']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_pbb1');
+
+
+
+        // Upload PBB
+        $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'PBB2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_pbb2') && $_FILES['scan_pbb2']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $pbb2 = $_FILES['scan_pbb2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_pbb2_1');
+
+        // Upload Sertif tanah
+        $config['upload_path']          = 'assets/berkas/sertif_tanah/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'SRTF_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('sertif_tanah') && $_FILES['sertif_tanah']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $sertiftanah = $_FILES['sertif_tanah']['size'] != 0 ? $file['file_name'] : $this->input->post('sertif_tanah1');
+
+        // Upload Sertif tanah
+        $config['upload_path']          = 'assets/berkas/sertif_tanah/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'SRTF2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('sertif_tanah2') && $_FILES['sertif_tanah2']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $sertiftanah2 = $_FILES['sertif_tanah2']['size'] != 0 ? $file['file_name'] : $this->input->post('sertif_tanah2_1');
+
+        // Upload NPWP
+        $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'NPWP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_npwp') && $_FILES['scan_npwp']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $npwp = $_FILES['scan_npwp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_npwp1');
+
+        // Upload NPWP
+        $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'NPWP2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_npwp2') && $_FILES['scan_npwp2']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $npwp2 = $_FILES['scan_npwp2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_npwp2_1');
+
+        // Upload BPJS
+        $config['upload_path']          = 'assets/berkas/bpjs/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'BPJS_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_bpjs') && $_FILES['scan_bpjs']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $bpjs = $_FILES['scan_bpjs']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_bpjs1');
+
+        // Upload BPJS
+        $config['upload_path']          = 'assets/berkas/bpjs/';  // folder upload 
+        $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'BPJS2_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_bpjs2') && $_FILES['scan_bpjs2']['size'] != 0) //sesuai dengan name pada form 
+
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+
+        $bpjs2 = $_FILES['scan_bpjs2']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_bpjs2_1');
+
+
+        $data = [
+            'scan_ktp' => $ktp,
+            'scan_ktp2' => $ktp2,
+            'scan_kk' => $kk,
+            'scan_kk2' => $kk2,
+            'scan_snikah' => $snikah,
+            'scan_snikah2' => $snikah2,
+            'scan_pbb' => $pbb,
+            'scan_pbb2' => $pbb2,
+            'sertif_tanah' => $sertiftanah,
+            'sertif_tanah2' => $sertiftanah2,
+            'scan_npwp' => $npwp,
+            'scan_npwp2' => $npwp2,
+            'scan_bpjs' => $bpjs,
+            'scan_bpjs2' => $bpjs2,
+            'tkrtnh_namapihak1' => htmlspecialchars($this->input->post('tkrtnh_namapihak1', true)),
+            'tkrtnh_namapihak2' => htmlspecialchars($this->input->post('tkrtnh_namapihak2', true)),
+            'tkrtnh_nohppihak1' => htmlspecialchars($this->input->post('tkrtnh_nohppihak1', true)),
+            'tkrtnh_nohppihak2' => htmlspecialchars($this->input->post('tkrtnh_nohppihak2', true)),
             'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
             'status_permohonan' => 1
         ];

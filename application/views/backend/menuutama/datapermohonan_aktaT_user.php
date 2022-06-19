@@ -71,9 +71,7 @@
                                 <th>Jenis Permohonan</th>
                                 <th>Estimasi Pengerjaan</th>
                                 <th style="width: 40px">Status</th>
-
                                 <th style="width: 200px">Keterangan</th>
-
                             </tr>
                         </thead>
                         <tbody>

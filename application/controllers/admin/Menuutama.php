@@ -1509,7 +1509,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'KTP2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1539,7 +1541,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'KK2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1569,7 +1573,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/snikah/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'SNKH_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'SNKH2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1600,7 +1606,10 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'PBB2_' . $this->input->post('kode_permohonan');
+
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1630,7 +1639,8 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/sertif_tanah/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'SRTF_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'SRTF2_' . $this->input->post('kode_permohonan');
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1660,7 +1670,8 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/npwp/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'NPWP_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'NPWP2_' . $this->input->post('kode_permohonan');
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -1690,7 +1701,9 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/bpjs/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'BPJS_' . $this->input->post('kode_permohonan');
+
+        $config['file_name']            = 'BPJS2_' . $this->input->post('kode_permohonan');
+
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
@@ -2101,7 +2114,9 @@ class Menuutama extends CI_Controller
 
         $data = [
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
-            'pemohon' => htmlspecialchars($this->input->post('user', true)),
+
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+
             'jenis_permohonan' => 13,
             'jenis_layanan' => 'ppat',
             'scan_ktp' => $ktp,
