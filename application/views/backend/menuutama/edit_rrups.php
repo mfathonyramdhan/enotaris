@@ -53,7 +53,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('admin/Menuutama/update_rrups') ?>" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('user/Menuutama/update_rrups') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan" value="<?= $dokumen['kode_permohonan'] ?>">
                     <input type="hidden" name="jenis_permohonan" id="jenis_permohonan" value="<?= $dokumen['jenis_permohonan'] ?>">
                     <input type="hidden" name="id_user" id="id_user" value="<?= $dokumen['pemohon'] ?>">
