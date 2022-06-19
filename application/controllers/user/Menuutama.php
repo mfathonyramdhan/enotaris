@@ -289,6 +289,9 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/edit_rrups', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 6) {
             $this->load->view('backend/menuutama/edit_yayasan', $data);
+             // ngeload tampilan perjanjian lain lain
+        } elseif ($data['dokumen']['jenis_permohonan'] == 7) {
+            $this->load->view('backend/menuutama/edit_perjLain', $data);
         }
     }
 
@@ -446,6 +449,86 @@ class Menuutama extends CI_Controller
             'scan_ktp' => $ktp,
             'scan_kk' => $kk,
             'scan_npwp' => $npwp,
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
+            'catatan' => 'Sistem sedang melakukan pengecekan dokumen.',
+            'status_permohonan' => 1
+        ];
+
+
+        $where = array(
+            'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+        );
+
+        // var_dump($pesan);
+        // die;
+        if (empty($pesan)) {
+            $result = $this->M_admin->update_aktaT($where, $data);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Isi Form Dengan Valid!'
+            ));
+            redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
+        }
+        if ($result == true) {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => true,
+                'isi_pesan' => 'Permohonan Berhasil Diperbarui'
+            ));
+            redirect('user/Menuutama/datapermohonan_user/' . $jenis);
+        } else {
+            $this->session->set_flashdata('pesan', array(
+                'status_pesan' => false,
+                'isi_pesan' => 'Permohonan Gagal Diperbarui'
+            ));
+            redirect('user/Menuutama/edit_dokumen/' . $this->input->post('kode_permohonan'));
+        }
+    }
+
+    public function update_perjLain()
+    {
+        $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
+
+        $pesan = array();
+
+        // Upload KTP
+        $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_ktp') && $_FILES['scan_ktp']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $ktp = $_FILES['scan_ktp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_ktp1');
+
+        // upload kk
+        $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
+        $config['allowed_types']        = 'pdf'; // jenis file
+        $config['max_size']             = 5000;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan');
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if (!$this->upload->do_upload('scan_kk') && $_FILES['scan_kk']['size'] != 0) //sesuai dengan name pada form 
+        {
+            array_push($pesan, $this->upload->display_errors());
+        }
+
+        $file = $this->upload->data();
+        $kk = $_FILES['scan_kk']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk1');
+
+        $data = [
+            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'scan_ktp' => $ktp,
+            'scan_kk' => $kk,
             'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
             'catatan' => 'Sistem sedang melakukan pengecekan dokumen.',
             'status_permohonan' => 1

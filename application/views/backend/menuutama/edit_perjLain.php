@@ -49,18 +49,20 @@
             <!-- Small boxes (Stat box) -->
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Formulir Perjanjian kerjasama, utang piutang, kontrak kerja, dan lain-lain</h3>
+                    <h3 class="card-title">Formulir  Edit Perjanjian kerjasama, utang piutang, kontrak kerja, dan lain-lain</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('admin/Menuutama/tambah_perlain') ?>" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-                    <input type="hidden" name="coba" id="id_user" value="<?= $user['id_user'] ?>">
+                <form action="<?= base_url('user/Menuutama/update_perjLain') ?>" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="kode_permohonan" id="kode_permohonan" value="<?= $dokumen['kode_permohonan'] ?>">
+                    <input type="hidden" name="jenis_permohonan" id="jenis_permohonan" value="<?= $dokumen['jenis_permohonan'] ?>">
+                    <input type="hidden" name="id_user" id="id_user" value="<?= $dokumen['pemohon'] ?>">
                     <div class="card-body">
 
                         <?php if ($user['nama_level'] == 'admin') { ?>
                             <div class="row">
                                 <div class="form-group col-12" id="item_auto">
+                                    
                                     <label for="">Nama Pemohon</label>
                                     <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
                                 </div>
@@ -72,6 +74,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KTP</label>
                                 <div class="custom-file">
+                                <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_ktp'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -84,6 +87,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK</label>
                                 <div class="custom-file">
+                                <input type="hidden" name="scan_kk1" value="<?= $dokumen['scan_kk'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -96,7 +100,7 @@
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Keterangan</label>
-                                <input type="text" class="form-control" id="keterangan" placeholder="Masukkan keterangan" name="keterangan" required>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" value="<?= $dokumen['keterangan'] ?>" required>
                             </div>
                         </div>
 
@@ -124,35 +128,6 @@
 
 <script>
     $('.datepicker').datepicker();
-
-    $(document).ready(function() {
-        $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url(); ?>admin/Menuutama/getKodePerlain',
-            beforeSend: function() {
-                $('.loading').show();
-            },
-            success: function(data) {
-
-                var html = JSON.parse(data);
-                var kode = 'PERLAIN_' + html;
-                var nodaf = kode;
-                $('#kode_permohonan').val(nodaf);
-            }
-        });
-    });
-
-    $(document).ready(function() {
-
-        $('#nama').autocomplete({
-            source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
-            select: function(event, ui) {
-                $("#id_user").val(ui.item.id_dosen);
-                $("#nama").val(ui.item.description);
-            }
-        });
-        $('#nama').select();
-    });
 </script>
 </body>
 
