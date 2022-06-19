@@ -81,6 +81,7 @@
                                     <input type="hidden" name="kode_permohonan" value="<?= $pembayaran['kode_permohonan'] ?>">
                                     <input type="hidden" name="jenis_permohonan" value="<?= $pembayaran['jenis_permohonan'] ?>">
                                     <input type="hidden" name="bukti_pembayaran1" value=<?= $pembayaran['bukti_pembayaran'] ?>>
+                                    <input type="hidden" name="bukti_pembayaran1" value="<?= $pembayaran['bukti_pembayaran'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="bukti_pembayaran">
                                 </div>
                             </div>

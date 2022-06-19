@@ -471,76 +471,75 @@ class Menuutama extends CI_Controller
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
-        $kode = htmlspecialchars($this->input->post('kode_permohonan', true));
-        $nmr = explode('_', $kode);
-        if (count($nmr) < 3) {
-            $baru = $kode . '_1';
-        } else {
-            $coba = explode('_', $kode);
-            $baru = (int)$coba[2] + 1;
-        }
-
         $pesan = array();
 
         // Upload KTP
         $config['upload_path']          = 'assets/berkas/ktp/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'KTP_' . $baru;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KTP_' . $this->input->post('kode_permohonan', true);
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('scan_ktp')) //sesuai dengan name pada form 
+        if (!$this->upload->do_upload('scan_ktp') && $_FILES['scan_ktp']['size'] != 0) //sesuai dengan name pada form 
         {
             array_push($pesan, $this->upload->display_errors());
         }
+
         $file = $this->upload->data();
-        $ktp = $file['file_name'];
+        $ktp = $_FILES['scan_ktp']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_ktp1');
 
         // Upload KK
         $config['upload_path']          = 'assets/berkas/kk/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'KK_' . $baru;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'KK_' . $this->input->post('kode_permohonan', true);
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('scan_kk')) //sesuai dengan name pada form 
+        if (!$this->upload->do_upload('scan_kk') && $_FILES['scan_kk']['size'] != 0) //sesuai dengan name pada form 
         {
             array_push($pesan, $this->upload->display_errors());
         }
+
         $file = $this->upload->data();
-        $kk = $file['file_name'];
+        $kk = $_FILES['scan_kk']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_kk1');
 
         // Upload Sertifikat Asli
         $config['upload_path']          = 'assets/berkas/sertif_asli/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'SERTIF_' . $baru;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'SERTIF_' . $this->input->post('kode_permohonan', true);
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('scan_sertif')) //sesuai dengan name pada form 
+        if (!$this->upload->do_upload('scan_sertif') && $_FILES['scan_sertif']['size'] != 0) //sesuai dengan name pada form 
         {
             array_push($pesan, $this->upload->display_errors());
         }
+
         $file = $this->upload->data();
-        $sertif = $file['file_name'];
+        $sertif = $_FILES['scan_sertif']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_sertif1');
 
         // Upload PBB
         $config['upload_path']          = 'assets/berkas/pbb/';  // folder upload 
         $config['allowed_types']        = 'jpg|png|jpeg|pdf'; // jenis file
         $config['max_size']             = 5000;
-        $config['file_name']            = 'PBB_' . $baru;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'PBB_' . $this->input->post('kode_permohonan', true);
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('scan_pbb')) //sesuai dengan name pada form 
+        if (!$this->upload->do_upload('scan_pbb') && $_FILES['scan_pbb']['size'] != 0) //sesuai dengan name pada form 
         {
             array_push($pesan, $this->upload->display_errors());
         }
+
         $file = $this->upload->data();
-        $pbb = $file['file_name'];
+        $pbb = $_FILES['scan_pbb']['size'] != 0 ? $file['file_name'] : $this->input->post('scan_pbb1');
 
         $data = [
             'scan_ktp' => $ktp,
@@ -582,7 +581,7 @@ class Menuutama extends CI_Controller
     public function edit_pembayaran($kode_permohonan)
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));
-        $data['page_title'] = 'Formulir Akta Tanah';
+        $data['page_title'] = 'Formulir Pembayaran';
         $data['pembayaran'] = $this->M_admin->cek_dokumen($kode_permohonan);
 
         $this->load->view('backend/template/meta', $data);
@@ -595,15 +594,6 @@ class Menuutama extends CI_Controller
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
 
-        $kode = htmlspecialchars($this->input->post('kode_permohonan', true));
-        $nmr = explode('_', $kode);
-        if (count($nmr) < 3) {
-            $baru = $kode . '_1';
-        } else {
-            $coba = explode('_', $kode);
-            $baru = (int)$coba[2] + 1;
-        }
-
         $pesan = array();
 
 
@@ -611,16 +601,18 @@ class Menuutama extends CI_Controller
         $config['upload_path']          = 'assets/berkas/bukti_pembayaran/';  // folder upload 
         $config['allowed_types']        = 'jpg|jpeg|png|pdf'; // jenis file
         $config['max_size']             = 8000;
-        $config['file_name']            = 'BUKTI_' . $baru;
+        $config['overwrite']            = TRUE;
+        $config['file_name']            = 'BUKTI_' . $this->input->post('kode_permohonan', true);
 
         $this->load->library('upload', $config);
         $this->upload->initialize($config);
-        if (!$this->upload->do_upload('bukti_pembayaran')) //sesuai dengan name pada form 
+        if (!$this->upload->do_upload('bukti_pembayaran') && $_FILES['bukti_pembayaran']['size'] != 0) //sesuai dengan name pada form 
         {
             array_push($pesan, $this->upload->display_errors());
         }
+
         $file = $this->upload->data();
-        $bukti_pembayaran = $file['file_name'];
+        $bukti_pembayaran = $_FILES['bukti_pembayaran']['size'] != 0 ? $file['file_name'] : $this->input->post('bukti_pembayaran1');
 
         $data = [
             'bukti_pembayaran' => $bukti_pembayaran,

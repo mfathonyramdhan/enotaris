@@ -64,7 +64,7 @@
                                 <label for="exampleInputFile">Upload Scan KTP</label>
                                 <div class="custom-file">
                                     <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_ktp'] ?>">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp" required>
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -76,8 +76,8 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK</label>
                                 <div class="custom-file">
-                                    <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_kk'] ?>">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk" required>
+                                    <input type="hidden" name="scan_kk1" value="<?= $dokumen['scan_kk'] ?>">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -88,8 +88,8 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan Sertifikat Asli</label>
                                 <div class="custom-file">
-                                    <input type="hidden" name="scan_ktp1" value="<?= $dokumen['sertif_asli'] ?>">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_sertif" required>
+                                    <input type="hidden" name="scan_sertif1" value="<?= $dokumen['sertif_asli'] ?>">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_sertif">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -98,8 +98,8 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan PBB</label>
                                 <div class="custom-file">
-                                    <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_pbb'] ?>">
-                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb" required>
+                                    <input type="hidden" name="scan_pbb1" value="<?= $dokumen['scan_pbb'] ?>">
+                                    <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="#" class="btn btn-primary">Ajukan</button>
+                            <button type="submit" class="btn btn-primary">Ajukan</button>
                         </div>
                 </form>
             </div>
