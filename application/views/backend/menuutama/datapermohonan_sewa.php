@@ -71,7 +71,7 @@
                                 <th>Tanggal Pengajuan</th>
                                 <th>Jenis Permohonan</th>
                                 <th style="width: 40px">Status</th>
-                                <th style="width: 200px">Catatan</th>
+                                <th style="width: 200px">Keterangan dari user</th>
                                 <th style="width: 200px">Opsi</th>
                             </tr>
                         </thead>
@@ -100,10 +100,10 @@
                                         </td>
                                         <td>
                                             <?php
-                                            if ($b['catatan'] == '') {
+                                            if ($b['keterangan'] == '') {
                                                 echo 'Tidak Ada Catatan';
                                             } else {
-                                                echo $b['catatan'];
+                                                echo $b['keterangan'];
                                             }
                                             ?>
                                         </td>

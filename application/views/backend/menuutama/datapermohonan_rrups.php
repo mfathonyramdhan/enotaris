@@ -101,7 +101,7 @@
                                         <td>
                                             <?php
                                             if ($b['keterangan'] == '') {
-                                                echo 'Tidak Ada Catatan';
+                                                echo 'Tidak Ada Keterangan';
                                             } else {
                                                 echo $b['keterangan'];
                                             }

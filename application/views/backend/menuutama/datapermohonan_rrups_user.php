@@ -113,10 +113,10 @@
                                         </td>
                                         <td>
                                             <?php
-                                            if ($b['keterangan'] == '') {
+                                            if ($b['catatan'] == '') {
                                                 echo 'Tidak Ada Catatan';
                                             } else {
-                                                echo $b['keterangan'];
+                                                echo $b['catatan'];
                                             }
                                             ?>
                                             <br>

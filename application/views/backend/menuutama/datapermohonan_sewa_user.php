@@ -123,11 +123,12 @@
                                             <?php if ($b['status_permohonan'] == 2) { ?>
                                                 <a href="<?= base_url('user/Menuutama/bayar/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Lakukan Pembayaran</span></a>
                                             <?php } ?>
+                                            <!-- update data setelah penolakan dari admin -->
                                             <?php if ($b['status_permohonan'] == 6) { ?>
                                                 <a href="<?= base_url('user/Menuutama/edit_dokumen/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Data</span></a>
                                             <?php } ?>
                                             <?php if ($b['status_permohonan'] == 7) { ?>
-                                                <a href="<?= base_url('user/Menuutama/edit_pembayaran/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Pembayaran</span></a>
+                                                <a href="<?= base_url('user/Menuutama/edit_pembayaran/') . $b['kode_permohonan'] ?>"><span class="badge bg-warning">Update Pembayaran</span></a> 
                                             <?php } ?>
                                         </td>
                                     </tr>
