@@ -536,9 +536,10 @@ class Menuutama extends CI_Controller
         }
     }
 
-    public function tolak_pembayaran($kode_permohonan)
+    public function tolak_pembayaran()
     {
         $jenis = htmlspecialchars($this->input->post('jenis_permohonan', true));
+        $kode_permohonan = htmlspecialchars($this->input->post('kode_permohonan', true));
         $pesan = array();
         $data = [
             'catatan' => 'Bukti pembayaran tidak valid, mohon melakukan upload ulang.',

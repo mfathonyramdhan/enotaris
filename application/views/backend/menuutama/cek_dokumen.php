@@ -1913,9 +1913,13 @@
                             <form action="<?= base_url('admin/Menuutama/proses_permohonan') ?>" method="POST">
                                 <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
                                 <input type="hidden" name="jenis_permohonan" value="<?= $cek_dokumen['jenis_permohonan'] ?>">
-                                <button type="submit" class="btn btn-primary align-self-end">Proses Permohonan</button>
-                                <a href="<?= base_url('admin/Menuutama/tolak_pembayaran/' . $cek_dokumen['kode_permohonan']) ?>" class="btn btn-danger align-self-end">Tolak</a>
+                                <button type="submit" class="btn btn-primary align-self-end">Proses Permohonan</button>&nbsp;
 
+                            </form>
+                            <form action="<?= base_url('admin/Menuutama/tolak_pembayaran') ?>" method="POST">
+                                <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                                <input type="hidden" name="jenis_permohonan" value="<?= $cek_dokumen['jenis_permohonan'] ?>">
+                                <button type="submit" class="btn btn-danger align-self-end">Tolak</button>
                             </form>
                         </div>
                     <?php } ?>
