@@ -271,6 +271,9 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/aktatanah/edit_dokumen', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 4) {
             $this->load->view('backend/menuutama/edit_sewa', $data);
+        // ngeload tampilan editrrups
+        } elseif ($data['dokumen']['jenis_permohonan'] == 5) {
+            $this->load->view('backend/menuutama/edit_rrups', $data);
         }
     }
 
