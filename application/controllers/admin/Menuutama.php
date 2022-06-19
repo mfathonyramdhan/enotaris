@@ -670,13 +670,14 @@ class Menuutama extends CI_Controller
 
         $data = [
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
-            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'pemohon' => htmlspecialchars($this->input->post('coba', true)),
             'jenis_permohonan' => 2,
             'jenis_layanan' => 'notaris',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'nama_cv' => htmlspecialchars($this->input->post('nama_cv', true)),
             'lokasi' => htmlspecialchars($this->input->post('lokasi', true)),
-            'bidang_usaha' => htmlspecialchars($this->input->post('luas_tanah', true)),
+            'bidang_usaha' => htmlspecialchars($this->input->post('bidang_usaha', true)),
+            'keterangan' => htmlspecialchars($this->input->post('keterangan', true)),
             'scan_ktp' => $ktp,
             'scan_kk' => $kk,
             'scan_pbb' => $pbb,
@@ -686,6 +687,7 @@ class Menuutama extends CI_Controller
             'tgl_permohonan' => date('Y-m-d'),
             'tahun_permohonan' => date('Y')
         ];
+
         if (empty($pesan)) {
             $result = $this->M_admin->tambah_permohonan($data);
         } else {

@@ -53,28 +53,21 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="<?= base_url('admin/Menuutama/tambah_cv') ?>" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-                    <input type="hidden" name="coba" id="id_user" value="<?= $user['id_user'] ?>">
+                <form action="<?= base_url('user/Menuutama/update_cv') ?>" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="kode_permohonan" id="kode_permohonan" value="<?= $dokumen['kode_permohonan'] ?>">
+                    <input type="hidden" name="jenis_permohonan" id="jenis_permohonan" value="<?= $dokumen['jenis_permohonan'] ?>">
+                    <input type="hidden" name="id_user" id="id_user" value="<?= $dokumen['pemohon'] ?>">
                     <div class="card-body">
-                        <?php if ($user['nama_level'] == 'admin') { ?>
-                            <div class="row">
-                                <div class="form-group col-12" id="item_auto">
-                                    <label for="">Nama Pemohon</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                </div>
-                            </div>
-                        <?php } ?>
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Nama CV</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama_cv" required>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama_cv" value="<?= $dokumen['nama_cv'] ?>" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="">Lokasi CV</label>
-                                <input type="text" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="lokasi" required>
+                                <input type="text" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="lokasi" value="<?= $dokumen['lokasi'] ?>" required>
                             </div>
                         </div>
 
@@ -85,6 +78,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KTP Direktur & Komisaris</label>
                                 <div class="custom-file">
+                                    <input type="hidden" name="scan_ktp1" value="<?= $dokumen['scan_ktp'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_ktp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -97,6 +91,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan KK Direktur & Komisaris</label>
                                 <div class="custom-file">
+                                    <input type="hidden" name="scan_kk1" value="<?= $dokumen['scan_kk'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_kk">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -108,6 +103,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan NPWP Direktur & Komisaris</label>
                                 <div class="custom-file">
+                                    <input type="hidden" name="scan_npwp1" value="<?= $dokumen['scan_npwp'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_npwp">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -117,6 +113,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Scan PBB</label>
                                 <div class="custom-file">
+                                    <input type="hidden" name="scan_pbb1" value="<?= $dokumen['scan_pbb'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="scan_pbb">
                                     <span class="text-danger">*Masukkan file berformat .pdf</span>
                                 </div>
@@ -126,7 +123,7 @@
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
                                 <label for="">Bidang Usaha</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan bidang usaha" name="bidang_usaha" required>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan bidang usaha" name="bidang_usaha" value="<?= $dokumen['bidang_usaha'] ?>" required>
                             </div>
                         </div>
 
@@ -134,6 +131,7 @@
                             <div class="form-group col">
                                 <label for="exampleInputFile">Upload Foto Direktur</label>
                                 <div class="custom-file">
+                                    <input type="hidden" name="foto_direktur1" value="<?= $dokumen['foto_direktur'] ?>">
                                     <input type="file" class="form-control" id="exampleInputFile" name="foto_direktur">
                                     <span class="text-danger">*Ukuran Foto 3x4 dengan Background Merah. File berformat jpg/png</span>
                                 </div>
@@ -144,7 +142,7 @@
                                 <label for="">Keterangan</label>
 
 
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" required>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan keterangan" name="keterangan" value="<?= $dokumen['keterangan'] ?>" required>
                                 <input type="hidden" name="id_user" id="id_user">
 
 
@@ -155,7 +153,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="#" class="btn btn-primary">Ajukan</button>
+                            <button type="submit" class="btn btn-primary">Ajukan</button>
                         </div>
                 </form>
             </div>
@@ -175,35 +173,6 @@
 
 <script>
     $('.datepicker').datepicker();
-
-    $(document).ready(function() {
-        $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url(); ?>admin/Menuutama/getKodeCv',
-            beforeSend: function() {
-                $('.loading').show();
-            },
-            success: function(data) {
-
-                var html = JSON.parse(data);
-                var kode = 'CVPT_' + html;
-                var nodaf = kode;
-                $('#kode_permohonan').val(nodaf);
-            }
-        });
-    });
-
-    $(document).ready(function() {
-
-        $('#nama').autocomplete({
-            source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
-            select: function(event, ui) {
-                $("#id_user").val(ui.item.id_dosen);
-                $("#nama").val(ui.item.description);
-            }
-        });
-        $('#nama').select();
-    });
 </script>
 </body>
 

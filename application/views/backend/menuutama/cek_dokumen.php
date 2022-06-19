@@ -1893,6 +1893,7 @@
                     <div id="form_tolak">
                         <form action="<?= base_url('admin/Menuutama/tolak_dokumen') ?>" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="kode_permohonan" value="<?= $cek_dokumen['kode_permohonan'] ?>">
+                            <input type="hidden" name="jenis_permohonan" value="<?= $cek_dokumen['jenis_permohonan'] ?>">
                             <div class="row justify-content-center">
                                 <div class="form-group col-8">
                                     <label for="">Alasan Penolakan</label>

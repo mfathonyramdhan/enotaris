@@ -59,15 +59,6 @@
                     <input type="hidden" name="id_user" id="id_user" value="<?= $dokumen['pemohon'] ?>">
                     <div class="card-body">
 
-                        <?php if ($user['nama_level'] == 'admin') { ?>
-                            <div class="row">
-                                <div class="form-group col-12" id="item_auto">
-                                    <label for="">Nama Pemohon</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama" required>
-                                </div>
-                            </div>
-                        <?php } ?>
-
 
                         <div class="row">
 
@@ -142,18 +133,6 @@
 
 <script>
     $('.datepicker').datepicker();
-
-    $(document).ready(function() {
-
-        $('#nama').autocomplete({
-            source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
-            select: function(event, ui) {
-                $("#id_user").val(ui.item.id_dosen);
-                $("#nama").val(ui.item.description);
-            }
-        });
-        $('#nama').select();
-    });
 </script>
 </body>
 
