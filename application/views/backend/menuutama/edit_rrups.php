@@ -144,23 +144,6 @@
     $('.datepicker').datepicker();
 
     $(document).ready(function() {
-        $.ajax({
-            type: 'GET',
-            url: '<?php echo base_url(); ?>admin/Menuutama/getKodeRrups',
-            beforeSend: function() {
-                $('.loading').show();
-            },
-            success: function(data) {
-
-                var html = JSON.parse(data);
-                var kode = 'RRUPS_' + html;
-                var nodaf = kode;
-                $('#kode_permohonan').val(nodaf);
-            }
-        });
-    });
-
-    $(document).ready(function() {
 
         $('#nama').autocomplete({
             source: "<?php echo site_url('admin/Menuutama/get_user'); ?>",
