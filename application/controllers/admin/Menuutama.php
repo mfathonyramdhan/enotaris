@@ -689,6 +689,9 @@ class Menuutama extends CI_Controller
             'tahun_permohonan' => date('Y')
         ];
 
+        // var_dump($data);
+        // die;
+
         if (empty($pesan)) {
             $result = $this->M_admin->tambah_permohonan($data);
         } else {
