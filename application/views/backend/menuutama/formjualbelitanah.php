@@ -55,7 +55,7 @@
                 <!-- form start -->
                 <form action="<?= base_url('admin/Menuutama/tambah_jualbelitanah') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="kode_permohonan" id="kode_permohonan">
-                    <input type="hidden" name="id_user" id="id_user">
+                    <input type="hidden" name="user" id="id_user" value="<?= $user['id_user'] ?>">
                     <div class="card-body">
 
                         <?php if ($user['nama_level'] == 'admin') { ?>
@@ -69,22 +69,22 @@
                         <div class="row">
                             <div class="form-group col" id="item_auto">
                                 <label for="">Nama Penjual</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Penjual" name="jbtnh_namapenjual" required>
+                                <input type="text" class="form-control" id="jbtnh_namapenjual" placeholder="Masukkan Nama Penjual" name="jbtnh_namapenjual" required>
                             </div>
 
                             <div class="form-group col" id="item_auto">
                                 <label for="">Nama Pembeli</label>
-                                <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Pembeli" name="jbtnh_namapembeli" required>
+                                <input type="text" class="form-control" id="jbtnh_namapembeli" placeholder="Masukkan Nama Pembeli" name="jbtnh_namapembeli" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
                                 <label for="">No. HP Penjual</label>
-                                <input type="number" class="form-control" id="" placeholder="Masukkan No. HP Penjual" name="jbtnh_nohppenjual" required>
+                                <input type="number" class="form-control" id="jbtnh_nohppenjual" placeholder="Masukkan No. HP Penjual" name="jbtnh_nohppenjual" required>
                             </div>
                             <div class="form-group col">
                                 <label for="">No. HP Pembeli</label>
-                                <input type="number" class="form-control" id="" placeholder="Masukkan No. HP Pembeli" name="jbtnh_nohppembeli" required>
+                                <input type="number" class="form-control" id="jbtnh_nohppembeli" placeholder="Masukkan No. HP Pembeli" name="jbtnh_nohppembeli" required>
                             </div>
                         </div>
                         <div class="row">

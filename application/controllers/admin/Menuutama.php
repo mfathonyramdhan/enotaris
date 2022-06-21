@@ -1288,9 +1288,9 @@ class Menuutama extends CI_Controller
 
         $data = [
             'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true)),
-            'pemohon' => htmlspecialchars($this->input->post('id_user', true)),
+            'pemohon' => htmlspecialchars($this->input->post('user', true)),
             'jenis_permohonan' => 9,
-            'jenis_layanan' => 'ppat',
+            'jenis_layanan' => 'notaris',
             // 'deadline' => htmlspecialchars($this->input->post('deadline', true)),
             'scan_snikah' => $snikah,
             'scan_bpjs' => $bpjs,
