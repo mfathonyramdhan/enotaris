@@ -129,26 +129,13 @@ if (!empty($pesan)) {
                 Grafik Jumlah Permohonan
               </h3>
               <div class="card-tools">
-                <ul class="nav nav-pills ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                  </li>
-                </ul>
+              
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="tab-content p-0">
-                <!-- Morris chart - Sales -->
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
-                  <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                </div>
-                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                  <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                </div>
+              <canvas id="myChart" width="400" height="200"></canvas>
               </div>
             </div>
             <!-- /.card-body -->
@@ -277,6 +264,69 @@ if (!empty($pesan)) {
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
   </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<?php 
+$con = new mysqli('localhost', 'root', '', 'enotaris');
+$query = $con->query("SELECT MONTHNAME(tgl_permohonan) as monthname, COUNT(id_permohonan) as jumlahpermohonan FROM tb_permohonan GROUP BY monthname  ORDER BY `jumlahpermohonan` DESC");
+
+foreach($query as $data)
+{
+$monthname[] = $data['monthname'];
+$jumlahpermohonan[] = $data['jumlahpermohonan'];
+}
+?>
+
+<script>
+
+const labels = <?php echo json_encode($monthname)?>;
+const data = {
+labels: labels,
+datasets: [{
+  label: 'Jumlah Permohonan',
+  data: <?php echo json_encode($jumlahpermohonan)?>,
+  backgroundColor: [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(255, 159, 64, 0.2)',
+    'rgba(255, 205, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(201, 203, 207, 0.2)'
+  ],
+  borderColor: [
+    'rgb(255, 99, 132)',
+    'rgb(255, 159, 64)',
+    'rgb(255, 205, 86)',
+    'rgb(75, 192, 192)',
+    'rgb(54, 162, 235)',
+    'rgb(153, 102, 255)',
+    'rgb(201, 203, 207)'
+  ],
+  borderWidth: 1
+}]
+};
+
+const config = {
+type: 'bar',
+data: data,
+options: {
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  }
+},
+};
+
+var myChart = new Chart(
+document.getElementById('myChart'),
+config
+);
+
+</script>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->

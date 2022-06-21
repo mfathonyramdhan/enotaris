@@ -97,11 +97,11 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-                <div class="card-footer clearfix">
+                <!-- <div class="card-footer clearfix">
                     <?php
                     echo $Pagination;
                     ?>
-                </div>
+                </div> -->
             </div>
 
         </div><!-- /.container-fluid -->

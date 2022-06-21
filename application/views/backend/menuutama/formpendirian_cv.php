@@ -67,13 +67,13 @@
                         <?php } ?>
                         <div class="row">
                             <div class="form-group col-12" id="item_auto">
-                                <label for="">Nama CV</label>
+                                <label for="">Nama CV / PT</label>
                                 <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="nama_cv" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col">
-                                <label for="">Lokasi CV</label>
+                                <label for="">Lokasi CV / PT</label>
                                 <input type="text" class="form-control" id="" placeholder="Masukkan Lokasi tanah" name="lokasi" required>
                             </div>
                         </div>
