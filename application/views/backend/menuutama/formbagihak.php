@@ -54,7 +54,7 @@
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form action="<?= base_url('admin/Menuutama/tambah_bagihak') ?>" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="kode_permohonan" id="kode_permohonan">
+                    <input type="hidden" name="kode_permohonan" id="kode_permohonan">
                     <input type="hidden" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
                     <div class="card-body">
 
