@@ -289,15 +289,21 @@ class Menuutama extends CI_Controller
             $this->load->view('backend/menuutama/edit_rrups', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 6) {
             $this->load->view('backend/menuutama/edit_yayasan', $data);
-            // ngeload tampilan perjanjian lain lain
+            // ngeload tampilan perjanjian lain lain 
         } elseif ($data['dokumen']['jenis_permohonan'] == 7) {
             $this->load->view('backend/menuutama/edit_perjLain', $data);
+        } elseif ($data['dokumen']['jenis_permohonan'] == 8) {
+            $this->load->view('backend/menuutama/edit_hibah', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 9) {
             $this->load->view('backend/menuutama/edit_jualbeli_tanah', $data);
         } elseif ($data['dokumen']['jenis_permohonan'] == 10) {
             $this->load->view('backend/menuutama/edit_tukartanah', $data);
             // ngeload tampilan perjanjian lain lain
-        } elseif ($data['dokumen']['jenis_permohonan'] == 13) {
+        } elseif ($data['dokumen']['jenis_permohonan'] == 11) {
+            $this->load->view('backend/menuutama/edit_kuasa', $data);
+        } elseif ($data['dokumen']['jenis_permohonan'] == 12) {
+            $this->load->view('backend/menuutama/edit_bagihak', $data);
+        }elseif ($data['dokumen']['jenis_permohonan'] == 13) {
             $this->load->view('backend/menuutama/edit_apht', $data);
         }
     }
