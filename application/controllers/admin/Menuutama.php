@@ -13,6 +13,45 @@ class Menuutama extends CI_Controller
         }
     }
 
+    public function editNobulanan()
+	{
+		$update = [
+			'nobulanan' => htmlspecialchars($this->input->post('nobulanan', true)),
+			
+		];
+
+		$where = array(
+			'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+		);
+		$this->M_admin->editPermohonan($where, $update);
+// var_dump($where);
+//         die;
+		redirect('admin/Menuutama/datapermohonan_admin/laporan_notaris');
+	}
+
+    public function editNobulanan2()
+	{
+		$update = [
+			'nobulanan' => htmlspecialchars($this->input->post('nobulanan', true)),
+			
+		];
+
+		$where = array(
+			'kode_permohonan' => htmlspecialchars($this->input->post('kode_permohonan', true))
+		);
+		$this->M_admin->editPermohonan($where, $update);
+// var_dump($where);
+//         die;
+		redirect('admin/Menuutama/datapermohonan_admin/laporan_ppat');
+	}
+
+    public function getNobulanan($id)
+	{
+      
+		$data = $this->M_admin->getNobulanan($id);
+		echo json_encode($data);
+	}
+
     public function datapermohonan_admin($jenis, $start = 0)
     {
         $data['user'] = $this->M_admin->data_user($this->session->userdata('id_user'));

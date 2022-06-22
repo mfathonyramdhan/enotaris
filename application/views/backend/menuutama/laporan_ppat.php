@@ -82,7 +82,7 @@
                                 <?php foreach ($page_akta as $b) { ?>
                                     <tr>
                                         <td> <?= $no++ ?> </td>
-                                        <td> <?= '-' ?> </td>
+                                        <td> <?= $b['nobulanan'] ?> </td>
                                         <td> <?= $b['kode_permohonan'] ?> </td>
                                         <td> <?= $b['tgl_permohonan'] ?> </td>
                                         <td> <?= $b['nama'] ?> </td>
@@ -101,7 +101,7 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <span class="badge badge-warning"><a href="#" class="text-light">Edit No. Bulanan</a></span>
+                                        <abbr title="Edit"> <a href="javascript:void(0)" onclick="edit('<?= $b['kode_permohonan'] ?>')" data-bs-toggle="modal" data-bs-target="#Modal" class="btn btn-primary"><i class="fas fa-edit"></i>Edit no Bulanan</a></abbr>
                                         </td>
                                     </tr>
                                 <?php } ?>
@@ -127,6 +127,35 @@
     </section>
     <!-- /.content -->
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="newRoleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="newRoleModalLabel">Edit No. Bulanan :</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="<?= base_url('admin/Menuutama/editNobulanan2'); ?>" method="post">
+				<div class="modal-body">
+					<div class="form-group">
+						
+						<label>No. Bulanan</label>
+						<input type="text" class="form-control" id="nobulanan" name="nobulanan">
+						
+					</div>
+				</div>
+				<div class="modal-footer">
+                <input type="hidden" name="kode_permohonan" id="kode_permohonan">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 <!-- /.content-wrapper -->
 <?php $this->load->view('backend/template/footer') ?>
 
@@ -136,6 +165,26 @@
 
 <!-- JS -->
 <?php $this->load->view('backend/template/js') ?>
+
+<script type="text/javascript">
+
+
+	function edit(id) {
+		$('#Modal').modal('show');
+		$.ajax({
+			url: "<?= site_url('admin/Menuutama/getNobulanan') ?>/" + id,
+			type: "GET",
+			dataType: "JSON",
+			success: function(data) {
+				var i;
+				for (i = 0; i < data.length; i++) {
+					$('#kode_permohonan').val(data[i].kode_permohonan);
+					$('#nobulanan').val(data[i].nobulanan);
+				}
+			}
+		});
+	}
+</script>
 </body>
 
 </html>

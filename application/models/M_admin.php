@@ -13,6 +13,21 @@ class M_admin extends CI_Model
         return $query->row_array();
     }
 
+    function editPermohonan($where, $data)
+	{
+		return $this->db->update('tb_permohonan', $data, $where);
+	}
+   
+	function getNobulanan($id)
+	{
+		$this->db->select('*');
+		$this->db->from('tb_permohonan p');
+        $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
+		$this->db->where('kode_permohonan', $id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
     function update_akun($where, $data)
     {
         return $this->db->update('tb_user', $data, $where);

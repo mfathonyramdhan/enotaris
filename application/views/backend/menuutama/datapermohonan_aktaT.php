@@ -49,7 +49,7 @@
       <!-- Small boxes (Stat box) -->
       <div class="card">
         <div class="card-header">
-          <div class="card-tools">
+          <!-- <div class="card-tools">
             <div class="input-group input-group-sm" style="width: 300px;">
               <input type="text" name="search" class="form-control float-right" placeholder="Cari">
 
@@ -57,7 +57,7 @@
                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
               </div>
             </div>
-          </div>
+          </div> -->
           <h3 class="card-title"><?php echo $page_title ?></h3>
         </div>
         <!-- /.card-header -->
