@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jun 2022 pada 05.13
+-- Waktu pembuatan: 22 Jun 2022 pada 05.19
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -66,6 +66,13 @@ CREATE TABLE `tb_keuangan` (
   `saldo_terakhir` varchar(250) NOT NULL,
   `keterangan` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_keuangan`
+--
+
+INSERT INTO `tb_keuangan` (`id_keuangan`, `jumlah`, `status`, `tanggal`, `bulan`, `saldo_terakhir`, `keterangan`) VALUES
+(24, '1000000', 'Pemasukan', '2022-06-22', 'June', '1000000', 'Pemasukan dari Kode PermohonanSEWA_e7V1');
 
 -- --------------------------------------------------------
 
@@ -143,6 +150,13 @@ CREATE TABLE `tb_permohonan` (
   `nobulanan` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tb_permohonan`
+--
+
+INSERT INTO `tb_permohonan` (`id_permohonan`, `kode_permohonan`, `pemohon`, `jenis_permohonan`, `jenis_layanan`, `deadline`, `nama_cv`, `bidang_usaha`, `lokasi`, `luas_tanah`, `status_kepemilikan`, `scan_ktp`, `scan_kk`, `scan_pbb`, `scan_npwp`, `sertif_asli`, `foto_direktur`, `sk_desa`, `akta_kematian`, `sp_ahli_waris`, `biaya`, `tgl_pelunasan`, `status_permohonan`, `keterangan`, `catatan`, `bukti_pembayaran`, `berkas_hasil`, `tgl_permohonan`, `tahun_permohonan`, `jbtnh_namapenjual`, `jbtnh_namapembeli`, `jbtnh_nohppenjual`, `jbtnh_nohppembeli`, `scan_snikah`, `scan_bpjs`, `sertif_tanah`, `scan_ktp2`, `scan_kk2`, `scan_snikah2`, `scan_pbb2`, `sertif_tanah2`, `scan_npwp2`, `scan_bpjs2`, `tkrtnh_namapihak1`, `tkrtnh_namapihak2`, `tkrtnh_nohppihak1`, `tkrtnh_nohppihak2`, `nobulanan`) VALUES
+(136, 'SEWA_e7V1', 14, 4, 'notaris', '2022-06-30', '', '', '', '', '', 'KTP_SEWA_e7V1.pdf', 'KK_SEWA_e7V1.pdf', 'PBB_SEWA_e7V1.pdf', '', 'SERTIF_SEWA_e7V1.pdf', '', '', '', '', '1000000', '2022-06-22', 5, 'segera', 'Permohonan selesai, silahkan ambil berkas anda ke kantor kami. ', 'BUKTI_SEWA_e7V1.pdf', 'HASIL_SEWA_e7V1.pdf', '2022-06-22', '2022', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -201,7 +215,8 @@ INSERT INTO `tb_user` (`id_user`, `nama`, `email`, `password`, `nik`, `no_hp`, `
 (10, 'Selfi', 'selfi@gmail.com', '1fb16fd0b83c4603b2872ac9106b84e3', '3512082012200005', '083831831081', 'Perempuan', 'Jl. Kalimantan Jember', 'Jember', '2000-01-01', '20200319085405-1-potret-pas-foto-seleb-nikah-001-andriana-faliha.jpg', 1, '2022-06-11 01:02:30'),
 (11, 'johndoe', 'johndoe@gmail.com', '4297f44b13955235245b2497399d7a93', '325325325325325', '0895399477388', 'Laki-Laki', 'Jl. Semeru', 'Jember', NULL, 'Warna-Background-Foto-Buku-Nikah1.jpg', 2, '2022-06-11 01:05:23'),
 (12, 'mfr', 'mfr@gmail.com', 'b3eec1dde12f2af66c4991c8deff62f5', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-06-19 05:03:08'),
-(13, 'anton', 'anton@gmail.com', '42b46b98d4cf19ec3b8eb076284a63fd', '3512072070004', '085241564785', 'Laki-Laki', 'Jl. Rangu', 'Jember', '2000-12-31', 'default.jpg', 2, '2022-06-21 17:11:16');
+(13, 'anton', 'anton@gmail.com', '42b46b98d4cf19ec3b8eb076284a63fd', '3512072070004', '085241564785', 'Laki-Laki', 'Jl. Rangu', 'Jember', '2000-12-31', 'default.jpg', 2, '2022-06-21 17:11:16'),
+(14, 'testersistem', 'testersistem@gmail.com', 'ddd2a702d3419f47aa29fc13cff7a8d7', NULL, NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2, '2022-06-22 03:17:32');
 
 --
 -- Indexes for dumped tables
@@ -261,7 +276,7 @@ ALTER TABLE `tb_jenis_permohonan`
 -- AUTO_INCREMENT untuk tabel `tb_keuangan`
 --
 ALTER TABLE `tb_keuangan`
-  MODIFY `id_keuangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_keuangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_level_user`
@@ -273,7 +288,7 @@ ALTER TABLE `tb_level_user`
 -- AUTO_INCREMENT untuk tabel `tb_permohonan`
 --
 ALTER TABLE `tb_permohonan`
-  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id_permohonan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_status_permohonan`
@@ -285,7 +300,7 @@ ALTER TABLE `tb_status_permohonan`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
