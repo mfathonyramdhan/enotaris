@@ -77,17 +77,6 @@
             </a>
           </li>
         <?php } ?>
-        <li class="nav-header">JADWAL PERTEMUAN
-        </li>
-
-        <li class="nav-item">
-          <a href="<?php echo site_url('admin/ManajemenJadwal/buatjadwal') ?>" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-              Ajukan Pertemuan
-            </p>
-          </a>
-        </li>
 
         <li class="nav-header">LAYANAN NOTARIS
         </li>

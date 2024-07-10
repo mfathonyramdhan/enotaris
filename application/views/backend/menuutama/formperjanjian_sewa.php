@@ -130,7 +130,7 @@
                         </div>
                 </form>
             </div>
-        </div><!-- /.container-fluid  -->
+        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
