@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+section {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+}
+
+section .imgBx:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		180deg,
+		rgba(101, 183, 255, 0.25) 50%,
+		rgba(0, 91, 234, 0.25) 100%
+	);
+	z-index: 1;
+	mix-blend-mode: screen;
+}
+
+section .imgBx {
+	display: block;
+	position: relative;
+	width: 70%;
+	height: 100%;
+}
+
+section .bppkad {
+	position: absolute;
+	left: 38px;
+	top: 28px;
+
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 104%;
+	/* or 23px */
+
+	color: #ffffff;
+
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+section .imgBx img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+section .contentBx {
+	display: flex;
+	width: 50%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(#65b7ff, #005bea);
+	color: #fff;
+}
+
+section .contentBx .formBx {
+	width: 70%;
+}
+
+section .contentBx .formBx img {
+	width: 200px;
+	left: 1045px;
+	top: 97px;
+	display: block;
+	margin: auto;
+	padding-bottom: 40px;
+}
+
+section .contentBx .formBx h2 {
+	/* color: #607d8b; */
+	font-weight: bold;
+	font-size: 1.75em;
+
+	text-transform: uppercase;
+	/* display: inline-block; */
+	letter-spacing: 1px;
+	text-align: center;
+	padding-bottom: 30px;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* cek tagihan */
+section .contentBx .formBx h3 {
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	padding-bottom: 10px;
+	letter-spacing: 1px;
+	text-align: center;
+	margin-bottom: 40px;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+section .contentBx .formBx .nop {
+	margin-bottom: 20px;
+}
+
+section .contentBx .formBx .nop span {
+	font-size: 16px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+	/* color: #607d8b; */
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+
+/* maksimal */
+section .contentBx .formBx .nop .txt2 {
+	font-size: 12px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: inline-block;
+	font-weight: 300;
+	letter-spacing: 1px;
+}
+
+section .contentBx .formBx .nop input {
+	width: 100%;
+	padding: 10px 20px;
+	outline: none;
+	font-weight: 400;
+	border: none;
+	font-size: 16px;
+	letter-spacing: 1px;
+	/* color: #607d8b; */
+	/* background: transparent; */
+	border-radius: 33px;
+}
+
+section .contentBx .formBx .inputBx2 {
+	display: flex;
+	float: right;
+	padding-bottom: 20px;
+}
+
+section .contentBx .formBx .inputBx2 .reset {
+	font-weight: normal;
+	color: #fff;
+	font-size: 16px;
+	position: relative;
+	width: 100px;
+	height: 44px;
+	padding: 10px 20px;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+	border-radius: 33px;
+	background: transparent;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+section .contentBx .formBx .inputBx2 .submit {
+	font-weight: bold;
+	color: #fff;
+	font-size: 16px;
+	position: relative;
+	width: 146px;
+	height: 44px;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	padding: 10px 20px;
+	border: none;
+	box-sizing: border-box;
+	border-radius: 33px;
+	background: linear-gradient(180deg, #ffba0c 0%, #ff9902 100%);
+	display: flex;
+	cursor: pointer;
+}
+
+section .contentBx .formBx .inputBx2 .submit:hover {
+	background: #ff9902;
+}
+
+section .contentBx .formBx .inputBx2 .imgIcon {
+	width: 20px;
+	margin: auto;
+}
+
+section .contentBx .formBx .remember {
+	margin-bottom: 10px;
+	/* color: #607d8b; */
+	font-weight: 400;
+	font-size: 14px;
+}
+
+section .contentBx .formBx .nop p {
+	color: #607d8b;
+}
+
+section .contentBx .formBx .nop p a {
+	color: #ff4584;
+}
+
+section .credit {
+	position: relative;
+	padding-top: 40px;
+	width: 100%;
+	display: inline-block;
+}
+
+.credit span {
+	font-size: 12px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+@media (max-width: 768px) {
+	section .imgBx {
+		display: none;
+	}
+
+	section .contentBx .formBx h2 {
+		/* color: #607d8b; */
+		font-weight: bold;
+		font-size: 1.5em;
+		padding-bottom: 0px;
+	}
+
+	section .contentBx {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+
+		z-index: 1;
+	}
+
+	section .contentBx .formBx {
+		width: 100%;
+		height: 100%;
+		padding: 40px;
+		background: linear-gradient(#65b7ff, #005bea);
+	}
+
+	section .contentBx .formBx h3 {
+		text-align: center;
+		margin: 10px 0 10px;
+		font-weight: 500;
+	}
+}
