@@ -77,6 +77,17 @@
             </a>
           </li>
         <?php } ?>
+        <li class="nav-header">JADWAL PERTEMUAN
+        </li>
+
+        <li class="nav-item">
+          <a href="<?php echo site_url('admin/ManajemenJadwal/buatjadwal') ?>" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Ajukan Pertemuan
+            </p>
+          </a>
+        </li>
 
         <li class="nav-header">LAYANAN NOTARIS
         </li>
@@ -247,7 +258,7 @@
                 <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/6') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Status Permohonan
+                    <<<<<<< HEAD Status Permohonan=======Status Permohonan>>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
 
                   </p>
                 </a>
@@ -291,7 +302,7 @@
                 <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/3') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Status Permohonan
+                    <<<<<<< HEAD Status Permohonan=======Status Permohonan>>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
 
                   </p>
                 </a>
@@ -335,7 +346,7 @@
                 <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/7') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Status Permohonan
+                    <<<<<<< HEAD Status Permohonan=======Status Permohonan>>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
 
                   </p>
                 </a>
@@ -382,7 +393,7 @@
                 <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/8') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                    Status Permohonan
+                    <<<<<<< HEAD Status Permohonan=======Status Permohonan>>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
 
                   </p>
                 </a>
@@ -423,13 +434,16 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formjualbelitanah') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('admin/Menuutama/formjualbelitanah') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('admin/Menuutama/formjualbelitanah') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Formulir Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/9') ?>" class="nav-link">
@@ -582,22 +596,28 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formkuasa') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('admin/Menuutama/formkuasa') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('admin/Menuutama/formkuasa') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Formulir Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/11') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/11') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/11') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Status Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
             <?php } ?>
           </ul>
@@ -635,22 +655,28 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formbagihak') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('admin/Menuutama/formbagihak') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('admin/Menuutama/formbagihak') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Formulir Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/12') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/12') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/12') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Status Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
             <?php } ?>
           </ul>
@@ -688,22 +714,28 @@
             <?php } ?>
             <?php if ($user['nama_level'] == 'user') { ?>
               <li class="nav-item">
-                <a href="<?php echo site_url('admin/Menuutama/formapht') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Formulir Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('admin/Menuutama/formapht') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('admin/Menuutama/formapht') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Formulir Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/13') ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Status Permohonan
+                <<<<<<< HEAD <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/13') ?>" class="nav-link">
+                  =======
+                  <a href="<?php echo site_url('user/Menuutama/datapermohonan_user/13') ?>" class="nav-link">
+                    >>>>>>> eeb68948d0b40e4b6be207b5e5c91b1b3d6133c3
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Status Permohonan
 
-                  </p>
-                </a>
+                    </p>
+                  </a>
               </li>
             <?php } ?>
           </ul>
