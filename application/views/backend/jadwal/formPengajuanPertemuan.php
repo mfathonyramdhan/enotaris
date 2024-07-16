@@ -60,7 +60,7 @@
 
 
 
-                <form id="jadwalForm" action="<?= base_url('admin/Menuutama/ajukan_jadwal') ?>" method="POST" enctype="multipart/form-data">
+                <form id="jadwalForm" action="<?= base_url('admin/ManajemenJadwal/submitPengajuanPertemuan') ?>" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_permohonan_jadwal" id="id_permohonan_jadwal">
                     <input type="hidden" name="id_user" id="id_user" value="<?= $user['id_user'] ?>">
                     <input type="hidden" name="status" id="status" value="1">
@@ -74,7 +74,8 @@
                         // info status pengajuan : 
                         // 1 = diajukan - belum direview
                         // 2 = ditolak - user ajukan ulang
-                        // 3 = disetujui
+                        // 3 = diajukan ulang - belum direview
+                        // 4 = disetujui
 
                         ?>
 

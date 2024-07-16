@@ -14,19 +14,45 @@ class M_admin extends CI_Model
     }
 
     function editPermohonan($where, $data)
-	{
-		return $this->db->update('tb_permohonan', $data, $where);
-	}
-   
-	function getNobulanan($id)
-	{
-		$this->db->select('*');
-		$this->db->from('tb_permohonan p');
+    {
+        return $this->db->update('tb_permohonan', $data, $where);
+    }
+
+    function getNobulanan($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_permohonan p');
         $this->db->join('tb_user', 'p.pemohon = tb_user.id_user');
-		$this->db->where('kode_permohonan', $id);
-		$query = $this->db->get();
-		return $query->result_array();
-	}
+        $this->db->where('kode_permohonan', $id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+    public function get_jadwal_pertemuan($user_id)
+    {
+        $this->db->select('pj.*, u.nama');
+        $this->db->from('tb_pertemuan pj');
+        $this->db->join('tb_user u', 'u.id_user = pj.user_id');
+        $this->db->where('pj.user_id', $user_id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getAll_jadwal_pertemuan()
+    {
+        $this->db->select('pj.*, u.nama');
+        $this->db->from('tb_pertemuan pj');
+        $this->db->join('tb_user u', 'u.id_user = pj.user_id');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function hapusDataPengajuanPertemuan($id)
+    {
+        $this->db->where('id', $id);
+        return $this->db->delete('tb_pertemuan');
+    }
 
     function update_akun($where, $data)
     {

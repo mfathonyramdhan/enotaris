@@ -80,13 +80,48 @@
         <li class="nav-header">JADWAL PERTEMUAN
         </li>
 
+
+
         <li class="nav-item">
-          <a href="<?php echo site_url('admin/ManajemenJadwal/buatjadwal') ?>" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-columns"></i>
             <p>
-              Ajukan Pertemuan
+              Jadwal Pertemuan
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            <li class="nav-item">
+              <a href="<?php echo site_url('admin/ManajemenJadwal/formPengajuanPertemuan') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Form Pengajuan Pertemuan
+                </p>
+              </a>
+            </li>
+            <?php if ($user['nama_level'] == 'admin') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/ManajemenJadwal/dataPengajuanPertemuanJadwal') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Jadwal Pertemuan
+
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+            <?php if ($user['nama_level'] == 'user') { ?>
+              <li class="nav-item">
+                <a href="<?php echo site_url('admin/ManajemenJadwal/dataPengajuanPertemuan') ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Status Permohonan
+
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
         </li>
 
         <li class="nav-header">LAYANAN NOTARIS
