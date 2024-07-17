@@ -99,4 +99,57 @@ class ManajemenJadwal extends CI_Controller
 
         redirect('admin/ManajemenJadwal/dataPengajuanPertemuan');
     }
+
+    public function handle_action()
+    {
+        $id = $this->input->post('id');
+        $catatan = $this->input->post('catatan');
+        $action = $this->input->post('action');
+
+        if ($action == 'setujui') {
+            $status = 4;
+        } elseif ($action == 'tolak') {
+            $status = 2;
+        }
+
+
+        $this->db->update('tb_pertemuan', [
+            'status' => $status,
+            'catatan' => $catatan,
+        ], ['id' => $id]);
+
+        $this->session->set_flashdata('pesan', [
+            'status_pesan' => true,
+            'isi_pesan' => 'Aksi berhasil dilakukan.'
+        ]);
+
+        redirect('admin/ManajemenJadwal/dataPengajuanPertemuanJadwal');
+    }
+
+    public function updatePengajuanPertemuan()
+    {
+        $id = $this->input->post('id');
+        $tanggal = $this->input->post('tanggal');
+        $jamMulai = $this->input->post('jam_mulai');
+        $jamAkhir = $this->input->post('jam_akhir');
+        $keterangan = $this->input->post('keterangan');
+
+        // Update the database
+        $this->db->update('tb_pertemuan', [
+            'tgl' => $tanggal,
+            'jam_mulai' => $jamMulai,
+            'jam_akhir' => $jamAkhir,
+            'keterangan' => $keterangan,
+            'status' => 1,
+        ], ['id' => $id]);
+
+        // Set flash message
+        $this->session->set_flashdata('pesan', [
+            'status_pesan' => true,
+            'isi_pesan' => 'Data berhasil diperbarui.'
+        ]);
+
+        // Redirect back to the list page
+        redirect('admin/ManajemenJadwal/dataPengajuanPertemuan');
+    }
 }
